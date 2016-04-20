@@ -30,5 +30,13 @@ public class Material {
 		// TODO - implement Material.Material
 		throw new UnsupportedOperationException();
 	}
+        
+        public void mostrarMaterial() {
+		// TODO - implement Material.Material
+		for(MaterialAsignadoAObra material : materialAsignadoAObra){
+                    System.out.println(nombre);
+                }
+                
+	}
 
 }
