@@ -5,6 +5,8 @@
  */
 package gestioneconomicaconstructora;
 
+import factura.Formulario;
+
 /**
  *
  * @author Tiburcio
@@ -15,7 +17,8 @@ public class GestionEconomicaConstructora {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Formulario formulario=new Formulario();
+        formulario.setVisible(true);
     }
     
 }
