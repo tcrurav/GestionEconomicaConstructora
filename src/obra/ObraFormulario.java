@@ -39,23 +39,50 @@ public class ObraFormulario extends javax.swing.JFrame {
         txtFechaInicio.setText("");
         txtFechaFin.setText("");
         txtDireccion.setText("");
+        txtPresupuestoTotalEjecucion.setText("");
+        txtEstimacionCosteMateriales.setText("");
+        txtEstimacionCosteManoDeObra.setText("");
+        txtEstimacionGastosGenerales.setText("");
+        txtEstimacionBeneficioIndustrial.setText("");
+        txtPorcentajeDeObraEjecutado.setText("");
+        txtCantidadCobrada.setText("");
+        txtCantidadFacturada.setText("");
     }
     
     public void habilitar(){
         txtFechaInicio.setEnabled(true);
         txtFechaFin.setEnabled(true);
         txtDireccion.setEnabled(true);
+        txtPresupuestoTotalEjecucion.setEnabled(true);
+        txtEstimacionCosteMateriales.setEnabled(true);
+        txtEstimacionCosteManoDeObra.setEnabled(true);
+        txtEstimacionGastosGenerales.setEnabled(true);
+        txtEstimacionBeneficioIndustrial.setEnabled(true);
+        txtPorcentajeDeObraEjecutado.setEnabled(true);
+        txtCantidadCobrada.setEnabled(true);
+        txtCantidadFacturada.setEnabled(true);
     }
     
     public void deshabilitar(){
         txtFechaInicio.setEnabled(false);
         txtFechaFin.setEnabled(false);
         txtDireccion.setEnabled(false);
+        txtPresupuestoTotalEjecucion.setEnabled(false);
+        txtEstimacionCosteMateriales.setEnabled(false);
+        txtEstimacionCosteManoDeObra.setEnabled(false);
+        txtEstimacionGastosGenerales.setEnabled(false);
+        txtEstimacionBeneficioIndustrial.setEnabled(false);
+        txtPorcentajeDeObraEjecutado.setEnabled(false);
+        txtCantidadCobrada.setEnabled(false);
+        txtCantidadFacturada.setEnabled(false);
+        
     }
     
     public void llenar(){
         conn = MySQL.getConnection();
-        String titulos[] = {"id","fechaInicio","fechaFin","direccion"};
+        String titulos[] = {"id","fechaInicio","fechaFin","direccion","presupuestoTotalEjecucion",
+            "estimacionCosteMateriales","estimacionCosteManoDeObra","estimacionGastosGenerales","estimacionBeneficioIndustrial",
+            "porcentajeDeObraEjecutado","cantidadCobrada","cantidadFacturada"};
         String sql = "select * from obras";
         modelo = new DefaultTableModel(null, titulos);
         
@@ -63,13 +90,21 @@ public class ObraFormulario extends javax.swing.JFrame {
             sentencia = conn.createStatement();
             ResultSet rs = sentencia.executeQuery(sql);
             
-            String fila[] = new String[5];
+            String fila[] = new String[12];
             
             while(rs.next()){
                 fila[0] = rs.getString("id");
                 fila[1] = rs.getString("fechaInicio");
                 fila[2] = rs.getString("fechaFin");
                 fila[3] = rs.getString("direccion");
+                fila[4] = String.valueOf(rs.getFloat("presupuestoTotalEjecucion"));
+                fila[5] = String.valueOf(rs.getFloat("estimacionCosteMateriales"));
+                fila[6] = String.valueOf(rs.getFloat("estimacionCosteManoDeObra"));
+                fila[7] = String.valueOf(rs.getFloat("estimacionGastosGenerales"));
+                fila[8] = String.valueOf(rs.getFloat("estimacionBeneficioIndustrial"));
+                fila[9] = String.valueOf(rs.getFloat("porcentajeDeObraEjecutado"));
+                fila[10] = String.valueOf(rs.getFloat("cantidadCobrada"));
+                fila[11] = String.valueOf(rs.getFloat("cantidadFacturada"));                
                 
                 modelo.addRow(fila);
             }
@@ -85,12 +120,23 @@ public class ObraFormulario extends javax.swing.JFrame {
     
     
     public void nuevo(){
-        String sql = "insert into obras (fechaInicio, fechaFin, direccion) values (?, ?, ?)";
+        String sql = "insert into obras (fechaInicio, fechaFin, direccion, " 
+                + "presupuestoTotalEjecucion, estimacionCosteMateriales, estimacionCosteManoDeObra, " 
+                + "estimacionGastosGenerales, estimacionBeneficioIndustrial, "
+                + "porcentajeDeObraEjecutado, cantidadCobrada, cantidadFacturada) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = conn.prepareCall(sql);
             ps.setString(1, txtFechaInicio.getText());
             ps.setString(2, txtFechaFin.getText());
             ps.setString(3, txtDireccion.getText());
+            ps.setFloat(4, Float.parseFloat(txtPresupuestoTotalEjecucion.getText()));
+            ps.setFloat(5, Float.parseFloat(txtEstimacionCosteMateriales.getText()));
+            ps.setFloat(6, Float.parseFloat(txtEstimacionCosteManoDeObra.getText()));
+            ps.setFloat(7, Float.parseFloat(txtEstimacionGastosGenerales.getText()));
+            ps.setFloat(8, Float.parseFloat(txtEstimacionBeneficioIndustrial.getText()));
+            ps.setFloat(9, Float.parseFloat(txtPorcentajeDeObraEjecutado.getText()));
+            ps.setFloat(10, Float.parseFloat(txtCantidadCobrada.getText()));
+            ps.setFloat(11, Float.parseFloat(txtCantidadFacturada.getText()));
             int n = ps.executeUpdate();
             
             if(n>0){
@@ -106,13 +152,25 @@ public class ObraFormulario extends javax.swing.JFrame {
     public void modificar(){
         int fila = tblObras.getSelectedRow();
         String identificador = (String)tblObras.getValueAt(fila, 0);
-        String sql = "update obras set fechaInicio=?, fechaFin=?, direccion=? where id=" + identificador;
+        String sql = "update obras set fechaInicio=?, fechaFin=?, direccion=?, " 
+                + "presupuestoTotalEjecucion=?, estimacionCosteMateriales=?, estimacionCosteManoDeObra=?, " 
+                + "estimacionGastosGenerales=?, estimacionBeneficioIndustrial=?, "
+                + "porcentajeDeObraEjecutado=?, cantidadCobrada=?, cantidadFacturada=?"
+                +" where id=" + identificador;
         PreparedStatement ps;
         try {
             ps = conn.prepareCall(sql);
             ps.setString(1, txtFechaInicio.getText());
             ps.setString(2, txtFechaFin.getText());
             ps.setString(3, txtDireccion.getText());
+            ps.setFloat(4, Float.parseFloat(txtPresupuestoTotalEjecucion.getText()));
+            ps.setFloat(5, Float.parseFloat(txtEstimacionCosteMateriales.getText()));
+            ps.setFloat(6, Float.parseFloat(txtEstimacionCosteManoDeObra.getText()));
+            ps.setFloat(7, Float.parseFloat(txtEstimacionGastosGenerales.getText()));
+            ps.setFloat(8, Float.parseFloat(txtEstimacionBeneficioIndustrial.getText()));
+            ps.setFloat(9, Float.parseFloat(txtPorcentajeDeObraEjecutado.getText()));
+            ps.setFloat(10, Float.parseFloat(txtCantidadCobrada.getText()));
+            ps.setFloat(11, Float.parseFloat(txtCantidadFacturada.getText()));
             
             int n = ps.executeUpdate();
             
@@ -166,6 +224,22 @@ public class ObraFormulario extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtPresupuestoTotalEjecucion = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtEstimacionCosteMateriales = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtEstimacionCosteManoDeObra = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtEstimacionGastosGenerales = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtEstimacionBeneficioIndustrial = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtPorcentajeDeObraEjecutado = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtCantidadCobrada = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtCantidadFacturada = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -239,6 +313,22 @@ public class ObraFormulario extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("presupuestoTotalEjecucion:");
+
+        jLabel7.setText("estimacionCosteMateriales:");
+
+        jLabel8.setText("estimacionCosteManoDeObra:");
+
+        jLabel9.setText("estimacionGastosGenerales:");
+
+        jLabel10.setText("estimacionBeneficioIndustrial:");
+
+        jLabel11.setText("porcentajeDeObraEjecutado:");
+
+        jLabel12.setText("cantidadCobrada:");
+
+        jLabel13.setText("cantidadFacturada:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -247,25 +337,42 @@ public class ObraFormulario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(txtFechaFin)
-                            .addComponent(txtFechaInicio))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
                         .addComponent(btnNuevo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBorrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                        .addComponent(btnGuardar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuardar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCantidadFacturada)
+                            .addComponent(txtCantidadCobrada)
+                            .addComponent(txtPorcentajeDeObraEjecutado)
+                            .addComponent(txtEstimacionBeneficioIndustrial)
+                            .addComponent(txtEstimacionGastosGenerales)
+                            .addComponent(txtEstimacionCosteManoDeObra)
+                            .addComponent(txtEstimacionCosteMateriales)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDireccion)
+                                    .addComponent(txtFechaFin)
+                                    .addComponent(txtFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 305, Short.MAX_VALUE))
+                            .addComponent(txtPresupuestoTotalEjecucion))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -283,13 +390,44 @@ public class ObraFormulario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtPresupuestoTotalEjecucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtEstimacionCosteMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtEstimacionCosteManoDeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtEstimacionGastosGenerales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtEstimacionBeneficioIndustrial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtPorcentajeDeObraEjecutado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtCantidadCobrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtCantidadFacturada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(btnModificar)
                     .addComponent(btnBorrar)
-                    .addComponent(btnGuardar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnGuardar)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -299,8 +437,10 @@ public class ObraFormulario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -348,6 +488,14 @@ public class ObraFormulario extends javax.swing.JFrame {
                 txtFechaInicio.setText(rs.getString("fechaInicio"));
                 txtFechaFin.setText(rs.getString("fechaFin"));
                 txtDireccion.setText(rs.getString("direccion"));
+                txtPresupuestoTotalEjecucion.setText(rs.getString("PresupuestoTotalEjecucion"));
+                txtEstimacionCosteMateriales.setText(rs.getString("estimacionCosteMateriales"));
+                txtEstimacionCosteManoDeObra.setText(rs.getString("estimacionCosteManoDeObra"));
+                txtEstimacionGastosGenerales.setText(rs.getString("estimacionGastosGenerales"));
+                txtEstimacionBeneficioIndustrial.setText(rs.getString("estimacionBeneficioIndustrial"));
+                txtPorcentajeDeObraEjecutado.setText(rs.getString("porcentajeDeObraEjecutado"));
+                txtCantidadCobrada.setText(rs.getString("cantidadCobrada"));
+                txtCantidadFacturada.setText(rs.getString("cantidadFacturada"));
                 
                 habilitar();
                 
@@ -413,15 +561,31 @@ public class ObraFormulario extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblObras;
+    private javax.swing.JTextField txtCantidadCobrada;
+    private javax.swing.JTextField txtCantidadFacturada;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtEstimacionBeneficioIndustrial;
+    private javax.swing.JTextField txtEstimacionCosteManoDeObra;
+    private javax.swing.JTextField txtEstimacionCosteMateriales;
+    private javax.swing.JTextField txtEstimacionGastosGenerales;
     private javax.swing.JTextField txtFechaFin;
     private javax.swing.JTextField txtFechaInicio;
+    private javax.swing.JTextField txtPorcentajeDeObraEjecutado;
+    private javax.swing.JTextField txtPresupuestoTotalEjecucion;
     // End of variables declaration//GEN-END:variables
 }

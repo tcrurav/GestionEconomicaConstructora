@@ -1,11 +1,20 @@
-public class PeriodoEmpleadoEnObra extends Asignacion {
+import java.util.*;
+public class PeriodoEmpleadoEnObra {
 
 	EmpleadoObra empleado;
 	Obra obra;
-	private String fechaInicio;
-	private String fechaFin;
+	private Date fechaInicio;
+	private Date fechaFin;
+	JefeDeObra jefeDeObra;
+	AdministrativoManoDeObra administrativoManoObra;
+	/**
+	 * Parte proporcional del sueldo correspondiente a la categor�a del trabajador en el momento de la asignaci�n
+	 */
+	private float coste;
+	private Date fechaSolicitud;
+	private Date fechaRecepcion;
 
-	public String getFechaFin() {
+	public Date getFechaFin() {
 		return this.fechaFin;
 	}
 
@@ -13,11 +22,11 @@ public class PeriodoEmpleadoEnObra extends Asignacion {
 	 * 
 	 * @param fechaFin
 	 */
-	public void setFechaFin(String fechaFin) {
+	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
-	public String getFechaInicio() {
+	public Date getFechaInicio() {
 		return this.fechaInicio;
 	}
 
@@ -25,8 +34,49 @@ public class PeriodoEmpleadoEnObra extends Asignacion {
 	 * 
 	 * @param fechaInicio
 	 */
-	public void setFechaInicio(String fechaInicio) {
+	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaRecepcion() {
+		return this.fechaRecepcion;
+	}
+
+	/**
+	 * 
+	 * @param fechaRecepcion
+	 */
+	public void setFechaRecepcion(Date fechaRecepcion) {
+		this.fechaRecepcion = fechaRecepcion;
+	}
+
+	public Date getFechaSolicitud() {
+		return this.fechaSolicitud;
+	}
+
+	/**
+	 * 
+	 * @param fechaSolicitud
+	 */
+	public void setFechaSolicitud(Date fechaSolicitud) {
+		this.fechaSolicitud = fechaSolicitud;
+	}
+
+	public float getCoste() {
+		return this.coste;
+	}
+
+	/**
+	 * 
+	 * @param coste
+	 */
+	public void setCoste(float coste) {
+		this.coste = coste;
+	}
+
+	public PeriodoEmpleadoEnObra() {
+		// TODO - implement PeriodoEmpleadoEnObra.PeriodoEmpleadoEnObra
+		throw new UnsupportedOperationException();
 	}
 
 }

@@ -6,6 +6,7 @@ public class Persona {
 	private String nombre;
 	private String apellidos;
 	private String telefono;
+	private String dni;
 
 	public String getNombre() {
 		return this.nombre;
@@ -46,6 +47,18 @@ public class Persona {
 	public Persona() {
 		// TODO - implement Persona.Persona
 		throw new UnsupportedOperationException();
+	}
+
+	public String getDni() {
+		return this.dni;
+	}
+
+	/**
+	 * 
+	 * @param dni
+	 */
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 }

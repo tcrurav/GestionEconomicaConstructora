@@ -1,20 +1,15 @@
+import java.util.*;
+
 public class Albaran {
 
 	Proveedor proveedor;
 	EmpleadoAlmacen empleado;
-	Factura factura;
-	private String fecha;
+	private Date fecha;
+	Collection<LineaAlbaran> lineaAlbaran;
+	private String numAlbaran;
 
-	public String getFecha() {
+	public Date getFecha() {
 		return this.fecha;
-	}
-
-	/**
-	 * 
-	 * @param fecha
-	 */
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
 	}
 
 	public Albaran() {
@@ -24,11 +19,23 @@ public class Albaran {
 
 	/**
 	 * 
-	 * @param parameter
+	 * @param fecha
 	 */
-	public Albaran(int parameter) {
-		// TODO - implement Albaran.Albaran
+	public void setFecha(Date fecha) {
+		// TODO - implement Albaran.setFecha
 		throw new UnsupportedOperationException();
+	}
+
+	public String getNumAlbaran() {
+		return this.numAlbaran;
+	}
+
+	/**
+	 * 
+	 * @param numAlbaran
+	 */
+	public void setNumAlbaran(String numAlbaran) {
+		this.numAlbaran = numAlbaran;
 	}
 
 }

@@ -1,11 +1,16 @@
-public class PeriodoJefeObraEnObra extends Asignacion {
+import java.util.*;
+public class PeriodoJefeObraEnObra {
 
 	JefeDeObra jefeDeObra;
 	Obra obra;
-	private String fechaInicio;
-	private String fechaFin;
+	private Date fechaInicio;
+	private Date fechaFin;
+	/**
+	 * Parte proporcional del sueldo correspondiente a la categor�a del trabajador en el momento de la asignaci�n
+	 */
+	private float coste;
 
-	public String getFechaFin() {
+	public Date getFechaFin() {
 		return this.fechaFin;
 	}
 
@@ -13,11 +18,11 @@ public class PeriodoJefeObraEnObra extends Asignacion {
 	 * 
 	 * @param fechaFin
 	 */
-	public void setFechaFin(String fechaFin) {
+	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
-	public String getFechaInicio() {
+	public Date getFechaInicio() {
 		return this.fechaInicio;
 	}
 
@@ -25,8 +30,20 @@ public class PeriodoJefeObraEnObra extends Asignacion {
 	 * 
 	 * @param fechaInicio
 	 */
-	public void setFechaInicio(String fechaInicio) {
+	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
+	}
+
+	public float getCoste() {
+		return this.coste;
+	}
+
+	/**
+	 * 
+	 * @param coste
+	 */
+	public void setCoste(float coste) {
+		this.coste = coste;
 	}
 
 }
