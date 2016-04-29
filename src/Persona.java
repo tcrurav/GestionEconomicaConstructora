@@ -3,6 +3,7 @@ import java.util.*;
 public class Persona {
 
 	Collection<Proveedor> proveedor;
+        private String dni;
 	private String nombre;
 	private String apellidos;
 	private String telefono;
@@ -47,5 +48,18 @@ public class Persona {
 		// TODO - implement Persona.Persona
 		throw new UnsupportedOperationException();
 	}
+
+        
+        public String getDni() {
+            return dni;
+        }
+
+        /**
+	 * 
+	 * @param dni
+	 */
+        public void setDni(String dni) {
+            this.dni = dni;
+        }
 
 }
