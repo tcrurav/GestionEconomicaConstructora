@@ -5,6 +5,8 @@
  */
 package gestioneconomicaconstructora;
 
+import empleadoAlmacen.interfazEmpleadoAlmacen;
+
 /**
  *
  * @author Tiburcio
@@ -15,7 +17,8 @@ public class GestionEconomicaConstructora {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        interfazEmpleadoAlmacen empleadoAlmacen=new interfazEmpleadoAlmacen();
+        empleadoAlmacen.setVisible(true);
     }
     
 }
