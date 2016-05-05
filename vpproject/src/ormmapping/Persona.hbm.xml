@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Persona" table="Persona" lazy="false" discriminator-value="Persona">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<discriminator column="Discriminator" type="string"/>
+		<property name="nombre" column="Nombre" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="apellidos" column="Apellidos" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="telefono" column="Telefono" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="dni" column="Dni" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="ORM_Proveedor" table="Persona_Proveedor5" lazy="true" cascade="save-update,lock">
+			<key column="PersonaID" not-null="true"/>
+			<many-to-many column="ProveedorID" class="Proveedor">
+			</many-to-many>
+		</set>
+		<subclass name="Empleado" discriminator-value="Empleado" lazy="false">
+			<many-to-one name="categoria" cascade="lock" column="CategoriaID" class="Categoria" not-null="true" lazy="proxy" access="field">
+			</many-to-one>
+			<property name="usuario" column="Usuario" type="string" length="255" not-null="false" lazy="false"/>
+			<property name="contra" column="Contra" type="string" length="255" not-null="false" lazy="false"/>
+			<subclass name="JefeDeObra" discriminator-value="JefeDeObra" lazy="false">
+				<set name="ORM_PeriodoJefeObraEnObras" lazy="true" cascade="save-update,lock" inverse="true">
+					<key column="PersonaID" not-null="true"/>
+					<one-to-many class="PeriodoJefeObraEnObra"/>
+				</set>
+				<set name="ORM_MaterialAsignadoAObra" lazy="true" cascade="save-update,lock" inverse="true">
+					<key column="PersonaID2" not-null="true"/>
+					<one-to-many class="MaterialParaObra"/>
+				</set>
+				<set name="ORM_PeriodoMaquinariaEnObra" lazy="true" cascade="save-update,lock" inverse="true">
+					<key column="PersonaID" not-null="true"/>
+					<one-to-many class="PeriodoMaquinariaEnObra"/>
+				</set>
+				<set name="ORM_PeriodoEmpleadoEnObra" lazy="true" cascade="save-update,lock" inverse="true">
+					<key column="JefeDeObraID" not-null="true"/>
+					<one-to-many class="PeriodoEmpleadoEnObra"/>
+				</set>
+			</subclass>
+			<subclass name="AdministrativoManoDeObra" discriminator-value="AdministrativoManoDeObra" lazy="false">
+				<set name="ORM_PeriodoEmpleadoEnObra" lazy="true" cascade="save-update,lock" inverse="true">
+					<key column="AdministrativoManoDeObraID" not-null="true"/>
+					<one-to-many class="PeriodoEmpleadoEnObra"/>
+				</set>
+			</subclass>
+			<subclass name="EmpleadoAlmacen" discriminator-value="EmpleadoAlmacen" lazy="false">
+				<set name="ORM_Albaran" lazy="true" cascade="save-update,lock" inverse="true">
+					<key column="EmpleadoAlmacenID" not-null="true"/>
+					<one-to-many class="Albaran"/>
+				</set>
+				<set name="ORM_PeriodoMaquinariaEnObra" lazy="true" cascade="save-update,lock" inverse="true">
+					<key column="PersonaID2" not-null="true"/>
+					<one-to-many class="PeriodoMaquinariaEnObra"/>
+				</set>
+			</subclass>
+			<subclass name="EmpleadoObra" discriminator-value="EmpleadoObra" lazy="false">
+				<set name="ORM_PeriodoEmpleadoEnObras" lazy="true" cascade="save-update,lock" inverse="true">
+					<key column="PersonaID" not-null="true"/>
+					<one-to-many class="PeriodoEmpleadoEnObra"/>
+				</set>
+			</subclass>
+			<subclass name="AdministrativoObra" discriminator-value="AdministrativoObra" lazy="false">
+				<set name="ORM_MaterialAsignadoAObra" lazy="true" cascade="save-update,lock" inverse="true">
+					<key column="PersonaID" not-null="true"/>
+					<one-to-many class="MaterialParaObra"/>
+				</set>
+			</subclass>
+		</subclass>
+	</class>
+</hibernate-mapping>
