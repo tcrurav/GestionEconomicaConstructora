@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="PeriodoMaquinariaEnObra" table="PeriodoMaquinariaEnObra" lazy="false">
+		<composite-id>
+			<key-property name="ID" column="ID" type="integer"/>
+			<key-many-to-one name="ORM_Obra" column="ObraID" class="Obra">
+			</key-many-to-one>
+			<key-many-to-one name="ORM_Maquinaria" column="MaquinariaID" class="Maquinaria">
+			</key-many-to-one>
+		</composite-id>
+		<many-to-one name="empleadoAlmacen" cascade="lock" column="PersonaID2" class="EmpleadoAlmacen" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<many-to-one name="jefeDeObra" cascade="lock" column="PersonaID" class="JefeDeObra" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="fechaInicio" column="FechaInicio" type="date" not-null="false" lazy="false"/>
+		<property name="fechaFin" column="FechaFin" type="date" not-null="false" lazy="false"/>
+		<property name="fechaSolicitud" column="FechaSolicitud" type="date" not-null="false" lazy="false"/>
+		<property name="fechaRecepcion" column="FechaRecepcion" type="date" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>
