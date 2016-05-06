@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="PeriodoJefeObraEnObra" table="PeriodoJefeObraEnObra" lazy="false">
+		<composite-id>
+			<key-property name="ID" column="ID" type="integer"/>
+			<key-many-to-one name="ORM_JefeDeObra" column="PersonaID" class="JefeDeObra">
+			</key-many-to-one>
+			<key-many-to-one name="ORM_Obra" column="ObraID" class="Obra">
+			</key-many-to-one>
+		</composite-id>
+		<property name="fechaInicio" column="FechaInicio" type="date" not-null="false" lazy="false"/>
+		<property name="fechaFin" column="FechaFin" type="date" not-null="false" lazy="false"/>
+		<property name="coste" column="Coste" type="float" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Parte proporcional del sueldo correspondiente a la categor&#237;a del trabajador en el momento de la asignaci&#243;n
+			</meta>
+		</property>
+	</class>
+</hibernate-mapping>
