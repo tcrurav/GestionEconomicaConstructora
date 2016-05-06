@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="LineaAlbaran" table="LineaAlbaran" lazy="false">
+		<composite-id>
+			<key-property name="ID" column="ID" type="integer"/>
+			<key-many-to-one name="ORM_Albaran" column="AlbaranID" class="Albaran">
+			</key-many-to-one>
+			<key-many-to-one name="ORM_Material" column="MaterialID" class="Material">
+			</key-many-to-one>
+		</composite-id>
+		<property name="cantidad" column="Cantidad" type="integer" length="11" not-null="true" lazy="false"/>
+	</class>
+</hibernate-mapping>
