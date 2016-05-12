@@ -7,6 +7,8 @@ package login;
 
 import POJOS.Empleado;
 import dba.PersonaDba;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -31,19 +33,20 @@ public class FrmLogin extends javax.swing.JFrame {
 
     public boolean validar() {
         String usuario = txtUsuario.getText();
-        String contrasena = txtContrasena.getText();
+        String contrasena = String.valueOf(txtContrasena.getPassword());
+        
 
         if (usuario.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El campo de Usuario está vacío.");
             return false;
         }
 
-        if (contrasena.isEmpty()) {
+        if (contrasena.equals("")) {
             JOptionPane.showMessageDialog(null, "El campo de Contraseña está vacío.");
             return false;
         }
         try {
-            Empleado empleado = PersonaDba.getEmpleado(txtUsuario.getText(), txtContrasena.getText());
+            Empleado empleado = PersonaDba.getEmpleado(usuario, contrasena);
             if (empleado != null) {
                 JOptionPane.showMessageDialog(null, "Usuario Autentificado Correctamente.");
                 this.setVisible(false); //Cerrar Ventana Login
@@ -58,6 +61,14 @@ public class FrmLogin extends javax.swing.JFrame {
         return false;
     }
 
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("resources/iconoConstructora.png"));
+
+        return retValue;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,10 +82,11 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        txtContrasena = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
+        txtContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setResizable(false);
 
         jLabel1.setText("Usuario:");
@@ -84,12 +96,6 @@ public class FrmLogin extends javax.swing.JFrame {
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
-            }
-        });
-
-        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContrasenaActionPerformed(evt);
             }
         });
 
@@ -107,8 +113,8 @@ public class FrmLogin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnEntrar)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
@@ -116,7 +122,7 @@ public class FrmLogin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                             .addComponent(txtContrasena))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,10 +162,6 @@ public class FrmLogin extends javax.swing.JFrame {
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
-
-    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContrasenaActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         validar();
@@ -206,7 +208,7 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

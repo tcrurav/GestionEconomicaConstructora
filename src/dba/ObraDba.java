@@ -6,6 +6,7 @@
 package dba;
 import POJOS.Obra;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,14 +23,16 @@ public class ObraDba {
         
         String sql = "Select * from obra where ID=" + identificador;
             try {
-                Connection conn = MySQL.getConnection();
+                Connection conn = BaseDeDatos.getConnection();
                 Statement sentencia = conn.createStatement();
                 ResultSet rs = sentencia.executeQuery(sql);
                 
                 if(rs.next()){
                     obra.setPK_ID(rs.getInt("ID"));
-                    obra.setFechaInicio(rs.getDate("FechaInicio"));
-                    obra.setFechaFin(rs.getDate("FechaFin"));
+                    //obra.setFechaInicio(rs.getDate("FechaInicio")); //Sólo Válido para MySQL, pero no para SQLite
+                    //obra.setFechaFin(rs.getDate("FechaFin"));       //Sólo Válido para MySQL, pero no para SQLite
+                    obra.setFechaInicio(Date.valueOf(rs.getString("FechaInicio")));
+                    obra.setFechaFin(Date.valueOf(rs.getString("FechaFin")));
                     obra.setDireccion(rs.getString("Direccion"));
                     obra.setPresupuestoTotalEjecucion(rs.getFloat("PresupuestoTotalEjecucion"));
                     obra.setEstimacionCosteMateriales(rs.getFloat("EstimacionCosteMateriales"));
@@ -51,7 +54,7 @@ public class ObraDba {
     }
     
     public static ArrayList<Obra> getObras() throws SQLException{
-        Connection conn = MySQL.getConnection();
+        Connection conn = BaseDeDatos.getConnection();
         String sql = "select * from obra";
         
         ArrayList<Obra> obras = new ArrayList<Obra>();
@@ -63,8 +66,10 @@ public class ObraDba {
             while(rs.next()){
                 Obra obra = new Obra();
                 obra.setPK_ID(rs.getInt("ID"));
-                obra.setFechaInicio(rs.getDate("FechaInicio"));
-                obra.setFechaFin(rs.getDate("FechaFin"));
+                //obra.setFechaInicio(rs.getDate("FechaInicio")); //Sólo Válido para MySQL, pero no para SQLite
+                //obra.setFechaFin(rs.getDate("FechaFin"));       //Sólo Válido para MySQL, pero no para SQLite
+                obra.setFechaInicio(Date.valueOf(rs.getString("FechaInicio")));
+                obra.setFechaFin(Date.valueOf(rs.getString("FechaFin")));
                 obra.setDireccion(rs.getString("Direccion"));
                 obra.setPresupuestoTotalEjecucion(rs.getFloat("PresupuestoTotalEjecucion"));
                 obra.setEstimacionCosteMateriales(rs.getFloat("EstimacionCosteMateriales"));
@@ -87,7 +92,7 @@ public class ObraDba {
     }
     
     public static boolean insertObra(Obra obra) throws SQLException{
-        Connection conn = MySQL.getConnection();
+        Connection conn = BaseDeDatos.getConnection();
         String sql = "insert into obra (FechaInicio, FechaFin, Direccion, " 
                 + "PresupuestoTotalEjecucion, EstimacionCosteMateriales, EstimacionCosteManoDeObra, " 
                 + "EstimacionGastosGenerales, EstimacionBeneficioIndustrial, "
@@ -122,7 +127,7 @@ public class ObraDba {
     }
     
     public static boolean updateObra(Obra obra) throws SQLException{
-        Connection conn = MySQL.getConnection();
+        Connection conn = BaseDeDatos.getConnection();
         
         String sql = "update obra set FechaInicio=?, FechaFin=?, Direccion=?, " 
                 + "PresupuestoTotalEjecucion=?, EstimacionCosteMateriales=?, EstimacionCosteManoDeObra=?, " 
@@ -159,7 +164,7 @@ public class ObraDba {
     }
     
     public static boolean deleteObra(int identificador) throws SQLException{
-        Connection conn = MySQL.getConnection();
+        Connection conn = BaseDeDatos.getConnection();
         String sql = "delete from obra where id=" + identificador;
         try {
             Statement sentencia = conn.createStatement();

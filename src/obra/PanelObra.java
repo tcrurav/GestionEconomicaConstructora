@@ -43,14 +43,14 @@ public class PanelObra extends javax.swing.JPanel {
         jXDatePickerFechaInicio.setDate(instance.getTime());
         jXDatePickerFechaFin.setDate(instance.getTime());
         txtDireccion.setText("");
-        txtPresupuestoTotalEjecucion.setText("");
-        txtEstimacionCosteMateriales.setText("");
-        txtEstimacionCosteManoDeObra.setText("");
-        txtEstimacionGastosGenerales.setText("");
-        txtEstimacionBeneficioIndustrial.setText("");
-        txtPorcentajeDeObraEjecutado.setText("");
-        txtCantidadCobrada.setText("");
-        txtCantidadFacturada.setText("");
+        txtPresupuestoTotalEjecucion.setText("0");
+        txtEstimacionCosteMateriales.setText("0");
+        txtEstimacionCosteManoDeObra.setText("0");
+        txtEstimacionGastosGenerales.setText("0");
+        txtEstimacionBeneficioIndustrial.setText("0");
+        txtPorcentajeDeObraEjecutado.setText("0");
+        txtCantidadCobrada.setText("0");
+        txtCantidadFacturada.setText("0");
     }
 
     public void habilitar() {
@@ -74,7 +74,7 @@ public class PanelObra extends javax.swing.JPanel {
         
         
     }
-
+    
     public void deshabilitar() {
         jXDatePickerFechaInicio.setEnabled(false);
         jXDatePickerFechaFin.setEnabled(false);
@@ -87,7 +87,6 @@ public class PanelObra extends javax.swing.JPanel {
         txtPorcentajeDeObraEjecutado.setEnabled(false);
         txtCantidadCobrada.setEnabled(false);
         txtCantidadFacturada.setEnabled(false);
-
     }
 
     public void llenar() {
@@ -252,6 +251,7 @@ public class PanelObra extends javax.swing.JPanel {
         });
 
         btnModificar.setText("Modificar");
+        btnModificar.setEnabled(false);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -259,6 +259,7 @@ public class PanelObra extends javax.swing.JPanel {
         });
 
         btnBorrar.setText("Borrar");
+        btnBorrar.setEnabled(false);
         btnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBorrarActionPerformed(evt);
@@ -274,19 +275,35 @@ public class PanelObra extends javax.swing.JPanel {
 
         jLabel6.setText("presupuestoTotalEjecucion:");
 
+        txtPresupuestoTotalEjecucion.setText("0");
+
         jLabel7.setText("estimacionCosteMateriales:");
+
+        txtEstimacionCosteMateriales.setText("0");
 
         jLabel8.setText("estimacionCosteManoDeObra:");
 
+        txtEstimacionCosteManoDeObra.setText("0");
+
         jLabel9.setText("estimacionGastosGenerales:");
+
+        txtEstimacionGastosGenerales.setText("0");
 
         jLabel10.setText("estimacionBeneficioIndustrial:");
 
+        txtEstimacionBeneficioIndustrial.setText("0");
+
         jLabel11.setText("porcentajeDeObraEjecutado:");
+
+        txtPorcentajeDeObraEjecutado.setText("0");
 
         jLabel12.setText("cantidadCobrada:");
 
+        txtCantidadCobrada.setText("0");
+
         jLabel13.setText("cantidadFacturada:");
+
+        txtCantidadFacturada.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -449,12 +466,17 @@ public class PanelObra extends javax.swing.JPanel {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
         habilitar();
+        btnModificar.setEnabled(false);
+        btnBorrar.setEnabled(false);
+        btnGuardar.setEnabled(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         modificar();
         limpiar();
         deshabilitar();
+        btnModificar.setEnabled(false);
+        btnBorrar.setEnabled(false);
         llenar();
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -462,12 +484,15 @@ public class PanelObra extends javax.swing.JPanel {
         borrar();
         limpiar();
         deshabilitar();
+        btnModificar.setEnabled(false);
+        btnBorrar.setEnabled(false);
         llenar();
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         nuevo();
         deshabilitar();
+        btnGuardar.setEnabled(false);
         llenar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -495,6 +520,9 @@ public class PanelObra extends javax.swing.JPanel {
                 txtCantidadFacturada.setText(String.valueOf(obra.getCantidadFacturada()));
 
                 habilitar();
+                btnModificar.setEnabled(true);
+                btnBorrar.setEnabled(true);
+                btnGuardar.setEnabled(false);
 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");

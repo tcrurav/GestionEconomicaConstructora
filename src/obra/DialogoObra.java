@@ -268,19 +268,35 @@ public class DialogoObra extends javax.swing.JDialog {
 
         jLabel6.setText("presupuestoTotalEjecucion:");
 
+        txtPresupuestoTotalEjecucion.setText("0");
+
         jLabel7.setText("estimacionCosteMateriales:");
+
+        txtEstimacionCosteMateriales.setText("0");
 
         jLabel8.setText("estimacionCosteManoDeObra:");
 
+        txtEstimacionCosteManoDeObra.setText("0");
+
         jLabel9.setText("estimacionGastosGenerales:");
+
+        txtEstimacionGastosGenerales.setText("0");
 
         jLabel10.setText("estimacionBeneficioIndustrial:");
 
+        txtEstimacionBeneficioIndustrial.setText("0");
+
         jLabel11.setText("porcentajeDeObraEjecutado:");
+
+        txtPorcentajeDeObraEjecutado.setText("0");
 
         jLabel12.setText("cantidadCobrada:");
 
+        txtCantidadCobrada.setText("0");
+
         jLabel13.setText("cantidadFacturada:");
+
+        txtCantidadFacturada.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

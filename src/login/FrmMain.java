@@ -9,6 +9,8 @@ import POJOS.Empleado;
 import dba.PersonaDba;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -70,6 +72,14 @@ public class FrmMain extends javax.swing.JFrame {
         
     }
     
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("resources/iconoConstructora.png"));
+
+        return retValue;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,6 +137,7 @@ public class FrmMain extends javax.swing.JFrame {
         jMenu5.setText("jMenu5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -278,14 +289,14 @@ public class FrmMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuItemCrearObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCrearObraActionPerformed
-        // Para hacerlo con un JDialog (alternativamente)
-        DialogoObra dialogoObra = new DialogoObra(this, true);
-        dialogoObra.setVisible(true);
+        //Para hacerlo con un JDialog (alternativamente)
+        //DialogoObra dialogoObra = new DialogoObra(this, true);
+        //dialogoObra.setVisible(true);
         
         // Para hacerlo con un JPanel (alternativamente)
-        //JPanel panel = new PanelObra(MNU_CREAR_OBRA);
-        //setContentPane(panel);
-        //pack();
+        JPanel panel = new PanelObra(MNU_CREAR_OBRA);
+        setContentPane(panel);
+        pack();
     }//GEN-LAST:event_mnuItemCrearObraActionPerformed
 
     private void mnuItemSolicitarPeriodoTrabajadorObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemSolicitarPeriodoTrabajadorObraActionPerformed

@@ -223,6 +223,7 @@
             <Component class="javax.swing.JButton" name="btnModificar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
@@ -231,6 +232,7 @@
             <Component class="javax.swing.JButton" name="btnBorrar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Borrar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBorrarActionPerformed"/>
@@ -250,6 +252,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPresupuestoTotalEjecucion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -257,6 +262,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEstimacionCosteMateriales">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
@@ -264,6 +272,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEstimacionCosteManoDeObra">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
@@ -271,6 +282,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEstimacionGastosGenerales">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
@@ -278,6 +292,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEstimacionBeneficioIndustrial">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
@@ -285,6 +302,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPorcentajeDeObraEjecutado">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
@@ -292,6 +312,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCantidadCobrada">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
@@ -299,6 +322,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCantidadFacturada">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePickerFechaInicio">
             </Component>

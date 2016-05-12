@@ -26,7 +26,7 @@ public class CategoriaDba {
         Categoria categoria = new Categoria();
         String sql = "Select * from categoria where ID=" + identificador;
             try {
-                conn = MySQL.getConnection();
+                conn = BaseDeDatos.getConnection();
                 sentencia = conn.createStatement();
                 rs = sentencia.executeQuery(sql);
                 if(rs.next()){
@@ -47,7 +47,7 @@ public class CategoriaDba {
     }
     
     public static ArrayList<Categoria> getCategorias() throws SQLException{
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
         String sql = "select * from categoria";
         
         ArrayList<Categoria> categorias = new ArrayList<Categoria>();
@@ -76,7 +76,7 @@ public class CategoriaDba {
     }
     
     public static boolean insertCategoria(Categoria categoria) throws SQLException{
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
         String sql = "insert into categoria (Nombre, Coste) values (?, ?)";
            
         try {
@@ -100,7 +100,7 @@ public class CategoriaDba {
     }
     
     public static boolean updateCategoria(Categoria categoria) throws SQLException{
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
         
         String sql = "update categoria set Nombre=?, Coste=?"
                 +" where ID=?";
@@ -127,7 +127,7 @@ public class CategoriaDba {
     }
     
     public static boolean deleteCategoria(int identificador) throws SQLException{
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
         String sql = "delete from categoria where id=" + identificador;
         try {
             sentencia = conn.createStatement();

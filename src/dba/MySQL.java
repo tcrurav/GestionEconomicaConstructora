@@ -7,6 +7,7 @@ package dba;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,8 +27,9 @@ public class MySQL {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url,user,password);
             
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Eror:"+e.getMessage());
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de Conexiónamientorrrr:"+e.getMessage());
+            e.printStackTrace();
         }
         return conn;
     }

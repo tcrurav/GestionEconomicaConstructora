@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2016 a las 19:17:09
+-- Tiempo de generación: 12-05-2016 a las 20:52:15
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.5
 
@@ -145,7 +145,9 @@ CREATE TABLE `obra` (
 
 INSERT INTO `obra` (`ID`, `FechaInicio`, `FechaFin`, `Direccion`, `PresupuestoTotalEjecucion`, `EstimacionCosteMateriales`, `EstimacionCosteManoDeObra`, `EstimacionGastosGenerales`, `EstimacionBeneficioIndustrial`, `PorcentajeDeObraEjecutado`, `CantidadCobrada`, `CantidadFacturada`) VALUES
 (5, '2010-02-02', '2010-02-10', '1', 2, 3, 4, 5, 6, 7, 8, 9),
-(6, '2010-02-02', '2010-02-02', '1', 2, 3, 4, 5, 6, 1010, 8, 9);
+(6, '2010-02-02', '2010-02-02', '1', 2, 3, 4, 5, 6, 1010, 8, 9),
+(7, '2010-02-02', '2010-02-12', '1', 2, 3, 4, 5, 6, 7, 8, 9),
+(8, '2016-05-12', '2016-05-12', '44', 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -386,7 +388,7 @@ ALTER TABLE `materialparaobra`
 -- AUTO_INCREMENT de la tabla `obra`
 --
 ALTER TABLE `obra`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `periodoempleadoenobra`
 --

@@ -33,7 +33,7 @@ public class PersonaDba {
         String sql = "Select * from persona where ID=" + identificador
                 + " and Discriminator=" + JEFE_DE_OBRA;
         try {
-            conn = MySQL.getConnection();
+            conn = BaseDeDatos.getConnection();
             sentencia = conn.createStatement();
             rs = sentencia.executeQuery(sql);
             if (rs.next()) {
@@ -64,7 +64,7 @@ public class PersonaDba {
         int identificador = empleado.getPK_ID();
         String sql = "Select Discriminator from persona where ID=" + identificador;
         try {
-            conn = MySQL.getConnection();
+            conn = BaseDeDatos.getConnection();
             sentencia = conn.createStatement();
             rs = sentencia.executeQuery(sql);
             if (rs.next()) {
@@ -87,7 +87,7 @@ public class PersonaDba {
         String sql = "Select * from persona where ID=" + identificador
                 + " and Discriminator<>" + CONTACTO_PROVEEDOR;
         try {
-            conn = MySQL.getConnection();
+            conn = BaseDeDatos.getConnection();
             sentencia = conn.createStatement();
             rs = sentencia.executeQuery(sql);
             if (rs.next()) {
@@ -120,7 +120,7 @@ public class PersonaDba {
 
         try {
 
-            conn = MySQL.getConnection();
+            conn = BaseDeDatos.getConnection();
             sentencia = conn.createStatement();
             rs = sentencia.executeQuery(sql);
 
@@ -152,7 +152,7 @@ public class PersonaDba {
 
         String sql = "Select * from persona where ID=" + identificador;
         try {
-            conn = MySQL.getConnection();
+            conn = BaseDeDatos.getConnection();
             sentencia = conn.createStatement();
             rs = sentencia.executeQuery(sql);
             rs.next();
@@ -174,7 +174,7 @@ public class PersonaDba {
     }
 
     public static ArrayList<JefeDeObra> getJefesDeObra() throws SQLException {
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
         String sql = "select * from JefeDeObra";
 
         ArrayList<JefeDeObra> jefesDeObra = new ArrayList<JefeDeObra>();
@@ -208,7 +208,7 @@ public class PersonaDba {
     }
 
     public static ArrayList<Empleado> getEmpleados() throws SQLException {
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
         String sql = "select * from Empleado";
 
         ArrayList<Empleado> empleados = new ArrayList<>();
@@ -242,7 +242,7 @@ public class PersonaDba {
     }
 
     public static ArrayList<Persona> getPersonas() throws SQLException {
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
         String sql = "select * from Persona";
 
         ArrayList<Persona> personas = new ArrayList<>();
@@ -275,7 +275,7 @@ public class PersonaDba {
     }
 
     public static boolean insertJefeDeObra(JefeDeObra jefeDeObra) throws SQLException {
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
         String sql = "insert into persona (Nombre, Apellidos, Telefono, Dni, CategoriaID, Usuario, Contra) "
                 + "values (?, ?, ?, ?, ?, ?, ?)";
 
@@ -360,7 +360,7 @@ public class PersonaDba {
     }
      */
     public static boolean updateJefeDeObra(JefeDeObra jefeDeObra) throws SQLException {
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
 
         String sql = "update persona set Nombre=?, Apellidos=?, Telefono=?, Dni=?, CategoriaID=?, Usuario=?, Contra=? "
                 + " where ID=?";
@@ -452,7 +452,7 @@ public class PersonaDba {
     }
      */
     public static boolean deletePersona(int identificador) throws SQLException {
-        conn = MySQL.getConnection();
+        conn = BaseDeDatos.getConnection();
         String sql = "delete from persona where id=" + identificador;
         try {
             sentencia = conn.createStatement();

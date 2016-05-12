@@ -21,13 +21,13 @@ public class Main {
         //login.setVisible(true);
         
         //JFrame frame = new JFrame("HelloWorldSwing");
-        JPanel panel = new JPanel();
+        /*JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());        
         panel.add(new JButton("W"), BorderLayout.NORTH);
         panel.add(new JButton("E"), BorderLayout.SOUTH);
         login.add(panel);
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        login.pack();
+        login.pack();*/
         login.setVisible(true);
     }
 }

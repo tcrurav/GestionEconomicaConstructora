@@ -1,0 +1,8 @@
+Los dos ficheros a cargar son:
+* Para MySQL: constructoraParaMySQL.sql
+* Para SQLite: constructoraParaSQLite.sql
+
+SQLite es un gestor de base de datos más básico.
+No admite el tipo DATE como tipo de campo por ejemplo.
+
+Por ello el fichero para SQLite es diferente al de MySQL.

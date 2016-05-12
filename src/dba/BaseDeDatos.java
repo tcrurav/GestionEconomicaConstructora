@@ -7,25 +7,26 @@ package dba;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Tiburcio
  */
-public class SQLite {
+public class BaseDeDatos {
     private static Connection conn = null;
+    private static final String baseDeDatosUtilizada = "MySQL";
+    //Descomenta la siguiente línea para usar SQLite
+    //private static final String baseDeDatosUtilizada = "SQLite"; 
+    
     
     public static Connection getConnection(){
 
-        try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:GestionEconomicaConstructora.sqlite");
-            //JOptionPane.showMessageDialog(null,"Conectado");
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error:"+e.getMessage());
+        switch(baseDeDatosUtilizada){
+            case "MySQL": return MySQL.getConnection();
+            case "SQLite": return SQLite.getConnection();
         }
-        return conn;
+        return null;
     }
 }
