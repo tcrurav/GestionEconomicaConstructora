@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import obra.DialogoObra;
 import obra.PanelObra;
+import empleado.DialogoEmpleado;
 
 /**
  *
@@ -48,7 +49,7 @@ public class FrmMain extends javax.swing.JFrame {
                 case ADMINISTRATIVO_OBRA:
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
-                    
+                    mnuItemDarDeAltaAEmpleado.setEnabled(true);
                     break;
                 case EMPLEADO_OBRA:
                     break;
@@ -212,6 +213,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarDeAltaAEmpleado.setText("Dar de Alta a Empleado");
         mnuItemDarDeAltaAEmpleado.setEnabled(false);
+        mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
+            }
+        });
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
 
         mnuItemDarAltaCategoriaEmpleado.setText("Dar de Alta a Categoria de Empleado");
@@ -310,6 +316,14 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(panel);
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
+
+    private void mnuItemDarDeAltaAEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
+        DialogoEmpleado dialogoEmpleado = new DialogoEmpleado(this, true);
+        dialogoEmpleado.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
 
     
     /**
