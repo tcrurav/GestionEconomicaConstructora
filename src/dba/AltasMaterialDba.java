@@ -5,7 +5,8 @@
  */
 package dba;
 
-import POJOS.EmpleadoAlmacen;
+//import POJOS.EmpleadoAlmacen;
+import POJOS.Material;
 import com.sun.media.sound.EmergencySoundbank;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,8 +20,8 @@ import java.util.ArrayList;
  * @author Marcos
  */
 public class AltasMaterialDba {
-    public static EmpleadoAlmacen getMateriales(int identificador) throws SQLException{
-        EmpleadoAlmacen almacen = new EmpleadoAlmacen();
+    public static Material getMateriales(int identificador) throws SQLException{
+        Material almacen = new Material();
         
         String sql = "Select * from material where ID=" + identificador;
             try {
@@ -30,7 +31,7 @@ public class AltasMaterialDba {
                 
                 if(rs.next()){
                     almacen.setPK_ID(rs.getInt("ID"));
-                    almacen.setCodigo(rs.getInt("Codigo"));
+                    almacen.setCodigo(rs.getString("Codigo"));
                     almacen.setDescripcion(rs.getString("Descripcion"));
                     almacen.setStockMedio(rs.getInt("StockMedio"));
                     almacen.setStockMinimo(rs.getInt("StockMinimo"));
@@ -47,20 +48,20 @@ public class AltasMaterialDba {
         return almacen;
     }
     
-    public static ArrayList<EmpleadoAlmacen> getMateriales() throws SQLException{
+    public static ArrayList<Material> getMateriales() throws SQLException{
         Connection conn = MySQL.getConnection();
         String sql = "select * from material";
         
-        ArrayList<EmpleadoAlmacen> materiales = new ArrayList<EmpleadoAlmacen>();
+        ArrayList<Material> materiales = new ArrayList<Material>();
         
         try {
             Statement sentencia = conn.createStatement();
             ResultSet rs = sentencia.executeQuery(sql);
             
             while(rs.next()){
-                EmpleadoAlmacen alta = new EmpleadoAlmacen();
+                Material alta = new Material();
                 alta.setPK_ID(rs.getInt("ID"));
-                alta.setCodigo(rs.getInt("Codigo"));
+                alta.setCodigo(rs.getString("Codigo"));
                 alta.setDescripcion(rs.getString("Descripcion"));
                 alta.setStockMedio(rs.getInt("StockMedio"));
                 alta.setStockMinimo(rs.getInt("StockMinimo"));
@@ -78,14 +79,14 @@ public class AltasMaterialDba {
         
     }
     
-    public static boolean insertMateriales(EmpleadoAlmacen material) throws SQLException{
+    public static boolean insertMateriales(Material material) throws SQLException{
         Connection conn = MySQL.getConnection();
         String sql = "insert into material (Codigo, Descripcion, StockMedio, " 
                 + "StockMinimo, Precio, Stock) values (?, ?, ?, ?, ?, ?)";
            
         try {
             PreparedStatement ps = conn.prepareCall(sql);
-            ps.setInt(1, material.getCodigo());
+            ps.setString(1, material.getCodigo());
             ps.setString(2, material.getDescripcion());
             ps.setInt(3, material.getStockMedio());
             ps.setInt(4, material.getStockMinimo());
@@ -106,7 +107,7 @@ public class AltasMaterialDba {
         return false;
     }
     
-    public static boolean updateMateriales(EmpleadoAlmacen material) throws SQLException{
+    public static boolean updateMateriales(Material material) throws SQLException{
         Connection conn = MySQL.getConnection();
         
         String sql = "update material set Codigo=?, Descripcion=?, StockMedio=?, " 
@@ -116,7 +117,7 @@ public class AltasMaterialDba {
         PreparedStatement ps;
         try {
             ps = conn.prepareCall(sql);
-            ps.setInt(1, material.getCodigo());
+            ps.setString(1, material.getCodigo());
             ps.setString(2, material.getDescripcion());
             ps.setInt(3, material.getStockMedio());
             ps.setInt(4, material.getStockMinimo());

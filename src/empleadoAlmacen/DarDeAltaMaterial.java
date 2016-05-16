@@ -5,7 +5,7 @@
  */
 package empleadoAlmacen;
 
-import POJOS.EmpleadoAlmacen;
+import POJOS.Material;
 import static gestioneconomicaconstructora.OpcionesDeMenu.MNU_DAR_ALTA_A_MATERIAL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -71,16 +71,16 @@ public class DarDeAltaMaterial extends javax.swing.JDialog {
         modelo = new DefaultTableModel(null, titulos);
 
         String fila[] = new String[7];
-        ArrayList<EmpleadoAlmacen> almacen = new ArrayList<>();
+        ArrayList<Material> almacen = new ArrayList<>();
         try {
             almacen = dba.AltasMaterialDba.getMateriales();
         } catch (SQLException ex) {
             Logger.getLogger(DarDeAltaMaterial.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        for (EmpleadoAlmacen material : almacen) {
+        for (Material material : almacen) {
             fila[0] = String.valueOf(material.getPK_ID());
-            fila[1] = String.valueOf(material.getCodigo());
+            fila[1] = material.getCodigo();
             fila[2] = material.getDescripcion();
             fila[3] = String.valueOf(material.getStockMedio());
             fila[4] = String.valueOf(material.getStockMinimo());
@@ -94,10 +94,10 @@ public class DarDeAltaMaterial extends javax.swing.JDialog {
     }    
     
     public void nuevo() {
-        EmpleadoAlmacen nuevoMaterial = new EmpleadoAlmacen();
+        Material nuevoMaterial = new Material();
 
         try {
-            nuevoMaterial.setCodigo(Integer.parseInt(campoCodigo.getText()));
+            nuevoMaterial.setCodigo(campoCodigo.getText());
             nuevoMaterial.setDescripcion(campoDescrip.getText());
             nuevoMaterial.setStockMedio(Integer.parseInt(campoStockMed.getText()));
             nuevoMaterial.setStockMinimo(Integer.parseInt(campoStockMin.getText()));
@@ -118,11 +118,11 @@ public class DarDeAltaMaterial extends javax.swing.JDialog {
         int fila = tablaAltaMaterial.getSelectedRow();
         String identificador = (String) tablaAltaMaterial.getValueAt(fila, 0);
 
-        EmpleadoAlmacen materiales = new EmpleadoAlmacen();
+        Material materiales = new Material();
 
         try {
             materiales.setPK_ID(Integer.parseInt(identificador));
-            materiales.setCodigo(Integer.parseInt(campoCodigo.getText()));
+            materiales.setCodigo(campoCodigo.getText());
             materiales.setDescripcion(campoDescrip.getText());
             materiales.setStockMedio(Integer.parseInt(campoStockMed.getText()));
             materiales.setStockMinimo(Integer.parseInt(campoStockMin.getText()));
@@ -398,7 +398,7 @@ public class DarDeAltaMaterial extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (evt.getButton() == 1) {
             int fila = tablaAltaMaterial.getSelectedRow();
-            EmpleadoAlmacen material = new EmpleadoAlmacen();
+            Material material = new Material();
             try {
                 material = dba.AltasMaterialDba.getMateriales(Integer.parseInt(String.valueOf(tablaAltaMaterial.getValueAt(fila, 0))));
             } catch (SQLException ex) {
@@ -407,7 +407,7 @@ public class DarDeAltaMaterial extends javax.swing.JDialog {
 
             try {
               
-                campoCodigo.setText(String.valueOf(material.getCodigo()));
+                campoCodigo.setText(material.getCodigo());
                 campoDescrip.setText(material.getDescripcion());
                 campoStockMed.setText(String.valueOf(material.getStockMedio()));
                 campoStockMin.setText(String.valueOf(material.getStockMinimo()));
