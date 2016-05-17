@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Categoria" table="Categoria" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="coste" column="Coste" type="float" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Coste por hora medio de la categor&#237;a de empleado en el momento actual.
+			</meta>
+		</property>
+		<property name="nombre" column="Nombre" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="ORM_Empleado" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="CategoriaID" not-null="true"/>
+			<one-to-many class="Empleado"/>
+		</set>
+	</class>
+</hibernate-mapping>
