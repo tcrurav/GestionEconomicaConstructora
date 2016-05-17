@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import obra.DialogoObra;
 import obra.PanelObra;
-import empleado.DialogoEmpleado;
+import empleadoAlmacen.DarDeAltaMaterial;
+import javax.swing.JDialog;
 
 /**
  *
@@ -45,11 +46,12 @@ public class FrmMain extends javax.swing.JFrame {
             int tipoDeEmpleado = PersonaDba.getDiscriminator(empleado);
             switch(tipoDeEmpleado){
                 case EMPLEADO_ALMACEN:
+                    mnuItemDarAltaAMaterial.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_OBRA:
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
-                    mnuItemDarDeAltaAEmpleado.setEnabled(true);
+                    
                     break;
                 case EMPLEADO_OBRA:
                     break;
@@ -184,6 +186,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarAltaAMaterial.setText("Dar de Alta a Material");
         mnuItemDarAltaAMaterial.setEnabled(false);
+        mnuItemDarAltaAMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDarAltaAMaterialActionPerformed(evt);
+            }
+        });
         mnuMaterial.add(mnuItemDarAltaAMaterial);
 
         mnuItemComprobarRecepcionMateriales.setText("Comprobar Recepción de Materiales");
@@ -213,11 +220,6 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarDeAltaAEmpleado.setText("Dar de Alta a Empleado");
         mnuItemDarDeAltaAEmpleado.setEnabled(false);
-        mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
-            }
-        });
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
 
         mnuItemDarAltaCategoriaEmpleado.setText("Dar de Alta a Categoria de Empleado");
@@ -285,13 +287,13 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void mnuItemCrearObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCrearObraActionPerformed
         // Para hacerlo con un JDialog (alternativamente)
-        DialogoObra dialogoObra = new DialogoObra(this, true);
-        dialogoObra.setVisible(true);
+        //DialogoObra dialogoObra = new DialogoObra(this, true);
+        //dialogoObra.setVisible(true);
         
         // Para hacerlo con un JPanel (alternativamente)
-        //JPanel panel = new PanelObra(MNU_CREAR_OBRA);
-        //setContentPane(panel);
-        //pack();
+        JPanel panel = new PanelObra(MNU_CREAR_OBRA);
+        setContentPane(panel);
+        pack();
     }//GEN-LAST:event_mnuItemCrearObraActionPerformed
 
     private void mnuItemSolicitarPeriodoTrabajadorObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemSolicitarPeriodoTrabajadorObraActionPerformed
@@ -317,13 +319,12 @@ public class FrmMain extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
 
-    private void mnuItemDarDeAltaAEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
-        DialogoEmpleado dialogoEmpleado = new DialogoEmpleado(this, true);
-        dialogoEmpleado.setVisible(true);
-        
-        
-        
-    }//GEN-LAST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
+    private void mnuItemDarAltaAMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarAltaAMaterialActionPerformed
+        // TODO add your handling code here:
+        DarDeAltaMaterial altaMaterial = new DarDeAltaMaterial(this, true);
+        altaMaterial.setVisible(true);
+       
+    }//GEN-LAST:event_mnuItemDarAltaAMaterialActionPerformed
 
     
     /**

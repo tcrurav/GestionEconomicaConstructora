@@ -11,5 +11,4 @@ public class EmpleadoAlmacen extends Empleado {
 		// TODO - implement EmpleadoAlmacen.EmpleadoAlmacen
 		throw new UnsupportedOperationException();
 	}
-
 }

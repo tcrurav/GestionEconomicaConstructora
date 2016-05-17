@@ -27,7 +27,6 @@ public class MySQL {
             conn = DriverManager.getConnection(url,user,password);
             
         } catch (Exception e) {
-            System.out.println("Error aqui");
             JOptionPane.showMessageDialog(null, "Eror:"+e.getMessage());
         }
         return conn;
