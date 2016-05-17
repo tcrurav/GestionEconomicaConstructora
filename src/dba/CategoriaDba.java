@@ -45,6 +45,29 @@ public class CategoriaDba {
        
         return categoria;
     }
+    public static Categoria getCategoria(String nombre) throws SQLException{
+        Categoria categoria = new Categoria();
+        String sql = "Select * from categoria where Nombre='" + nombre + "'";
+            try {
+                conn = MySQL.getConnection();
+                sentencia = conn.createStatement();
+                rs = sentencia.executeQuery(sql);
+                if(rs.next()){
+                    categoria.setPK_ID(rs.getInt("ID"));
+                    categoria.setNombre(rs.getString("Nombre"));
+                    categoria.setCoste(rs.getFloat("Coste"));
+                } else{
+                    return null;
+                }
+
+            } catch (SQLException ex) {
+                throw ex;
+            } finally {
+            close();
+            }
+       
+        return categoria;
+    }
     
     public static ArrayList<Categoria> getCategorias() throws SQLException{
         conn = MySQL.getConnection();

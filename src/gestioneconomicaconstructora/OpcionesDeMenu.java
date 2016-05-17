@@ -29,4 +29,5 @@ public class OpcionesDeMenu {
     public static final int MNU_SOLICITAR_MATERIAL_PARA_UNA_OBRA = 17;
     public static final int MNU_SOLICITAR_PERIODO_TRABAJADOR_OBRA = 18;
     public static final int MNU_VERIFICAR_ALBARAN_DE_COMPRA = 19;
+    public static final int MNU_ASIGNAR_CATEGORIA_DE_EMPLEADO = 20;
 }

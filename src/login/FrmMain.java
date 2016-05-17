@@ -7,6 +7,7 @@ package login;
 
 import POJOS.Empleado;
 import dba.PersonaDba;
+import empleado.PanelAsignarCategoriaEmpleado;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
 import java.sql.SQLException;
@@ -53,10 +54,12 @@ public class FrmMain extends javax.swing.JFrame {
                 case EMPLEADO_OBRA:
                     break;
                 case JEFE_DE_OBRA:
+                    
                     break;
                 case ADMINISTRATIVO_PRESUPUESTOS:
                     mnuItemCrearObra.setEnabled(true);
                     mnuItemIntroducirPresupuesto.setEnabled(true);
+                    mnuItemDarAsignarCategoriaDeEmpleado.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_CONTABILIDAD:
                     break;
@@ -104,6 +107,7 @@ public class FrmMain extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         mnuItemDarDeAltaAEmpleado = new javax.swing.JMenuItem();
         mnuItemDarAltaCategoriaEmpleado = new javax.swing.JMenuItem();
+        mnuItemDarAsignarCategoriaDeEmpleado = new javax.swing.JMenuItem();
         mnuProveedor = new javax.swing.JMenu();
         mnuItemDarAltaProveedores = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -218,6 +222,15 @@ public class FrmMain extends javax.swing.JFrame {
         mnuItemDarAltaCategoriaEmpleado.setEnabled(false);
         mnuEmpleado.add(mnuItemDarAltaCategoriaEmpleado);
 
+        mnuItemDarAsignarCategoriaDeEmpleado.setText("Asignar Categoria de Empleado");
+        mnuItemDarAsignarCategoriaDeEmpleado.setEnabled(false);
+        mnuItemDarAsignarCategoriaDeEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDarAsignarCategoriaDeEmpleadoActionPerformed(evt);
+            }
+        });
+        mnuEmpleado.add(mnuItemDarAsignarCategoriaDeEmpleado);
+
         jMenuBar1.add(mnuEmpleado);
 
         mnuProveedor.setText("Proveedor");
@@ -271,7 +284,7 @@ public class FrmMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 281, Short.MAX_VALUE)
         );
 
         pack();
@@ -310,6 +323,12 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(panel);
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
+
+    private void mnuItemDarAsignarCategoriaDeEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarAsignarCategoriaDeEmpleadoActionPerformed
+        JPanel panel = new PanelAsignarCategoriaEmpleado(MNU_ASIGNAR_CATEGORIA_DE_EMPLEADO);
+        setContentPane(panel);
+        pack();
+    }//GEN-LAST:event_mnuItemDarAsignarCategoriaDeEmpleadoActionPerformed
 
     
     /**
@@ -371,6 +390,7 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuItemDarAltaAMaterial;
     private javax.swing.JMenuItem mnuItemDarAltaCategoriaEmpleado;
     private javax.swing.JMenuItem mnuItemDarAltaProveedores;
+    private javax.swing.JMenuItem mnuItemDarAsignarCategoriaDeEmpleado;
     private javax.swing.JMenuItem mnuItemDarDeAltaAEmpleado;
     private javax.swing.JMenuItem mnuItemIntroducirCantidadFacturada;
     private javax.swing.JMenuItem mnuItemIntroducirPresupuesto;

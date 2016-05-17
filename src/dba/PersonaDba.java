@@ -209,7 +209,7 @@ public class PersonaDba {
 
     public static ArrayList<Empleado> getEmpleados() throws SQLException {
         conn = MySQL.getConnection();
-        String sql = "select * from Empleado";
+        String sql = "select * from Persona";
 
         ArrayList<Empleado> empleados = new ArrayList<>();
 
@@ -392,7 +392,7 @@ public class PersonaDba {
         return false;
     }
 
-    /*    public static boolean updateEmpleado(Empleado empleado) throws SQLException{
+    public static boolean updateEmpleado(Empleado empleado) throws SQLException{
         Connection conn = MySQL.getConnection();
         
         String sql = "update persona set Nombre=?, Apellidos=?, Telefono=?, Dni=?, CategoriaID=?, Usuario=?, Contra=? "
@@ -409,6 +409,30 @@ public class PersonaDba {
             ps.setString(6, empleado.getUsuario());
             ps.setString(7, empleado.getContra());
             ps.setInt(8, empleado.getPK_ID());
+            
+            int n = ps.executeUpdate();
+            
+            if(n>0){
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+            throw ex;
+        } 
+        return false;
+    }
+    
+    public static boolean updateCategoriaEmpleado(Empleado empleado) throws SQLException{
+        Connection conn = MySQL.getConnection();
+        
+        String sql = "update persona set CategoriaID=? where ID=?";
+
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareCall(sql);
+            ps.setInt(1, empleado.getCategoria().getPK_ID());
+            ps.setInt(2, empleado.getPK_ID());
             
             int n = ps.executeUpdate();
             
@@ -450,7 +474,6 @@ public class PersonaDba {
         } 
         return false;
     }
-     */
     public static boolean deletePersona(int identificador) throws SQLException {
         conn = MySQL.getConnection();
         String sql = "delete from persona where id=" + identificador;
