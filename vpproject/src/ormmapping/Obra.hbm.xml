@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Obra" table="Obra" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="fechaInicio" column="FechaInicio" type="date" not-null="false" lazy="false"/>
+		<property name="fechaFin" column="FechaFin" type="date" not-null="false" lazy="false"/>
+		<property name="direccion" column="Direccion" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="presupuestoTotalEjecucion" column="PresupuestoTotalEjecucion" type="float" not-null="true" lazy="false"/>
+		<property name="estimacionCosteMateriales" column="EstimacionCosteMateriales" type="float" not-null="true" lazy="false"/>
+		<property name="estimacionCosteManoDeObra" column="EstimacionCosteManoDeObra" type="float" not-null="true" lazy="false"/>
+		<property name="estimacionGastosGenerales" column="EstimacionGastosGenerales" type="float" not-null="true" lazy="false"/>
+		<property name="estimacionBeneficioIndustrial" column="EstimacionBeneficioIndustrial" type="float" not-null="true" lazy="false"/>
+		<property name="porcentajeDeObraEjecutado" column="PorcentajeDeObraEjecutado" type="float" not-null="true" lazy="false"/>
+		<property name="cantidadCobrada" column="CantidadCobrada" type="float" not-null="true" lazy="false"/>
+		<property name="cantidadFacturada" column="CantidadFacturada" type="float" not-null="true" lazy="false"/>
+		<set name="ORM_PeriodoJefeObraEnObras" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="ObraID" not-null="true"/>
+			<one-to-many class="PeriodoJefeObraEnObra"/>
+		</set>
+		<set name="ORM_PeriodoEmpleadoEnObras" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="ObraID" not-null="true"/>
+			<one-to-many class="PeriodoEmpleadoEnObra"/>
+		</set>
+		<set name="ORM_MaterialParaObras" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="ObraID" not-null="true"/>
+			<one-to-many class="MaterialParaObra"/>
+		</set>
+		<set name="ORM_PeriodoMaquinariaEnObras" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="ObraID" not-null="true"/>
+			<one-to-many class="PeriodoMaquinariaEnObra"/>
+		</set>
+	</class>
+</hibernate-mapping>
