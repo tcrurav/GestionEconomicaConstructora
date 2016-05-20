@@ -7,6 +7,7 @@ package login;
 
 import POJOS.Empleado;
 import dba.PersonaDba;
+import jefeDeObra.PanelSolicitarMaterialObra;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
 import java.sql.SQLException;
@@ -53,6 +54,7 @@ public class FrmMain extends javax.swing.JFrame {
                 case EMPLEADO_OBRA:
                     break;
                 case JEFE_DE_OBRA:
+                    mnuItemSolicitarMaterialParaUnaObra.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_PRESUPUESTOS:
                     mnuItemCrearObra.setEnabled(true);
@@ -175,6 +177,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemSolicitarMaterialParaUnaObra.setText("Solicitar Material para una Obra");
         mnuItemSolicitarMaterialParaUnaObra.setEnabled(false);
+        mnuItemSolicitarMaterialParaUnaObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemSolicitarMaterialParaUnaObraActionPerformed(evt);
+            }
+        });
         mnuMaterial.add(mnuItemSolicitarMaterialParaUnaObra);
 
         mnuItemAsignarMaterialAObra.setText("Asignar Material a Obra");
@@ -310,6 +317,13 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(panel);
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
+
+    private void mnuItemSolicitarMaterialParaUnaObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemSolicitarMaterialParaUnaObraActionPerformed
+        //CODIGO DE RUBEN PARA INVOCAR LA VENTANA SOLICITAR MATERIAL PARA OBRA
+        PanelSolicitarMaterialObra PanelSolicitarMaterial=new PanelSolicitarMaterialObra();
+        setContentPane(PanelSolicitarMaterial);
+        pack();
+    }//GEN-LAST:event_mnuItemSolicitarMaterialParaUnaObraActionPerformed
 
     
     /**

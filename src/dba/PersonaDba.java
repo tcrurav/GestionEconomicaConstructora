@@ -5,6 +5,7 @@
  */
 package dba;
 
+import POJOS.AdministrativoObra;
 import POJOS.Empleado;
 import POJOS.JefeDeObra;
 import POJOS.Persona;
@@ -175,7 +176,7 @@ public class PersonaDba {
 
     public static ArrayList<JefeDeObra> getJefesDeObra() throws SQLException {
         conn = MySQL.getConnection();
-        String sql = "select * from JefeDeObra";
+        String sql = "Select * from persona where Discriminator=" + JEFE_DE_OBRA;
 
         ArrayList<JefeDeObra> jefesDeObra = new ArrayList<JefeDeObra>();
 
@@ -488,5 +489,74 @@ public class PersonaDba {
 
         }
     }
+    
+    //ADMINISTRATIVO DE OBRA METODOS!
+    public static AdministrativoObra getAdministrativoObra(int identificador) throws SQLException {
+        AdministrativoObra administrativoObra = new AdministrativoObra();
+
+        String sql = "Select * from persona where ID=" + identificador
+                + " and Discriminator=" + ADMINISTRATIVO_OBRA;
+        try {
+            conn = MySQL.getConnection();
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+            if (rs.next()) {
+                administrativoObra.setPK_ID(rs.getInt("ID"));
+                administrativoObra.setNombre(rs.getString("Nombre"));
+                administrativoObra.setApellidos(rs.getString("Apellidos"));
+                administrativoObra.setTelefono(rs.getString("Telefono"));
+                administrativoObra.setDni(rs.getString("Dni"));
+                administrativoObra.setUsuario(rs.getString("Usuario"));
+                administrativoObra.setContra(rs.getString("Contra"));
+                administrativoObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+            throw ex;
+        } finally {
+            close();
+        }
+
+        return administrativoObra;
+    }
+    
+    public static ArrayList<AdministrativoObra> getAdministrativosObra() throws SQLException {
+        conn = MySQL.getConnection();
+        String sql = "Select * from persona where Discriminator=" + ADMINISTRATIVO_OBRA;
+
+        ArrayList<AdministrativoObra> administrativosObra = new ArrayList<AdministrativoObra>();
+
+        try {
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+
+            while (rs.next()) {
+                AdministrativoObra administrativoObra = new AdministrativoObra();
+                administrativoObra.setPK_ID(rs.getInt("ID"));
+                administrativoObra.setNombre(rs.getString("Nombre"));
+                administrativoObra.setApellidos(rs.getString("Apellidos"));
+                administrativoObra.setTelefono(rs.getString("Telefono"));
+                administrativoObra.setDni(rs.getString("Dni"));
+                administrativoObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+
+                administrativosObra.add(administrativoObra);
+            }
+
+            return administrativosObra;
+
+        } catch (SQLException ex) {
+            //Logger.getLogger(FrmPersona.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        } finally {
+            close();
+        }
+
+        //return null;
+    }
+    
+    
     
 }

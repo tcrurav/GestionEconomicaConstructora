@@ -109,6 +109,9 @@
                 <Property name="text" type="java.lang.String" value="Solicitar Material para una Obra"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemSolicitarMaterialParaUnaObraActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemAsignarMaterialAObra">
               <Properties>

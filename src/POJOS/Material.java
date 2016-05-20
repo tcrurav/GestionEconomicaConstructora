@@ -3,7 +3,7 @@ package POJOS;
 import java.util.*;
 
 public class Material {
-
+        private int PK_ID;
 	Collection<LineaAlbaran> lineaAlbaran;
 	Collection<MaterialParaObra> materialParaObra;
 	private String codigo;
@@ -93,9 +93,14 @@ public class Material {
 		this.stock = stock;
 	}
 
-	public Material() {
-		// TODO - implement Material.Material
-		throw new UnsupportedOperationException();
-	}
+
+
+    public int getPK_ID() {
+        return PK_ID;
+    }
+
+    public void setPK_ID(int PK_ID) {
+        this.PK_ID = PK_ID;
+    }
 
 }
