@@ -30,7 +30,7 @@ public class PeriodoMaquinariaEnObraDba {
                 ResultSet rs = sentencia.executeQuery(sql);
                 
                 if(rs.next()){
-                    JOptionPane.showMessageDialog(null, "aqui estamos22222");
+                    
                     periodoMaquinariaEnObra.setPK_ID(rs.getInt("ID"));
                     periodoMaquinariaEnObra.setEmpleadoAlmacen(PersonaDba.getEmpleadoAlmacen(rs.getInt("EmpleadoAlmacenQueAsignaID")));
                     periodoMaquinariaEnObra.setJefeDeObra(PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));

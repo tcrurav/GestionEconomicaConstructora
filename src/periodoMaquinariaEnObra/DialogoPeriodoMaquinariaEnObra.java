@@ -150,7 +150,7 @@ public void llenar() {
     public void nuevo() {
         PeriodoMaquinariaEnObra periodoMaquinariaEnObra = new PeriodoMaquinariaEnObra();
 
-        //llenarCbo();
+  
         
         try {
             periodoMaquinariaEnObra.setEmpleadoAlmacen(empleadosAlmacen.get(cboEmpleadoAlmacen.getSelectedIndex()));
