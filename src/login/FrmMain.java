@@ -10,10 +10,12 @@ import dba.PersonaDba;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
 import java.sql.SQLException;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import obra.DialogoObra;
 import obra.PanelObra;
+import periodoMaquinariaEnObra.DialogoPeriodoMaquinariaEnObra;
 
 /**
  *
@@ -44,6 +46,7 @@ public class FrmMain extends javax.swing.JFrame {
             int tipoDeEmpleado = PersonaDba.getDiscriminator(empleado);
             switch(tipoDeEmpleado){
                 case EMPLEADO_ALMACEN:
+                    mnuItemAsignarMaquinariaAObra.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_OBRA:
                     break;
@@ -241,6 +244,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemAsignarMaquinariaAObra.setText("Asignar Maquinaria a Obra");
         mnuItemAsignarMaquinariaAObra.setEnabled(false);
+        mnuItemAsignarMaquinariaAObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemAsignarMaquinariaAObraActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuItemAsignarMaquinariaAObra);
 
         mnuDarAltaMaquinaria.setText("Dar de Alta a Maquinaria");
@@ -310,6 +318,12 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(panel);
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
+
+    private void mnuItemAsignarMaquinariaAObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemAsignarMaquinariaAObraActionPerformed
+        // TODO add your handling code here:
+        DialogoPeriodoMaquinariaEnObra dialogoPeriodoMaquinariaEnObra = new DialogoPeriodoMaquinariaEnObra(this, true);
+        dialogoPeriodoMaquinariaEnObra.setVisible(true);
+    }//GEN-LAST:event_mnuItemAsignarMaquinariaAObraActionPerformed
 
     
     /**

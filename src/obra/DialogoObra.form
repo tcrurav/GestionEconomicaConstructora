@@ -308,6 +308,9 @@
             <Component class="javax.swing.JTextField" name="txtCantidadFacturada">
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePickerFechaInicio">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXDatePickerFechaInicioActionPerformed"/>
+              </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePickerFechaFin">
             </Component>
