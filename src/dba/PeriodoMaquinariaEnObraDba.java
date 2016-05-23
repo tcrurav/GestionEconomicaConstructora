@@ -30,7 +30,7 @@ public class PeriodoMaquinariaEnObraDba {
                 ResultSet rs = sentencia.executeQuery(sql);
                 
                 if(rs.next()){
-                    
+                     
                     periodoMaquinariaEnObra.setPK_ID(rs.getInt("ID"));
                     periodoMaquinariaEnObra.setEmpleadoAlmacen(PersonaDba.getEmpleadoAlmacen(rs.getInt("EmpleadoAlmacenQueAsignaID")));
                     periodoMaquinariaEnObra.setJefeDeObra(PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));
@@ -96,6 +96,7 @@ public static ArrayList<PeriodoMaquinariaEnObra> getPeriodoMaquinariasEnObras() 
            
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
+            
             PreparedStatement ps = conn.prepareCall(sql);
             ps.setInt(1, periodoMaquinariaEnObra.getEmpleadoAlmacen().getPK_ID());
             ps.setInt(2, periodoMaquinariaEnObra.getJefeDeObra().getPK_ID());
