@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="MaterialParaObra" table="MaterialParaObra" lazy="false">
+		<composite-id>
+			<key-property name="ID" column="ID" type="integer"/>
+			<key-many-to-one name="ORM_Material" column="MaterialID" class="Material">
+			</key-many-to-one>
+			<key-many-to-one name="ORM_Obra" column="ObraID" class="Obra">
+			</key-many-to-one>
+		</composite-id>
+		<many-to-one name="jefeDeObra" cascade="lock" column="PersonaID2" class="JefeDeObra" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<many-to-one name="administrativoObra" cascade="lock" column="PersonaID" class="AdministrativoObra" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="CantidadMaterial" column="CantidadMaterial" type="float" not-null="true" lazy="false"/>
+		<property name="coste" column="Coste" type="float" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Este es el coste del material en el momento de la asignaci&#243;n a la obra.
+			</meta>
+		</property>
+		<property name="fechaSolicitud" column="FechaSolicitud" type="date" not-null="false" lazy="false"/>
+		<property name="fechaRecepcion" column="FechaRecepcion" type="date" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

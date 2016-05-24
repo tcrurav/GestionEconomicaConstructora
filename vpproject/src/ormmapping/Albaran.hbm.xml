@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Albaran" table="Albaran" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="empleado" cascade="lock" column="EmpleadoAlmacenID" class="EmpleadoAlmacen" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<many-to-one name="proveedor" cascade="lock" column="ProveedorID" class="Proveedor" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="fecha" column="Fecha" type="date" not-null="false" lazy="false"/>
+		<property name="numAlbaran" column="NumAlbaran" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="ORM_LineaAlbarans" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="AlbaranID" not-null="true"/>
+			<one-to-many class="LineaAlbaran"/>
+		</set>
+	</class>
+</hibernate-mapping>
