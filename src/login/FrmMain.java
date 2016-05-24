@@ -49,7 +49,7 @@ public class FrmMain extends javax.swing.JFrame {
                 case ADMINISTRATIVO_OBRA:
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
-                    
+                    mnuItemDarAsignarCategoriaDeEmpleado.setEnabled(true);
                     break;
                 case EMPLEADO_OBRA:
                     break;
@@ -59,7 +59,6 @@ public class FrmMain extends javax.swing.JFrame {
                 case ADMINISTRATIVO_PRESUPUESTOS:
                     mnuItemCrearObra.setEnabled(true);
                     mnuItemIntroducirPresupuesto.setEnabled(true);
-                    mnuItemDarAsignarCategoriaDeEmpleado.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_CONTABILIDAD:
                     break;
