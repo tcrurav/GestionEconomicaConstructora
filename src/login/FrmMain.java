@@ -44,6 +44,12 @@ public class FrmMain extends javax.swing.JFrame {
             int tipoDeEmpleado = PersonaDba.getDiscriminator(empleado);
             switch(tipoDeEmpleado){
                 case EMPLEADO_ALMACEN:
+                    mnuItemVerificarAlbaranDeCompra.setEnabled(true);
+                    mnuItemDarAltaAMaterial.setEnabled(true);
+                    mnuItemAsignarMaterialAObra.setEnabled(true);
+                    mnuItemSolicitarMaquinariaParaUnaObra.setEnabled(true);
+                    mnuItemDarAltaProveedores.setEnabled(true);
+                    mnuItemSolicitarMaterialParaUnaObra.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_OBRA:
                     break;

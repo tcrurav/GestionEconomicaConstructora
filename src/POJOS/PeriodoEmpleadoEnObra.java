@@ -4,7 +4,7 @@ import java.util.*;
 public class PeriodoEmpleadoEnObra {
 
 	EmpleadoObra empleado;
-	Obra obra;
+	Albaran obra;
 	private Date fechaInicio;
 	private Date fechaFin;
 	JefeDeObra jefeDeObra;

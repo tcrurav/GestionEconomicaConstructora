@@ -2,7 +2,7 @@ package POJOS;
 
 import java.util.*;
 
-public class Proveedor {
+public class Personas {
 
 	Collection<Persona> contacto;
 	Collection<Albaran> albaran;
@@ -33,7 +33,7 @@ public class Proveedor {
 		this.direccion = direccion;
 	}
 
-	public Proveedor() {
+	public Personas() {
 		// TODO - implement Proveedor.Proveedor
 		throw new UnsupportedOperationException();
 	}

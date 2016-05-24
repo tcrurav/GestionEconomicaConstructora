@@ -4,7 +4,7 @@ import java.util.*;
 public class PeriodoJefeObraEnObra {
 
 	JefeDeObra jefeDeObra;
-	Obra obra;
+	Albaran obra;
 	private Date fechaInicio;
 	private Date fechaFin;
 	/**

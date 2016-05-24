@@ -5,7 +5,7 @@ import java.util.*;
 public class Persona {
 
         private int PK_ID;
-	Collection<Proveedor> proveedor;
+	Collection<Personas> proveedor;
 	private String nombre;
 	private String apellidos;
 	private String telefono;
