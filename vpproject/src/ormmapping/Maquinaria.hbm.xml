@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Maquinaria" table="Maquinaria" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="nombre" column="Nombre" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="precioDeCompra" column="PrecioDeCompra" type="float" not-null="true" lazy="false"/>
+		<property name="fechaFinVidaUtil" column="FechaFinVidaUtil" type="date" not-null="false" lazy="false"/>
+		<property name="fechaCompra" column="FechaCompra" type="date" not-null="false" lazy="false"/>
+		<property name="codInventario" column="CodInventario" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="ORM_PeriodoMaquinariaEnObras" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="MaquinariaID" not-null="true"/>
+			<one-to-many class="PeriodoMaquinariaEnObra"/>
+		</set>
+	</class>
+</hibernate-mapping>

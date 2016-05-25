@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Material" table="Material" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="codigo" column="Codigo" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="descripcion" column="Descripcion" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="stockMedio" column="StockMedio" type="integer" length="11" not-null="true" lazy="false"/>
+		<property name="stockMinimo" column="StockMinimo" type="integer" length="11" not-null="true" lazy="false"/>
+		<property name="precio" column="Precio" type="float" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				El precio del Material.
+		Si viene un nuevo material con un precio diferente se hace lo siguiente:
+		Si el nuevo precio es mayor que el del almac&#233;n, entonces el precio pasar&#225; a ser el de la nueva compra.
+		Si el nuevo precio es menor entonces se queda con el anterior.
+		&#160;
+			</meta>
+		</property>
+		<property name="stock" column="Stock" type="integer" length="11" not-null="true" lazy="false"/>
+		<set name="ORM_LineaAlbarans" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="MaterialID" not-null="true"/>
+			<one-to-many class="LineaAlbaran"/>
+		</set>
+		<set name="ORM_MaterialParaObras" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="MaterialID" not-null="true"/>
+			<one-to-many class="MaterialParaObra"/>
+		</set>
+	</class>
+</hibernate-mapping>
