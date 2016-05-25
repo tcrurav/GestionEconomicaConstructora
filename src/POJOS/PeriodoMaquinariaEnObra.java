@@ -4,6 +4,7 @@ import java.util.*;
 public class PeriodoMaquinariaEnObra {
 
 
+
         
         private int PK_ID;
 	private Obra obra;

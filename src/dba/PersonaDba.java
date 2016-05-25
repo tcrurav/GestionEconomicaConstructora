@@ -5,8 +5,11 @@
  */
 package dba;
 
+
 import POJOS.Empleado;
 import POJOS.EmpleadoAlmacen;
+import POJOS.AdministrativoObra;
+import POJOS.Empleado;
 import POJOS.JefeDeObra;
 import POJOS.Persona;
 import static gestioneconomicaconstructora.TiposDePersona.*;
@@ -58,11 +61,11 @@ public class PersonaDba {
         } finally {
 
             rs.close();
-
         }
 
         return jefeDeObra;
     }
+
 
 
 
@@ -99,6 +102,7 @@ public class PersonaDba {
     }
 
 
+    
     
     public static int getDiscriminator(Empleado empleado) throws SQLException{
         int identificador = empleado.getPK_ID();
@@ -156,6 +160,7 @@ public class PersonaDba {
 
     public static Empleado getEmpleado(String usuario, String contrasena) throws SQLException {
         Empleado empleado = new Empleado();
+
 
 
 
@@ -287,6 +292,7 @@ public class PersonaDba {
             throw ex;
         } finally {
             rs.close();
+
         }
 
         //return null;
@@ -326,11 +332,13 @@ public class PersonaDba {
 
         //return null;
     }
+
     
 
     public static ArrayList<Persona> getPersonas() throws SQLException {
         conn = MySQL.getConnection();
         String sql = "select * from persona";
+
 
 
 
@@ -395,8 +403,10 @@ public class PersonaDba {
     }
 
 
+
         public static boolean insertEmpleado(Empleado empleado) throws SQLException{
                         
+
 
 
         Connection conn = MySQL.getConnection();
@@ -406,7 +416,9 @@ public class PersonaDba {
         try {
 
 
+
             PreparedStatement ps = conn.prepareStatement(sql);
+
 
 
             ps.setString(1, empleado.getNombre());
@@ -420,7 +432,9 @@ public class PersonaDba {
             
             if(n>0){
 
+
              //   JOptionPane.showMessageDialog(null, "Datos guardados");
+
 
 
                 return true;
@@ -428,7 +442,9 @@ public class PersonaDba {
             
         } catch (SQLException ex) {
 
+
                 JOptionPane.showMessageDialog(null, "Se ha producido un Error. Error:" + ex.getMessage());
+
 
             throw ex;
             
@@ -461,7 +477,9 @@ public class PersonaDba {
         return false;
     }
 
+
     
+
     public static boolean updateJefeDeObra(JefeDeObra jefeDeObra) throws SQLException {
         conn = MySQL.getConnection();
 
@@ -497,9 +515,11 @@ public class PersonaDba {
 
 
 
+
         public static boolean updateEmpleado(Empleado empleado) throws SQLException{
 
             
+
         Connection conn = MySQL.getConnection();
         
         String sql = "update persona set Nombre=?, Apellidos=?, Telefono=?, Dni=?, CategoriaID=?, Usuario=?, Contra=? "
@@ -510,6 +530,7 @@ public class PersonaDba {
             
 
             ps = conn.prepareStatement(sql);
+
 
 
             ps.setString(1, empleado.getNombre());
@@ -533,6 +554,7 @@ public class PersonaDba {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
 
             
+
             throw ex;
         } 
         return false;
@@ -563,7 +585,7 @@ public class PersonaDba {
 
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
 
-            
+
             throw ex;
         } 
         return false;
@@ -578,11 +600,13 @@ public class PersonaDba {
             if (n > 0) {
 
 
+
              //   JOptionPane.showMessageDialog(null, "Datos Borrados");
                 return true;
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+
 
 
             throw ex;
@@ -611,4 +635,73 @@ public class PersonaDba {
         }
     }
     
+
+    //ADMINISTRATIVO DE OBRA METODOS!
+    public static AdministrativoObra getAdministrativoObra(int identificador) throws SQLException {
+        AdministrativoObra administrativoObra = new AdministrativoObra();
+
+        String sql = "Select * from persona where ID=" + identificador
+                + " and Discriminator=" + ADMINISTRATIVO_OBRA;
+        try {
+            conn = MySQL.getConnection();
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+            if (rs.next()) {
+                administrativoObra.setPK_ID(rs.getInt("ID"));
+                administrativoObra.setNombre(rs.getString("Nombre"));
+                administrativoObra.setApellidos(rs.getString("Apellidos"));
+                administrativoObra.setTelefono(rs.getString("Telefono"));
+                administrativoObra.setDni(rs.getString("Dni"));
+                administrativoObra.setUsuario(rs.getString("Usuario"));
+                administrativoObra.setContra(rs.getString("Contra"));
+                administrativoObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+            throw ex;
+        } finally {
+            close();
+        }
+
+        return administrativoObra;
+    }
+    
+    public static ArrayList<AdministrativoObra> getAdministrativosObra() throws SQLException {
+        conn = MySQL.getConnection();
+        String sql = "Select * from persona where Discriminator=" + ADMINISTRATIVO_OBRA;
+
+        ArrayList<AdministrativoObra> administrativosObra = new ArrayList<AdministrativoObra>();
+
+        try {
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+
+            while (rs.next()) {
+                AdministrativoObra administrativoObra = new AdministrativoObra();
+                administrativoObra.setPK_ID(rs.getInt("ID"));
+                administrativoObra.setNombre(rs.getString("Nombre"));
+                administrativoObra.setApellidos(rs.getString("Apellidos"));
+                administrativoObra.setTelefono(rs.getString("Telefono"));
+                administrativoObra.setDni(rs.getString("Dni"));
+                administrativoObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+
+                administrativosObra.add(administrativoObra);
+            }
+
+            return administrativosObra;
+
+        } catch (SQLException ex) {
+            //Logger.getLogger(FrmPersona.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        } finally {
+            close();
+        }
+
+        //return null;
+    }
+    
+
 }
