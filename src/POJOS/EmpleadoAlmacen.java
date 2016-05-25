@@ -10,6 +10,6 @@ public class EmpleadoAlmacen extends Empleado {
 	public EmpleadoAlmacen() {
 		// TODO - implement EmpleadoAlmacen.EmpleadoAlmacen
 
-	}
 
+	}
 }

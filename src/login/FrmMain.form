@@ -121,6 +121,11 @@
                 <Property name="text" type="java.lang.String" value="Dar de Alta a Material"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemDarAltaAMaterialActionPerformed"/>
+              </Events>
+
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemComprobarRecepcionMateriales">
               <Properties>
@@ -161,6 +166,7 @@
                 <Property name="text" type="java.lang.String" value="Dar de Alta a Empleado"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+
 
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemDarDeAltaAEmpleadoActionPerformed"/>
@@ -208,10 +214,10 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
 
+
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemAsignarMaquinariaAObraActionPerformed"/>
               </Events>
-
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuDarAltaMaquinaria">
               <Properties>

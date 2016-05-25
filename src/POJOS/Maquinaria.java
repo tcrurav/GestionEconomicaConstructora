@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Maquinaria {
 
+
         private int PK_ID;
     
 
@@ -28,7 +29,6 @@ public class Maquinaria {
 
 	public Maquinaria() {
 		// TODO - implement Maquinaria.Maquinaria
-
 
 	}
 
@@ -81,6 +81,7 @@ public class Maquinaria {
 	}
 
 
+
     /**
      * @return the PK_ID
      */
@@ -94,6 +95,7 @@ public class Maquinaria {
     public void setPK_ID(int PK_ID) {
         this.PK_ID = PK_ID;
     }
+
 
 
 }
