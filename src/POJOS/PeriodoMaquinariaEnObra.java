@@ -3,77 +3,144 @@ package POJOS;
 import java.util.*;
 public class PeriodoMaquinariaEnObra {
 
-	Obra obra;
-	Maquinaria maquinaria;
+        
+        private int PK_ID;
+	private Obra obra;
+	private Maquinaria maquinaria;
 	private Date fechaInicio;
 	private Date fechaFin;
-	JefeDeObra jefeDeObra;
-	EmpleadoAlmacen empleadoAlmacen;
+	private JefeDeObra jefeDeObra;
+	private EmpleadoAlmacen empleadoAlmacen;
 	private Date fechaSolicitud;
 	private Date fechaRecepcion;
 
-	public Date getFechaInicio() {
-		return this.fechaInicio;
-	}
+    /**
+     * @return the PK_ID
+     */
+    public int getPK_ID() {
+        return PK_ID;
+    }
 
-	/**
-	 * 
-	 * @param fechaInicio
-	 */
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
+    /**
+     * @param PK_ID the PK_ID to set
+     */
+    public void setPK_ID(int PK_ID) {
+        this.PK_ID = PK_ID;
+    }
 
-	public PeriodoMaquinariaEnObra() {
-		// TODO - implement PeriodoMaquinariaEnObra.PeriodoMaquinariaEnObra
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * @return the obra
+     */
+    public Obra getObra() {
+        return obra;
+    }
 
-	public Date getFechaFin() {
-		// TODO - implement PeriodoMaquinariaEnObra.getFechaFin
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * @param obra the obra to set
+     */
+    public void setObra(Obra obra) {
+        this.obra = obra;
+    }
 
-	/**
-	 * 
-	 * @param fechaFin
-	 */
-	public void setFechaFin(Date fechaFin) {
-		// TODO - implement PeriodoMaquinariaEnObra.setFechaFin
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * @return the maquinaria
+     */
+    public Maquinaria getMaquinaria() {
+        return maquinaria;
+    }
 
-	public Date getFechaSolicitud() {
-		return this.fechaSolicitud;
-	}
+    /**
+     * @param maquinaria the maquinaria to set
+     */
+    public void setMaquinaria(Maquinaria maquinaria) {
+        this.maquinaria = maquinaria;
+    }
 
-	/**
-	 * 
-	 * @param fechaSolicitud
-	 */
-	public void setFechaSolicitud(Date fechaSolicitud) {
-		this.fechaSolicitud = fechaSolicitud;
-	}
+    /**
+     * @return the fechaInicio
+     */
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
 
-	public Date getFechaRecepcion() {
-		return this.fechaRecepcion;
-	}
+    /**
+     * @param fechaInicio the fechaInicio to set
+     */
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
 
-	/**
-	 * 
-	 * @param fechaRecepcion
-	 */
-	public void setFechaRecepcion(Date fechaRecepcion) {
-		this.fechaRecepcion = fechaRecepcion;
-	}
+    /**
+     * @return the fechaFin
+     */
+    public Date getFechaFin() {
+        return fechaFin;
+    }
 
-	/**
-	 * 
-	 * @param parameter
-	 */
-	public PeriodoMaquinariaEnObra(int parameter) {
-		// TODO - implement PeriodoMaquinariaEnObra.PeriodoMaquinariaEnObra
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * @param fechaFin the fechaFin to set
+     */
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    /**
+     * @return the jefeDeObra
+     */
+    public JefeDeObra getJefeDeObra() {
+        return jefeDeObra;
+    }
+
+    /**
+     * @param jefeDeObra the jefeDeObra to set
+     */
+    public void setJefeDeObra(JefeDeObra jefeDeObra) {
+        this.jefeDeObra = jefeDeObra;
+    }
+
+    /**
+     * @return the empleadoAlmacen
+     */
+    public EmpleadoAlmacen getEmpleadoAlmacen() {
+        return empleadoAlmacen;
+    }
+
+    /**
+     * @param empleadoAlmacen the empleadoAlmacen to set
+     */
+    public void setEmpleadoAlmacen(EmpleadoAlmacen empleadoAlmacen) {
+        this.empleadoAlmacen = empleadoAlmacen;
+    }
+
+    /**
+     * @return the fechaSolicitud
+     */
+    public Date getFechaSolicitud() {
+        return fechaSolicitud;
+    }
+
+    /**
+     * @param fechaSolicitud the fechaSolicitud to set
+     */
+    public void setFechaSolicitud(Date fechaSolicitud) {
+        this.fechaSolicitud = fechaSolicitud;
+    }
+
+    /**
+     * @return the fechaRecepcion
+     */
+    public Date getFechaRecepcion() {
+        return fechaRecepcion;
+    }
+
+    /**
+     * @param fechaRecepcion the fechaRecepcion to set
+     */
+    public void setFechaRecepcion(Date fechaRecepcion) {
+        this.fechaRecepcion = fechaRecepcion;
+    }
+
+
+
 
 }
