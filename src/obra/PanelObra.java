@@ -28,15 +28,16 @@ public class PanelObra extends javax.swing.JPanel {
      */
     public PanelObra(int menuActual) {
         initComponents();
-        
+
+
         this.menuActual = menuActual;
-        
+
         deshabilitar();
         llenar();
-        
+
     }
 
-    
+
 
     public void limpiar() {
         final Calendar instance = Calendar.getInstance();
@@ -71,8 +72,7 @@ public class PanelObra extends javax.swing.JPanel {
         if(menuActual == MNU_INTRODUCIR_CANTIDAD_FACTURADA){
             txtCantidadFacturada.setEnabled(true);
         }
-        
-        
+
     }
 
     public void deshabilitar() {
@@ -195,7 +195,7 @@ public class PanelObra extends javax.swing.JPanel {
         }
 
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -205,7 +205,10 @@ public class PanelObra extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+
+
         jComboBox1 = new javax.swing.JComboBox<>();
+
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -237,7 +240,10 @@ public class PanelObra extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblObras = new javax.swing.JTable();
 
+
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestión de Obras"));
 
@@ -511,7 +517,9 @@ public class PanelObra extends javax.swing.JPanel {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+
     private javax.swing.JComboBox<String> jComboBox1;
+
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -540,6 +548,7 @@ public class PanelObra extends javax.swing.JPanel {
     private javax.swing.JTextField txtPresupuestoTotalEjecucion;
     // End of variables declaration//GEN-END:variables
 
-                      
+
+
 
 }

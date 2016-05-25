@@ -3,21 +3,23 @@ package POJOS;
 import java.util.*;
 public class MaterialParaObra {
 
-	Material material;
-	Obra obra;
+        private int PK_ID;
+   
+	public Material material;
+	public Obra obra;
 	private float CantidadMaterial;
-	AdministrativoObra administrativoObra;
-	JefeDeObra jefeDeObra;
-	/**
-	 * Este es el coste del material en el momento de la asignaci�n a la obra.
-	 */
+	public AdministrativoObra administrativoObra;
+	public JefeDeObra jefeDeObra;
+       
 	private float coste;
 	private Date fechaSolicitud;
 	private Date fechaRecepcion;
 
 	public float getCantidadMaterial() {
 		// TODO - implement MaterialAsignadoAObra.getCantidadMaterial
-		throw new UnsupportedOperationException();
+
+		//throw new UnsupportedOperationException();
+                return this.CantidadMaterial;
 	}
 
 	/**
@@ -26,7 +28,9 @@ public class MaterialParaObra {
 	 */
 	public void setCantidadMaterial(float CantidadMaterial) {
 		// TODO - implement MaterialAsignadoAObra.setCantidadMaterial
-		throw new UnsupportedOperationException();
+
+		//throw new UnsupportedOperationException();
+            this.CantidadMaterial=CantidadMaterial;
 	}
 
 
@@ -68,7 +72,48 @@ public class MaterialParaObra {
 
 	public MaterialParaObra() {
 		// TODO - implement MaterialAsignadoAObra.MaterialParaObra
-		throw new UnsupportedOperationException();
+
+//		throw new UnsupportedOperationException();
 	}
+
+    public int getPK_ID() {
+        return PK_ID;
+    }
+
+    public void setPK_ID(int PK_ID) {
+        this.PK_ID = PK_ID;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    public Obra getObra() {
+        return obra;
+    }
+
+    public void setObra(Obra obra) {
+        this.obra = obra;
+    }
+
+    public AdministrativoObra getAdministrativoObra() {
+        return administrativoObra;
+    }
+
+    public void setAdministrativoObra(AdministrativoObra administrativoObra) {
+        this.administrativoObra = administrativoObra;
+    }
+
+    public JefeDeObra getJefeDeObra() {
+        return jefeDeObra;
+    }
+
+    public void setJefeDeObra(JefeDeObra jefeDeObra) {
+        this.jefeDeObra = jefeDeObra;
+    }
 
 }
