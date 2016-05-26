@@ -10,25 +10,19 @@ import dba.PersonaDba;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
 import java.sql.SQLException;
-
 import javax.swing.JDialog;
 import jefeDeObra.PanelSolicitarMaterialObra;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
 import java.sql.SQLException;
-
-
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import obra.DialogoObra;
 import obra.PanelObra;
-
 import empleado.DialogoEmpleado;
 import periodoMaquinariaEnObra.DialogoPeriodoMaquinariaEnObra;
 import empleadoAlmacen.DarDeAltaMaterial;
 import javax.swing.JDialog;
-
-
 /**
  *
  * @author Tiburcio
@@ -59,8 +53,10 @@ public class FrmMain extends javax.swing.JFrame {
             switch(tipoDeEmpleado){
                 case EMPLEADO_ALMACEN:
 
+
                     mnuItemAsignarMaquinariaAObra.setEnabled(true);
                     mnuItemDarAltaAMaterial.setEnabled(true);
+
 
 
                     break;
@@ -68,7 +64,9 @@ public class FrmMain extends javax.swing.JFrame {
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
 
+
                     mnuItemDarDeAltaAEmpleado.setEnabled(true);
+
 
                     break;
                 case EMPLEADO_OBRA:
@@ -76,7 +74,9 @@ public class FrmMain extends javax.swing.JFrame {
                 case JEFE_DE_OBRA:
 
 
+
                     mnuItemSolicitarMaterialParaUnaObra.setEnabled(true);
+
 
                     break;
                 case ADMINISTRATIVO_PRESUPUESTOS:
@@ -95,7 +95,9 @@ public class FrmMain extends javax.swing.JFrame {
 
 
 
+
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -203,11 +205,13 @@ public class FrmMain extends javax.swing.JFrame {
         mnuItemSolicitarMaterialParaUnaObra.setText("Solicitar Material para una Obra");
         mnuItemSolicitarMaterialParaUnaObra.setEnabled(false);
 
+
         mnuItemSolicitarMaterialParaUnaObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemSolicitarMaterialParaUnaObraActionPerformed(evt);
             }
         });
+
 
 
         mnuMaterial.add(mnuItemSolicitarMaterialParaUnaObra);
@@ -221,12 +225,12 @@ public class FrmMain extends javax.swing.JFrame {
 
 
 
+
         mnuItemDarAltaAMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemDarAltaAMaterialActionPerformed(evt);
             }
         });
-
 
 
         mnuMaterial.add(mnuItemDarAltaAMaterial);
@@ -262,12 +266,12 @@ public class FrmMain extends javax.swing.JFrame {
 
 
 
+
         mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
             }
         });
-
 
 
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
@@ -303,12 +307,12 @@ public class FrmMain extends javax.swing.JFrame {
 
 
 
+
         mnuItemAsignarMaquinariaAObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemAsignarMaquinariaAObraActionPerformed(evt);
             }
         });
-
 
 
         jMenu2.add(mnuItemAsignarMaquinariaAObra);
@@ -351,6 +355,7 @@ public class FrmMain extends javax.swing.JFrame {
         // Para hacerlo con un JDialog (alternativamente)
 
 
+
         DialogoObra dialogoObra = new DialogoObra(this, true);
         dialogoObra.setVisible(true);
 
@@ -360,6 +365,7 @@ public class FrmMain extends javax.swing.JFrame {
         //JPanel panel = new PanelObra(MNU_CREAR_OBRA);
         //setContentPane(panel);
         //pack();
+
         //DialogoObra dialogoObra = new DialogoObra(this, true);
         //dialogoObra.setVisible(true);
 
@@ -367,7 +373,6 @@ public class FrmMain extends javax.swing.JFrame {
         JPanel panel = new PanelObra(MNU_CREAR_OBRA);
         setContentPane(panel);
         pack();
-
 
     }//GEN-LAST:event_mnuItemCrearObraActionPerformed
 
@@ -388,11 +393,14 @@ public class FrmMain extends javax.swing.JFrame {
         //DialogoObra dialogoObra = new DialogoObra(this, true);
         //dialogoObra.setVisible(true);
 
+
+
         // Para hacerlo con un JPanel (alternativamente)
         JPanel panel = new PanelObra(MNU_INTRODUCIR_PRESUPUESTO);
         setContentPane(panel);
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
+
 
 
 
@@ -433,6 +441,7 @@ public class FrmMain extends javax.swing.JFrame {
 
 
 
+
     /**
      * @param args the command line arguments
      */
@@ -440,7 +449,6 @@ public class FrmMain extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

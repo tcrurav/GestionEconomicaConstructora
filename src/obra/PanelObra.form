@@ -2,6 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
   <NonVisualComponents>
@@ -24,6 +25,8 @@
 
 =======
 >>>>>>> origin/DarDeAltaAMaquinaria
+=======
+>>>>>>> origin/ComprobarRecepcionDeMaquinariaEnObraDer
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>

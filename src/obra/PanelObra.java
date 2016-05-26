@@ -31,12 +31,14 @@ public class PanelObra extends javax.swing.JPanel {
 
 
 
+
         this.menuActual = menuActual;
 
         deshabilitar();
         llenar();
 
     }
+
 
 
 
@@ -210,6 +212,7 @@ public class PanelObra extends javax.swing.JPanel {
 
 
 
+
         jComboBox1 = new javax.swing.JComboBox<>();
 
 
@@ -247,7 +250,9 @@ public class PanelObra extends javax.swing.JPanel {
 
 
 
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
 
 
 
@@ -525,7 +530,9 @@ public class PanelObra extends javax.swing.JPanel {
     private javax.swing.JButton btnNuevo;
 
 
+
     private javax.swing.JComboBox<String> jComboBox1;
+
 
 
     private javax.swing.JLabel jLabel10;
@@ -559,5 +566,7 @@ public class PanelObra extends javax.swing.JPanel {
 
 
 
+
 }
+
 

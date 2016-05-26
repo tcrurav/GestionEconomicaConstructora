@@ -143,4 +143,5 @@ public class PeriodoMaquinariaEnObra {
         this.fechaRecepcion = fechaRecepcion;
     }
 
+
 }

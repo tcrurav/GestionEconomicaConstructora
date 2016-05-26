@@ -310,6 +310,7 @@
             <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePickerFechaInicio">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
               <Events>
@@ -320,6 +321,8 @@
 >>>>>>> origin/SolicitarMaterialesParaObra
 =======
 >>>>>>> origin/DarDeAltaAMaquinaria
+=======
+>>>>>>> origin/ComprobarRecepcionDeMaquinariaEnObraDer
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePickerFechaFin">
             </Component>

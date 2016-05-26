@@ -110,12 +110,15 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemSolicitarMaterialParaUnaObraActionPerformed"/>
               </Events>
 =======
 >>>>>>> origin/DarDeAltaAMaquinaria
+=======
+>>>>>>> origin/ComprobarRecepcionDeMaquinariaEnObraDer
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemAsignarMaterialAObra">
               <Properties>
@@ -129,6 +132,7 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemDarAltaAMaterialActionPerformed"/>
@@ -137,6 +141,8 @@
 
 =======
 >>>>>>> origin/DarDeAltaAMaquinaria
+=======
+>>>>>>> origin/ComprobarRecepcionDeMaquinariaEnObraDer
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemComprobarRecepcionMateriales">
               <Properties>
@@ -178,6 +184,7 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
               <Events>
@@ -187,6 +194,8 @@
 
 =======
 >>>>>>> origin/DarDeAltaAMaquinaria
+=======
+>>>>>>> origin/ComprobarRecepcionDeMaquinariaEnObraDer
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemDarAltaCategoriaEmpleado">
               <Properties>
@@ -229,6 +238,7 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
               <Events>
@@ -237,6 +247,8 @@
 
 =======
 >>>>>>> origin/DarDeAltaAMaquinaria
+=======
+>>>>>>> origin/ComprobarRecepcionDeMaquinariaEnObraDer
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuDarAltaMaquinaria">
               <Properties>

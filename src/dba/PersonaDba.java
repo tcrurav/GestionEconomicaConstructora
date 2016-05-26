@@ -7,6 +7,7 @@ package dba;
 
 
 
+
 import POJOS.Empleado;
 import POJOS.EmpleadoAlmacen;
 import POJOS.AdministrativoObra;
@@ -61,7 +62,9 @@ public class PersonaDba {
             throw ex;
         } finally {
 
+
             rs.close();
+
 
         }
 
@@ -107,6 +110,7 @@ public class PersonaDba {
 
     
 
+
     
     public static int getDiscriminator(Empleado empleado) throws SQLException{
         int identificador = empleado.getPK_ID();
@@ -127,7 +131,9 @@ public class PersonaDba {
         } finally {
 
 
+
             rs.close();
+
 
         }
     }
@@ -159,8 +165,8 @@ public class PersonaDba {
             throw ex;
         } finally {
 
-            rs.close();
 
+            rs.close();
         }
 
         return empleado;
@@ -172,7 +178,9 @@ public class PersonaDba {
 
 
 
+
         String sql = "select * from persona where Usuario='" + usuario + "' and Contra='" + contrasena + "'";
+
 
 
 
@@ -200,8 +208,8 @@ public class PersonaDba {
             throw ex;
         } finally {
 
-            rs.close();
 
+            rs.close();
         }
 
         return empleado;
@@ -228,8 +236,8 @@ public class PersonaDba {
             throw ex;
         } finally {
 
-            rs.close();
 
+            rs.close();
         }
 
         return persona;
@@ -240,9 +248,6 @@ public class PersonaDba {
 
 
         String sql = "select * from persona where Discriminator=" + JEFE_DE_OBRA;
-
-
- 
 
 
         ArrayList<JefeDeObra> jefesDeObra = new ArrayList<JefeDeObra>();
@@ -269,6 +274,7 @@ public class PersonaDba {
             //Logger.getLogger(FrmPersona.class.getName()).log(Level.SEVERE, null, ex);
             throw ex;
         } finally {
+
 
             rs.close();
         }
@@ -311,7 +317,6 @@ public class PersonaDba {
         } finally {
             rs.close();
 
-
         }
 
         //return null;
@@ -322,8 +327,6 @@ public class PersonaDba {
 
         String sql = "select * from persona";
 
-
-        
 
         ArrayList<Empleado> empleados = new ArrayList<>();
 
@@ -351,11 +354,11 @@ public class PersonaDba {
         } finally {
 
             rs.close();
-
         }
 
         //return null;
     }
+
 
 
     
@@ -393,7 +396,6 @@ public class PersonaDba {
         } finally {
 
             rs.close();
-
         }
 
         //return null;
@@ -427,7 +429,6 @@ public class PersonaDba {
         } finally {
 
             rs.close();
-
         }
         return false;
     }
@@ -435,13 +436,17 @@ public class PersonaDba {
 
 
 
-        public static boolean insertEmpleado(Empleado empleado) throws SQLException{
+
+      
                         
 
 
 
 
 
+
+
+        public static boolean insertEmpleado(Empleado empleado) throws SQLException{
 
         Connection conn = MySQL.getConnection();
         String sql = "insert into persona (Nombre, Apellidos, Telefono, Dni, CategoriaID, Usuario, Contra) " +
@@ -453,6 +458,7 @@ public class PersonaDba {
 
 
             PreparedStatement ps = conn.prepareStatement(sql);
+
 
 
 
@@ -470,7 +476,9 @@ public class PersonaDba {
 
 
 
+
              //   JOptionPane.showMessageDialog(null, "Datos guardados");
+
 
 
 
@@ -482,8 +490,8 @@ public class PersonaDba {
 
 
 
-                JOptionPane.showMessageDialog(null, "Se ha producido un Error. Error:" + ex.getMessage());
 
+                JOptionPane.showMessageDialog(null, "Se ha producido un Error. Error:" + ex.getMessage());
 
 
             throw ex;
@@ -516,7 +524,7 @@ public class PersonaDba {
         }
         return false;
     }
-     
+
 
     public static boolean updateJefeDeObra(JefeDeObra jefeDeObra) throws SQLException {
         conn = MySQL.getConnection();
@@ -548,7 +556,6 @@ public class PersonaDba {
         } finally {
 
             rs.close();
-
         }
         return false;
     }
@@ -557,12 +564,16 @@ public class PersonaDba {
 
 
 
-        public static boolean updateEmpleado(Empleado empleado) throws SQLException{
+
+
 
             
 
 
 
+
+
+       public static boolean updateEmpleado(Empleado empleado) throws SQLException{
 
         Connection conn = MySQL.getConnection();
         
@@ -572,9 +583,11 @@ public class PersonaDba {
         PreparedStatement ps;
         try {
 
+
             
 
             ps = conn.prepareStatement(sql);
+
 
 
 
@@ -596,11 +609,13 @@ public class PersonaDba {
             
         } catch (SQLException ex) {
 
+
             
 
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
 
             
+
 
 
             throw ex;
@@ -632,7 +647,9 @@ public class PersonaDba {
         } catch (SQLException ex) {
 
 
+
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+
 
 
 
@@ -641,7 +658,7 @@ public class PersonaDba {
         return false;
     }
 
-     
+   
 
     public static boolean deletePersona(int identificador) throws SQLException {
         conn = MySQL.getConnection();
@@ -654,11 +671,13 @@ public class PersonaDba {
 
 
 
+
              //   JOptionPane.showMessageDialog(null, "Datos Borrados");
                 return true;
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+
 
 
 
@@ -688,6 +707,7 @@ public class PersonaDba {
         }
     }
     
+
 
 
     //ADMINISTRATIVO DE OBRA METODOS!
@@ -757,6 +777,4 @@ public class PersonaDba {
         //return null;
     }
     
-
-
 }

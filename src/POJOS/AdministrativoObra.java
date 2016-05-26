@@ -11,6 +11,4 @@ public class AdministrativoObra extends Empleado {
 		// TODO - implement AdministrativoObra.AdministrativoObra
 		throw new UnsupportedOperationException();
 	}
-
-
 }

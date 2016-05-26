@@ -8,8 +8,10 @@ public class Material {
 	Collection<MaterialParaObra> materialParaObra;
 
 
+
         
         int PK_ID;
+
 
 
 
@@ -29,6 +31,7 @@ public class Material {
 	private int stock;
 
 
+
         
 
         public void setPK_ID(int PK_ID) {
@@ -42,6 +45,7 @@ public class Material {
         
 
         
+
 
 	public String getCodigo() {
 		return this.codigo;
@@ -117,6 +121,7 @@ public class Material {
 	}
 
 
+
 	/*public Material() {
 		// TODO - implement Material.Material
 		throw new UnsupportedOperationException();
@@ -125,6 +130,7 @@ public class Material {
     /*public void set(int aInt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
+
 
 
 

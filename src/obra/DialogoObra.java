@@ -28,7 +28,9 @@ public class DialogoObra extends javax.swing.JDialog {
         initComponents();
         deshabilitar();
         llenar();
+
         this.pack();
+
 
         this.setLocationRelativeTo(null);
     }
@@ -287,13 +289,12 @@ public class DialogoObra extends javax.swing.JDialog {
 
 
 
+
         jXDatePickerFechaInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXDatePickerFechaInicioActionPerformed(evt);
             }
         });
-
-
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -514,9 +515,11 @@ public class DialogoObra extends javax.swing.JDialog {
 
 
 
+
     private void jXDatePickerFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePickerFechaInicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jXDatePickerFechaInicioActionPerformed
+
 
 
     /**
@@ -526,6 +529,7 @@ public class DialogoObra extends javax.swing.JDialog {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
