@@ -3,9 +3,6 @@ package POJOS;
 import java.util.*;
 public class PeriodoMaquinariaEnObra {
 
-
-
-        
         private int PK_ID;
 	private Obra obra;
 	private Maquinaria maquinaria;
@@ -141,9 +138,6 @@ public class PeriodoMaquinariaEnObra {
     public void setFechaRecepcion(Date fechaRecepcion) {
         this.fechaRecepcion = fechaRecepcion;
     }
-
-
-
 
 
 }

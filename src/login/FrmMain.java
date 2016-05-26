@@ -40,7 +40,6 @@ public class FrmMain extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-
     public FrmMain() {
         initComponents();
         this.pack();
@@ -56,17 +55,20 @@ public class FrmMain extends javax.swing.JFrame {
                     mnuItemAsignarMaquinariaAObra.setEnabled(true);
                     mnuItemDarAltaAMaterial.setEnabled(true);
 
+
                     break;
                 case ADMINISTRATIVO_OBRA:
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
                     mnuItemDarDeAltaAEmpleado.setEnabled(true);
+
                     break;
                 case EMPLEADO_OBRA:
                     break;
                 case JEFE_DE_OBRA:
 
                     mnuItemSolicitarMaterialParaUnaObra.setEnabled(true);
+
                     break;
                 case ADMINISTRATIVO_PRESUPUESTOS:
                     mnuItemCrearObra.setEnabled(true);
@@ -84,6 +86,7 @@ public class FrmMain extends javax.swing.JFrame {
 
 
     }
+
 
 
     /**
@@ -198,6 +201,7 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
 
+
         mnuMaterial.add(mnuItemSolicitarMaterialParaUnaObra);
 
         mnuItemAsignarMaterialAObra.setText("Asignar Material a Obra");
@@ -206,7 +210,6 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarAltaAMaterial.setText("Dar de Alta a Material");
         mnuItemDarAltaAMaterial.setEnabled(false);
-
 
         mnuItemDarAltaAMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,13 +248,12 @@ public class FrmMain extends javax.swing.JFrame {
         mnuItemDarDeAltaAEmpleado.setText("Dar de Alta a Empleado");
         mnuItemDarDeAltaAEmpleado.setEnabled(false);
 
-
-
         mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
             }
         });
+
 
 
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
@@ -283,8 +285,6 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemAsignarMaquinariaAObra.setText("Asignar Maquinaria a Obra");
         mnuItemAsignarMaquinariaAObra.setEnabled(false);
-
-
 
         mnuItemAsignarMaquinariaAObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,9 +331,9 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void mnuItemCrearObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCrearObraActionPerformed
         // Para hacerlo con un JDialog (alternativamente)
-
         DialogoObra dialogoObra = new DialogoObra(this, true);
         dialogoObra.setVisible(true);
+
         // Para hacerlo con un JPanel (alternativamente)
         //JPanel panel = new PanelObra(MNU_CREAR_OBRA);
         //setContentPane(panel);
@@ -364,7 +364,6 @@ public class FrmMain extends javax.swing.JFrame {
         // Para hacerlo con un JDialog (alternativamente)
         //DialogoObra dialogoObra = new DialogoObra(this, true);
         //dialogoObra.setVisible(true);
-
         // Para hacerlo con un JPanel (alternativamente)
         JPanel panel = new PanelObra(MNU_INTRODUCIR_PRESUPUESTO);
         setContentPane(panel);
@@ -405,6 +404,7 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(PanelSolicitarMaterial);
         pack();
     }//GEN-LAST:event_mnuItemSolicitarMaterialParaUnaObraActionPerformed
+
 
 
 

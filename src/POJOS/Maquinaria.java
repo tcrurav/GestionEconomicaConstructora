@@ -3,13 +3,7 @@ package POJOS;
 import java.util.*;
 
 public class Maquinaria {
-
-
-
         private int PK_ID;
-    
-
-
 	Collection<PeriodoMaquinariaEnObra> periodoMaquinariaEnObra;
 	private String nombre;
 	private float precioDeCompra;
@@ -31,7 +25,7 @@ public class Maquinaria {
 
 	public Maquinaria() {
 		// TODO - implement Maquinaria.Maquinaria
-
+		throw new UnsupportedOperationException();
 	}
 
 	public float getPrecioDeCompra() {
@@ -81,10 +75,7 @@ public class Maquinaria {
 	public void setCodInventario(String codInventario) {
 		this.codInventario = codInventario;
 	}
-
-
-
-
+        
     /**
      * @return the PK_ID
      */
@@ -98,8 +89,5 @@ public class Maquinaria {
     public void setPK_ID(int PK_ID) {
         this.PK_ID = PK_ID;
     }
-
-
-
 
 }

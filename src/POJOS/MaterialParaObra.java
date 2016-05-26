@@ -10,15 +10,12 @@ public class MaterialParaObra {
 	private float CantidadMaterial;
 	public AdministrativoObra administrativoObra;
 	public JefeDeObra jefeDeObra;
-       
 	private float coste;
 	private Date fechaSolicitud;
 	private Date fechaRecepcion;
 
 	public float getCantidadMaterial() {
 		// TODO - implement MaterialAsignadoAObra.getCantidadMaterial
-
-		//throw new UnsupportedOperationException();
                 return this.CantidadMaterial;
 	}
 
@@ -29,7 +26,6 @@ public class MaterialParaObra {
 	public void setCantidadMaterial(float CantidadMaterial) {
 		// TODO - implement MaterialAsignadoAObra.setCantidadMaterial
 
-		//throw new UnsupportedOperationException();
             this.CantidadMaterial=CantidadMaterial;
 	}
 
@@ -72,7 +68,6 @@ public class MaterialParaObra {
 
 	public MaterialParaObra() {
 		// TODO - implement MaterialAsignadoAObra.MaterialParaObra
-
 //		throw new UnsupportedOperationException();
 	}
 
