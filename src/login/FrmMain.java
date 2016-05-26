@@ -7,6 +7,10 @@ package login;
 
 import POJOS.Empleado;
 import dba.PersonaDba;
+import static gestioneconomicaconstructora.OpcionesDeMenu.*;
+import static gestioneconomicaconstructora.TiposDePersona.*;
+import java.sql.SQLException;
+import javax.swing.JDialog;
 import jefeDeObra.PanelSolicitarMaterialObra;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
@@ -15,6 +19,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import obra.DialogoObra;
 import obra.PanelObra;
+import empleado.DialogoEmpleado;
+import periodoMaquinariaEnObra.DialogoPeriodoMaquinariaEnObra;
+import empleadoAlmacen.DarDeAltaMaterial;
+import javax.swing.JDialog;
 
 /**
  *
@@ -32,7 +40,7 @@ public class FrmMain extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-    
+
     public FrmMain() {
         initComponents();
         this.pack();
@@ -45,15 +53,19 @@ public class FrmMain extends javax.swing.JFrame {
             int tipoDeEmpleado = PersonaDba.getDiscriminator(empleado);
             switch(tipoDeEmpleado){
                 case EMPLEADO_ALMACEN:
+                    mnuItemAsignarMaquinariaAObra.setEnabled(true);
+                    mnuItemDarAltaAMaterial.setEnabled(true);
+
                     break;
                 case ADMINISTRATIVO_OBRA:
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
-                    
+                    mnuItemDarDeAltaAEmpleado.setEnabled(true);
                     break;
                 case EMPLEADO_OBRA:
                     break;
                 case JEFE_DE_OBRA:
+
                     mnuItemSolicitarMaterialParaUnaObra.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_PRESUPUESTOS:
@@ -69,9 +81,11 @@ public class FrmMain extends javax.swing.JFrame {
             //Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Tipo de Persona no Válido");
         }
-        
+
+
     }
-    
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,11 +191,13 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemSolicitarMaterialParaUnaObra.setText("Solicitar Material para una Obra");
         mnuItemSolicitarMaterialParaUnaObra.setEnabled(false);
+
         mnuItemSolicitarMaterialParaUnaObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemSolicitarMaterialParaUnaObraActionPerformed(evt);
             }
         });
+
         mnuMaterial.add(mnuItemSolicitarMaterialParaUnaObra);
 
         mnuItemAsignarMaterialAObra.setText("Asignar Material a Obra");
@@ -190,6 +206,15 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarAltaAMaterial.setText("Dar de Alta a Material");
         mnuItemDarAltaAMaterial.setEnabled(false);
+
+
+        mnuItemDarAltaAMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDarAltaAMaterialActionPerformed(evt);
+            }
+        });
+
+
         mnuMaterial.add(mnuItemDarAltaAMaterial);
 
         mnuItemComprobarRecepcionMateriales.setText("Comprobar Recepción de Materiales");
@@ -219,6 +244,16 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarDeAltaAEmpleado.setText("Dar de Alta a Empleado");
         mnuItemDarDeAltaAEmpleado.setEnabled(false);
+
+
+
+        mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
+            }
+        });
+
+
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
 
         mnuItemDarAltaCategoriaEmpleado.setText("Dar de Alta a Categoria de Empleado");
@@ -248,6 +283,16 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemAsignarMaquinariaAObra.setText("Asignar Maquinaria a Obra");
         mnuItemAsignarMaquinariaAObra.setEnabled(false);
+
+
+
+        mnuItemAsignarMaquinariaAObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemAsignarMaquinariaAObraActionPerformed(evt);
+            }
+        });
+
+
         jMenu2.add(mnuItemAsignarMaquinariaAObra);
 
         mnuDarAltaMaquinaria.setText("Dar de Alta a Maquinaria");
@@ -286,13 +331,21 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void mnuItemCrearObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCrearObraActionPerformed
         // Para hacerlo con un JDialog (alternativamente)
+
         DialogoObra dialogoObra = new DialogoObra(this, true);
         dialogoObra.setVisible(true);
-        
         // Para hacerlo con un JPanel (alternativamente)
         //JPanel panel = new PanelObra(MNU_CREAR_OBRA);
         //setContentPane(panel);
         //pack();
+        //DialogoObra dialogoObra = new DialogoObra(this, true);
+        //dialogoObra.setVisible(true);
+
+        // Para hacerlo con un JPanel (alternativamente)
+        JPanel panel = new PanelObra(MNU_CREAR_OBRA);
+        setContentPane(panel);
+        pack();
+
     }//GEN-LAST:event_mnuItemCrearObraActionPerformed
 
     private void mnuItemSolicitarPeriodoTrabajadorObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemSolicitarPeriodoTrabajadorObraActionPerformed
@@ -311,12 +364,40 @@ public class FrmMain extends javax.swing.JFrame {
         // Para hacerlo con un JDialog (alternativamente)
         //DialogoObra dialogoObra = new DialogoObra(this, true);
         //dialogoObra.setVisible(true);
-        
+
         // Para hacerlo con un JPanel (alternativamente)
         JPanel panel = new PanelObra(MNU_INTRODUCIR_PRESUPUESTO);
         setContentPane(panel);
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
+
+
+
+
+    private void mnuItemDarDeAltaAEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
+        DialogoEmpleado dialogoEmpleado = new DialogoEmpleado(this, true);
+        dialogoEmpleado.setVisible(true);
+
+
+
+    }//GEN-LAST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
+
+    private void mnuItemAsignarMaquinariaAObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemAsignarMaquinariaAObraActionPerformed
+        // TODO add your handling code here:
+        DialogoPeriodoMaquinariaEnObra dialogoPeriodoMaquinariaEnObra = new DialogoPeriodoMaquinariaEnObra(this, true);
+        dialogoPeriodoMaquinariaEnObra.setVisible(true);
+    }//GEN-LAST:event_mnuItemAsignarMaquinariaAObraActionPerformed
+
+
+    private void mnuItemDarAltaAMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarAltaAMaterialActionPerformed
+        // TODO add your handling code here:
+        DarDeAltaMaterial altaMaterial = new DarDeAltaMaterial(this, true);
+        altaMaterial.setVisible(true);
+
+    }//GEN-LAST:event_mnuItemDarAltaAMaterialActionPerformed
+
+
+
 
     private void mnuItemSolicitarMaterialParaUnaObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemSolicitarMaterialParaUnaObraActionPerformed
         //CODIGO DE RUBEN PARA INVOCAR LA VENTANA SOLICITAR MATERIAL PARA OBRA
@@ -325,7 +406,8 @@ public class FrmMain extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_mnuItemSolicitarMaterialParaUnaObraActionPerformed
 
-    
+
+
     /**
      * @param args the command line arguments
      */
@@ -333,7 +415,6 @@ public class FrmMain extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
