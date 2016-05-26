@@ -30,12 +30,14 @@ public class PanelObra extends javax.swing.JPanel {
         initComponents();
 
 
+
         this.menuActual = menuActual;
 
         deshabilitar();
         llenar();
 
     }
+
 
 
 
@@ -207,7 +209,9 @@ public class PanelObra extends javax.swing.JPanel {
 
 
 
+
         jComboBox1 = new javax.swing.JComboBox<>();
+
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -242,7 +246,9 @@ public class PanelObra extends javax.swing.JPanel {
 
 
 
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
 
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestión de Obras"));
@@ -518,7 +524,9 @@ public class PanelObra extends javax.swing.JPanel {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
 
+
     private javax.swing.JComboBox<String> jComboBox1;
+
 
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -552,3 +560,4 @@ public class PanelObra extends javax.swing.JPanel {
 
 
 }
+
