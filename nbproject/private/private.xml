@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tiburcio/Documents/NetBeansProjects/GestionEconomicaConstructora/src/gestioneconomicaconstructora/TiposDePersona.java</file>
-            <file>file:/C:/Users/Tiburcio/Documents/NetBeansProjects/GestionEconomicaConstructora/src/login/FrmMain.java</file>
-            <file>file:/C:/Users/Tiburcio/Documents/NetBeansProjects/GestionEconomicaConstructora/src/login/FrmLogin.java</file>
-            <file>file:/C:/Users/Tiburcio/Documents/NetBeansProjects/GestionEconomicaConstructora/src/obra/PanelObra.java</file>
-            <file>file:/C:/Users/Tiburcio/Documents/NetBeansProjects/GestionEconomicaConstructora/src/dba/PersonaDba.java</file>
-            <file>file:/C:/Users/Tiburcio/Documents/NetBeansProjects/GestionEconomicaConstructora/src/gestioneconomicaconstructora/OpcionesDeMenu.java</file>
-            <file>file:/C:/Users/Tiburcio/Documents/NetBeansProjects/GestionEconomicaConstructora/src/obra/DialogoObra.java</file>
+            <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/obra/PanelObra.java</file>
+            <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/dba/PeriodoMaquinariaEnObraDba.java</file>
+            <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/MaquinariaObra/DialogoMaquinariaObra.java</file>
+            <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/login/FrmMain.java</file>
+            <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/dba/MaquinariaDba.java</file>
+            <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/obra/DialogoObra.java</file>
+            <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/dba/PersonaDba.java</file>
+            <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/POJOS/Maquinaria.java</file>
         </group>
     </open-files>
 </project-private>

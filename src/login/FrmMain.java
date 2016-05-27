@@ -5,6 +5,7 @@
  */
 package login;
 
+import MaquinariaObra.DialogoMaquinariaObra;
 import POJOS.Empleado;
 import dba.PersonaDba;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
@@ -46,6 +47,8 @@ public class FrmMain extends javax.swing.JFrame {
                 case EMPLEADO_ALMACEN:
                     break;
                 case ADMINISTRATIVO_OBRA:
+                    mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(true);
+                    mnuItemComprobarRecepcionMateriales.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
                     
@@ -249,6 +252,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemComprobarRecepcionMaquinariaEnObra.setText("Comprobar Recepción Maquinaria en Obra");
         mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(false);
+        mnuItemComprobarRecepcionMaquinariaEnObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuItemComprobarRecepcionMaquinariaEnObra);
 
         jMenuBar1.add(jMenu2);
@@ -310,6 +318,11 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(panel);
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
+
+    private void mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
+       DialogoMaquinariaObra dialogoMaquinariaObra = new DialogoMaquinariaObra(this, true);
+        dialogoMaquinariaObra.setVisible(true);
+    }//GEN-LAST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
 
     
     /**

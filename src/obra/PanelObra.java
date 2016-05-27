@@ -128,6 +128,7 @@ public class PanelObra extends javax.swing.JPanel {
         Obra obra = new Obra();
 
         try {
+            
             obra.setFechaInicio(jXDatePickerFechaInicio.getDate());
             obra.setFechaFin(jXDatePickerFechaFin.getDate());
             obra.setDireccion(txtDireccion.getText());
@@ -449,6 +450,7 @@ public class PanelObra extends javax.swing.JPanel {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
         habilitar();
+        
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
