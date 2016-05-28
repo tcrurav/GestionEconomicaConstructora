@@ -17,7 +17,7 @@ public class MySQL {
     private static Connection conn = null;
     private static final String db = "constructora";
     private static final String user = "root";
-    private static final String password = "";
+    private static final String password = "1234";
     private static String url = "jdbc:mysql://localhost/" + db;
     
     public static Connection getConnection(){

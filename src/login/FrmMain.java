@@ -56,7 +56,7 @@ public class FrmMain extends javax.swing.JFrame {
                 case ADMINISTRATIVO_OBRA:
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
-                    
+                    mnuAsignarHorasDeTrabajadorEnObra.setEnabled(true);
                     break;
                 case EMPLEADO_OBRA:
                     break;
@@ -109,7 +109,7 @@ public class FrmMain extends javax.swing.JFrame {
         mnuEmpleado = new javax.swing.JMenu();
         mnuItemSolicitarPeriodoTrabajadorObra = new javax.swing.JMenuItem();
         mnuItemAsignarSueldoAEmpleado = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mnuAsignarHorasDeTrabajadorEnObra = new javax.swing.JMenuItem();
         mnuItemDarDeAltaAEmpleado = new javax.swing.JMenuItem();
         mnuItemDarAltaCategoriaEmpleado = new javax.swing.JMenuItem();
         mnuProveedor = new javax.swing.JMenu();
@@ -214,12 +214,22 @@ public class FrmMain extends javax.swing.JFrame {
         mnuItemAsignarSueldoAEmpleado.setEnabled(false);
         mnuEmpleado.add(mnuItemAsignarSueldoAEmpleado);
 
-        jMenuItem6.setText("Asignar horas de Trabajador a Obra");
-        jMenuItem6.setEnabled(false);
-        mnuEmpleado.add(jMenuItem6);
+        mnuAsignarHorasDeTrabajadorEnObra.setText("Asignar horas de Trabajador a Obra");
+        mnuAsignarHorasDeTrabajadorEnObra.setEnabled(false);
+        mnuAsignarHorasDeTrabajadorEnObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAsignarHorasDeTrabajadorEnObraActionPerformed(evt);
+            }
+        });
+        mnuEmpleado.add(mnuAsignarHorasDeTrabajadorEnObra);
 
         mnuItemDarDeAltaAEmpleado.setText("Dar de Alta a Empleado");
         mnuItemDarDeAltaAEmpleado.setEnabled(false);
+        mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
+            }
+        });
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
 
         mnuItemDarAltaCategoriaEmpleado.setText("Dar de Alta a Categoria de Empleado");
@@ -319,6 +329,18 @@ public class FrmMain extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
 
+    private void mnuItemDarDeAltaAEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
+
+    private void mnuAsignarHorasDeTrabajadorEnObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAsignarHorasDeTrabajadorEnObraActionPerformed
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_mnuAsignarHorasDeTrabajadorEnObraActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -366,8 +388,8 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu mnuAlbaran;
+    private javax.swing.JMenuItem mnuAsignarHorasDeTrabajadorEnObra;
     private javax.swing.JMenuItem mnuDarAltaMaquinaria;
     private javax.swing.JMenu mnuEmpleado;
     private javax.swing.JMenuItem mnuItemAsignarMaquinariaAObra;

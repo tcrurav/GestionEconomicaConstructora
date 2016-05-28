@@ -6,6 +6,7 @@
 package dba;
 
 import POJOS.Empleado;
+import POJOS.EmpleadoObra;
 import POJOS.JefeDeObra;
 import POJOS.Persona;
 import static gestioneconomicaconstructora.TiposDePersona.*;
@@ -116,7 +117,7 @@ public class PersonaDba {
     public static Empleado getEmpleado(String usuario, String contrasena) throws SQLException {
         Empleado empleado = new Empleado();
 
-        String sql = "select * from Persona where Usuario='" + usuario + "' and Contra='" + contrasena + "'";
+        String sql = "select * from persona where Usuario='" + usuario + "' and Contra='" + contrasena + "'";
 
         try {
 
@@ -175,7 +176,7 @@ public class PersonaDba {
 
     public static ArrayList<JefeDeObra> getJefesDeObra() throws SQLException {
         conn = MySQL.getConnection();
-        String sql = "select * from JefeDeObra";
+        String sql = "select * from jefeDeObra";
 
         ArrayList<JefeDeObra> jefesDeObra = new ArrayList<JefeDeObra>();
 
@@ -209,7 +210,7 @@ public class PersonaDba {
 
     public static ArrayList<Empleado> getEmpleados() throws SQLException {
         conn = MySQL.getConnection();
-        String sql = "select * from Empleado";
+        String sql = "select * from empleado";
 
         ArrayList<Empleado> empleados = new ArrayList<>();
 
@@ -240,10 +241,44 @@ public class PersonaDba {
 
         //return null;
     }
+    
+    public static ArrayList<EmpleadoObra> getEmpleadosObra() throws SQLException {
+        conn = MySQL.getConnection();
+        String sql = "select * from persona where CategoriaId = 1 or CategoriaId = 2";
+
+        ArrayList<EmpleadoObra> empleadosObra = new ArrayList<>();
+
+        try {
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+
+            while (rs.next()) {
+                EmpleadoObra empleadoObra = new EmpleadoObra();
+                empleadoObra.setPK_ID(rs.getInt("ID"));
+                empleadoObra.setNombre(rs.getString("Nombre"));
+                empleadoObra.setApellidos(rs.getString("Apellidos"));
+                empleadoObra.setTelefono(rs.getString("Telefono"));
+                empleadoObra.setDni(rs.getString("Dni"));
+                empleadoObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+
+                empleadosObra.add(empleadoObra);
+            }
+
+            return empleadosObra;
+
+        } catch (SQLException ex) {
+            //Logger.getLogger(FrmPersona.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        } finally {
+            close();
+        }
+
+        //return null;
+    }
 
     public static ArrayList<Persona> getPersonas() throws SQLException {
         conn = MySQL.getConnection();
-        String sql = "select * from Persona";
+        String sql = "select * from persona";
 
         ArrayList<Persona> personas = new ArrayList<>();
 
