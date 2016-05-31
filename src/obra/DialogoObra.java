@@ -28,7 +28,7 @@ public class DialogoObra extends javax.swing.JDialog {
         initComponents();
         deshabilitar();
         llenar();
-        this.pack();      
+        this.pack();
         this.setLocationRelativeTo(null);
     }
 
@@ -187,7 +187,7 @@ public class DialogoObra extends javax.swing.JDialog {
         }
 
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -282,11 +282,14 @@ public class DialogoObra extends javax.swing.JDialog {
 
         jLabel13.setText("cantidadFacturada:");
 
+
+
         jXDatePickerFechaInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXDatePickerFechaInicioActionPerformed(evt);
             }
         });
+
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -504,9 +507,11 @@ public class DialogoObra extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tblObrasMouseClicked
 
+
     private void jXDatePickerFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePickerFechaInicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jXDatePickerFechaInicioActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -515,7 +520,7 @@ public class DialogoObra extends javax.swing.JDialog {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
