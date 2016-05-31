@@ -9,11 +9,6 @@ public class Maquinaria {
 
 
         private int PK_ID;
-    
-
-
-
-
 	Collection<PeriodoMaquinariaEnObra> periodoMaquinariaEnObra;
 	private String nombre;
 	private float precioDeCompra;
@@ -85,28 +80,13 @@ public class Maquinaria {
 	public void setCodInventario(String codInventario) {
 		this.codInventario = codInventario;
 	}
-
-
-
-
-
-    /**
-     * @return the PK_ID
-     */
-    public int getPK_ID() {
+        
+        public int getPK_ID() {
         return PK_ID;
     }
 
-    /**
-     * @param PK_ID the PK_ID to set
-     */
     public void setPK_ID(int PK_ID) {
         this.PK_ID = PK_ID;
     }
-
-
-
-
-
 
 }

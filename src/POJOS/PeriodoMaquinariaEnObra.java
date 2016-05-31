@@ -1,147 +1,144 @@
 package POJOS;
 
-import java.util.*;
+import java.util.Date;
+
 public class PeriodoMaquinariaEnObra {
 
 
+    public JefeDeObra jefeDeObra;
+    public EmpleadoAlmacen empleadoAlmacen;
+    public AdministrativoObra administrativoObra;
+    public Obra obra;
+    public Maquinaria maquinaria;
+    private int PK_ID;
+    private Date fechaInicio;
+    private Date fechaFin;
+    private Date fechaSolicitud;
+    private Date fechaRecepcion;
 
-
-        
-        private int PK_ID;
-	private Obra obra;
-	private Maquinaria maquinaria;
-	private Date fechaInicio;
-	private Date fechaFin;
-	private JefeDeObra jefeDeObra;
-	private EmpleadoAlmacen empleadoAlmacen;
-	private Date fechaSolicitud;
-	private Date fechaRecepcion;
-
-    /**
-     * @return the PK_ID
-     */
-    public int getPK_ID() {
-        return PK_ID;
+    public JefeDeObra getJefeDeObra() {
+        return jefeDeObra;
     }
 
-    /**
-     * @param PK_ID the PK_ID to set
-     */
-    public void setPK_ID(int PK_ID) {
-        this.PK_ID = PK_ID;
+    public void setJefeDeObra(JefeDeObra jefeDeObra) {
+        this.jefeDeObra = jefeDeObra;
     }
 
-    /**
-     * @return the obra
-     */
+    public EmpleadoAlmacen getEmpleadoAlmacen() {
+        return empleadoAlmacen;
+    }
+
+    public void setEmpleadoAlmacen(EmpleadoAlmacen empleadoAlmacen) {
+        this.empleadoAlmacen = empleadoAlmacen;
+    }
+
+    public AdministrativoObra getAdministrativoObra() {
+        return administrativoObra;
+    }
+
+    public void setAdministrativoObra(AdministrativoObra administrativoObra) {
+        this.administrativoObra = administrativoObra;
+    }
+
+
     public Obra getObra() {
         return obra;
     }
 
-    /**
-     * @param obra the obra to set
-     */
+
     public void setObra(Obra obra) {
         this.obra = obra;
     }
 
-    /**
-     * @return the maquinaria
-     */
+
     public Maquinaria getMaquinaria() {
         return maquinaria;
     }
 
-    /**
-     * @param maquinaria the maquinaria to set
-     */
+
     public void setMaquinaria(Maquinaria maquinaria) {
         this.maquinaria = maquinaria;
     }
 
-    /**
-     * @return the fechaInicio
-     */
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
+
 
     /**
      * @param fechaInicio the fechaInicio to set
+     */
+
+    public Date getFechaInicio() {
+        return this.fechaInicio;
+    }
+
+    /**
+     *
+     * @param fechaInicio
      */
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
+
+
     /**
-     * @return the fechaFin
-     */
+     * @param fechaSolicitud the fechaSolicitud to set
+     */ 
+    public PeriodoMaquinariaEnObra() {
+        // TODO - implement PeriodoMaquinariaEnObra.PeriodoMaquinariaEnObra
+
+    }
+
     public Date getFechaFin() {
-        return fechaFin;
+        return this.fechaFin;
     }
 
     /**
-     * @param fechaFin the fechaFin to set
+     *
+     * @param fechaFin
      */
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
 
-    /**
-     * @return the jefeDeObra
-     */
-    public JefeDeObra getJefeDeObra() {
-        return jefeDeObra;
-    }
-
-    /**
-     * @param jefeDeObra the jefeDeObra to set
-     */
-    public void setJefeDeObra(JefeDeObra jefeDeObra) {
-        this.jefeDeObra = jefeDeObra;
-    }
-
-    /**
-     * @return the empleadoAlmacen
-     */
-    public EmpleadoAlmacen getEmpleadoAlmacen() {
-        return empleadoAlmacen;
-    }
-
-    /**
-     * @param empleadoAlmacen the empleadoAlmacen to set
-     */
-    public void setEmpleadoAlmacen(EmpleadoAlmacen empleadoAlmacen) {
-        this.empleadoAlmacen = empleadoAlmacen;
-    }
-
-    /**
-     * @return the fechaSolicitud
-     */
     public Date getFechaSolicitud() {
-        return fechaSolicitud;
+        return this.fechaSolicitud;
     }
 
     /**
-     * @param fechaSolicitud the fechaSolicitud to set
+     *
+     * @param fechaSolicitud
+>>>>>>> origin/ComprobarRecepcionDeMaquinariaEnObraDer
      */
     public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    /**
-     * @return the fechaRecepcion
-     */
+
     public Date getFechaRecepcion() {
-        return fechaRecepcion;
+        return this.fechaRecepcion;
     }
 
     /**
-     * @param fechaRecepcion the fechaRecepcion to set
+     *
+     * @param fechaRecepcion
      */
+    
     public void setFechaRecepcion(Date fechaRecepcion) {
         this.fechaRecepcion = fechaRecepcion;
     }
 
 
+    /**
+     *
+     * @param parameter
+     */
+    public int getPK_ID() {
+        return PK_ID;
+    }
+
+    public void setPK_ID(int ID) {
+        this.PK_ID = ID;
+    }
+
 }
+

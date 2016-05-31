@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2016 a las 19:17:09
+-- Tiempo de generación: 27-05-2016 a las 03:52:52
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.5
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `constructora`
 --
-CREATE DATABASE IF NOT EXISTS `constructora` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `constructora`;
 
 -- --------------------------------------------------------
 
@@ -83,6 +81,13 @@ CREATE TABLE `maquinaria` (
   `FechaCompra` date DEFAULT NULL,
   `CodInventario` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `maquinaria`
+--
+
+INSERT INTO `maquinaria` (`ID`, `Nombre`, `PrecioDeCompra`, `FechaFinVidaUtil`, `FechaCompra`, `CodInventario`) VALUES
+(5, 'Tractor', 1500, '2016-11-10', '2016-05-20', '200');
 
 -- --------------------------------------------------------
 
@@ -196,8 +201,17 @@ CREATE TABLE `periodomaquinariaenobra` (
   `FechaSolicitud` date DEFAULT NULL,
   `FechaRecepcion` date DEFAULT NULL,
   `MaquinariaID` int(11) NOT NULL,
-  `ObraID` int(11) NOT NULL
+  `ObraID` int(11) NOT NULL,
+  `AdministrativoObraQueVerificaID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `periodomaquinariaenobra`
+--
+
+INSERT INTO `periodomaquinariaenobra` (`ID`, `EmpleadoAlmacenQueAsignaID`, `JefeDeObraQueSolicitaID`, `FechaInicio`, `FechaFin`, `FechaSolicitud`, `FechaRecepcion`, `MaquinariaID`, `ObraID`, `AdministrativoObraQueVerificaID`) VALUES
+(9, 20, 30, '2016-05-26', '2016-05-26', '2016-05-26', '2016-05-26', 5, 5, 10),
+(14, 20, 30, '2016-05-27', '2016-05-27', '2016-05-27', '2016-05-27', 5, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -222,7 +236,11 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`ID`, `CategoriaID`, `Nombre`, `Apellidos`, `Telefono`, `Dni`, `Usuario`, `Contra`, `Discriminator`) VALUES
-(2, 2, 'Tiburcio', 'Cruz Ravelo', '655538544', '52845821d', 'tiburcio', 'tiburcio', '6');
+(1, 1, 'Alberto', 'Viera Gil', '649235700', '43293575F', 'alberto', 'alberto', '2'),
+(2, 2, 'Tiburcio', 'Cruz Ravelo', '655538544', '52845821d', 'tiburcio', 'tiburcio', '6'),
+(10, 1, 'Juan', 'Hernandez perez', '647892547', '44557788F', 'juan', 'juan', '2'),
+(20, 2, 'Pepe', 'Viera Hernandez', '653214788', '47223366A', 'pepe', 'pepe', '1'),
+(30, 1, 'Maria', 'Cabrera Gil', '928445566', '41789632V', 'maria', 'maria', '5');
 
 -- --------------------------------------------------------
 
@@ -324,6 +342,7 @@ ALTER TABLE `periodojefeobraenobra`
 --
 ALTER TABLE `periodomaquinariaenobra`
   ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `verifica` (`AdministrativoObraQueVerificaID`),
   ADD KEY `PeriodoMaquinariaEnObra` (`MaquinariaID`),
   ADD KEY `PeriodoMaquinariaEnObra2` (`ObraID`),
   ADD KEY `solicita2` (`JefeDeObraQueSolicitaID`),
@@ -371,7 +390,7 @@ ALTER TABLE `lineaalbaran`
 -- AUTO_INCREMENT de la tabla `maquinaria`
 --
 ALTER TABLE `maquinaria`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `material`
 --
@@ -401,12 +420,12 @@ ALTER TABLE `periodojefeobraenobra`
 -- AUTO_INCREMENT de la tabla `periodomaquinariaenobra`
 --
 ALTER TABLE `periodomaquinariaenobra`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
@@ -462,6 +481,7 @@ ALTER TABLE `periodomaquinariaenobra`
   ADD CONSTRAINT `PeriodoMaquinariaEnObra` FOREIGN KEY (`MaquinariaID`) REFERENCES `maquinaria` (`ID`),
   ADD CONSTRAINT `PeriodoMaquinariaEnObra2` FOREIGN KEY (`ObraID`) REFERENCES `obra` (`ID`),
   ADD CONSTRAINT `asigna` FOREIGN KEY (`EmpleadoAlmacenQueAsignaID`) REFERENCES `persona` (`ID`),
+  ADD CONSTRAINT `periodomaquinariaenobra_ibfk_1` FOREIGN KEY (`AdministrativoObraQueVerificaID`) REFERENCES `persona` (`ID`),
   ADD CONSTRAINT `solicita2` FOREIGN KEY (`JefeDeObraQueSolicitaID`) REFERENCES `persona` (`ID`);
 
 --

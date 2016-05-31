@@ -5,7 +5,12 @@
  */
 package dba;
 
+
 import POJOS.Obra;
+
+import POJOS.EmpleadoAlmacen;
+import POJOS.Maquinaria;
+
 import POJOS.PeriodoMaquinariaEnObra;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,157 +18,157 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 
 /**
  *
- * @author samue
+ * @author Albbe
  */
 public class PeriodoMaquinariaEnObraDba {
-    public static PeriodoMaquinariaEnObra getPeriodoMaquinariaEnObra(int identificador) throws SQLException{
-        PeriodoMaquinariaEnObra periodoMaquinariaEnObra = new PeriodoMaquinariaEnObra();
-        
-        String sql = "Select * from periodomaquinariaenobra where ID=" + identificador;
-            try {
-                Connection conn = MySQL.getConnection();
-                Statement sentencia = conn.createStatement();
-                ResultSet rs = sentencia.executeQuery(sql);
-                
-                if(rs.next()){
-                     
-                    periodoMaquinariaEnObra.setPK_ID(rs.getInt("ID"));
-                    periodoMaquinariaEnObra.setEmpleadoAlmacen(PersonaDba.getEmpleadoAlmacen(rs.getInt("EmpleadoAlmacenQueAsignaID")));
-                    periodoMaquinariaEnObra.setJefeDeObra(PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));
-                    periodoMaquinariaEnObra.setFechaInicio(rs.getDate("FechaInicio"));
-                    periodoMaquinariaEnObra.setFechaFin(rs.getDate("FechaFin"));
-                    periodoMaquinariaEnObra.setFechaSolicitud(rs.getDate("FechaSolicitud"));
-                    periodoMaquinariaEnObra.setFechaRecepcion(rs.getDate("FechaRecepcion"));
-                    periodoMaquinariaEnObra.setMaquinaria(MaquinariaDba.getMaquinaria(rs.getInt("MaquinariaID")));
-                    periodoMaquinariaEnObra.setObra(ObraDba.getObra(rs.getInt("ObraID")));
-                    
-                } else {
-                    return null;
-                }
 
-            } catch (SQLException ex) {
-                throw ex;
+    public static PeriodoMaquinariaEnObra getPeriodoMaquinariaEnObra(int identificador) throws SQLException {
+        PeriodoMaquinariaEnObra periodomaquinariaenobra = new PeriodoMaquinariaEnObra();
+
+        String sql = "Select * from periodomaquinariaenobra where ID=" + identificador;
+
+        try {
+            Connection conn = MySQL.getConnection();
+            Statement sentencia = conn.createStatement();
+            ResultSet rs = sentencia.executeQuery(sql);
+            if (rs.next()) {
+                periodomaquinariaenobra.setPK_ID(rs.getInt("ID"));
+                periodomaquinariaenobra.setEmpleadoAlmacen(dba.PersonaDba.getEmpleadoAlmacen(rs.getInt("EmpleadoAlmacenQueAsignaID")));
+                periodomaquinariaenobra.setJefeDeObra(dba.PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));
+                periodomaquinariaenobra.setFechaInicio(rs.getDate("FechaInicio"));
+                periodomaquinariaenobra.setFechaFin(rs.getDate("FechaFin"));
+                periodomaquinariaenobra.setFechaSolicitud(rs.getDate("FechaSolicitud"));
+                periodomaquinariaenobra.setFechaRecepcion(rs.getDate("FechaRecepcion"));
+                periodomaquinariaenobra.setMaquinaria(dba.MaquinariaDba.getMaquinaria(rs.getInt("MaquinariaID")));
+                periodomaquinariaenobra.setObra(dba.ObraDba.getObra(rs.getInt("ObraID")));
+                periodomaquinariaenobra.setAdministrativoObra(dba.PersonaDba.getAdministrativoObra(rs.getInt("AdministrativoObraQueVerificaID")));
+
+            } else {
+                return null;
             }
-       
-        return periodoMaquinariaEnObra;
+
+        } catch (SQLException ex) {
+            throw ex;
+        }
+
+        return periodomaquinariaenobra;
+
     }
-    
-    
-public static ArrayList<PeriodoMaquinariaEnObra> getPeriodoMaquinariasEnObras() throws SQLException{
+
+    public static ArrayList<PeriodoMaquinariaEnObra> getPeriodoMaquinariasEnObras() throws SQLException {
         Connection conn = MySQL.getConnection();
         String sql = "Select * from periodomaquinariaenobra";
-        
-        ArrayList<PeriodoMaquinariaEnObra> periodoMaquinariasEnObras = new ArrayList<PeriodoMaquinariaEnObra>();
-        
+        ArrayList<PeriodoMaquinariaEnObra> periodomaquinariasenobra = new ArrayList<PeriodoMaquinariaEnObra>();
         try {
             Statement sentencia = conn.createStatement();
             ResultSet rs = sentencia.executeQuery(sql);
-            
-            while(rs.next()){
-                    PeriodoMaquinariaEnObra periodoMaquinariaEnObra = new PeriodoMaquinariaEnObra();
-                    
-                    periodoMaquinariaEnObra.setPK_ID(rs.getInt("ID"));
-                    periodoMaquinariaEnObra.setEmpleadoAlmacen(PersonaDba.getEmpleadoAlmacen(rs.getInt("EmpleadoAlmacenQueAsignaID")));
-                    periodoMaquinariaEnObra.setJefeDeObra(PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));
-                    periodoMaquinariaEnObra.setFechaInicio(rs.getDate("FechaInicio"));
-                    periodoMaquinariaEnObra.setFechaFin(rs.getDate("FechaFin"));
-                    periodoMaquinariaEnObra.setFechaSolicitud(rs.getDate("FechaSolicitud"));
-                    periodoMaquinariaEnObra.setFechaRecepcion(rs.getDate("FechaRecepcion"));
-                    periodoMaquinariaEnObra.setMaquinaria(MaquinariaDba.getMaquinaria(rs.getInt("MaquinariaID")));
-                    periodoMaquinariaEnObra.setObra(ObraDba.getObra(rs.getInt("ObraID")));                
-                
-                    periodoMaquinariasEnObras.add(periodoMaquinariaEnObra);
+
+            while (rs.next()) {
+                PeriodoMaquinariaEnObra periodomaquinariaenobra = new PeriodoMaquinariaEnObra();
+
+                periodomaquinariaenobra.setPK_ID(rs.getInt("ID"));
+                periodomaquinariaenobra.setEmpleadoAlmacen(PersonaDba.getEmpleadoAlmacen(rs.getInt("EmpleadoAlmacenQueAsignaID")));
+                periodomaquinariaenobra.setJefeDeObra(PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));
+                periodomaquinariaenobra.setFechaInicio(rs.getDate("FechaInicio"));
+                periodomaquinariaenobra.setFechaFin(rs.getDate("FechaFin"));
+                periodomaquinariaenobra.setFechaSolicitud(rs.getDate("FechaSolicitud"));
+                periodomaquinariaenobra.setFechaRecepcion(rs.getDate("FechaRecepcion"));
+                periodomaquinariaenobra.setMaquinaria(MaquinariaDba.getMaquinaria(rs.getInt("MaquinariaID")));
+                periodomaquinariaenobra.setObra(ObraDba.getObra(rs.getInt("ObraID")));
+                periodomaquinariaenobra.setAdministrativoObra(PersonaDba.getAdministrativoObra(rs.getInt("AdministrativoObraQueVerificaID")));
+
+                periodomaquinariasenobra.add(periodomaquinariaenobra);
+
             }
-            
-            return periodoMaquinariasEnObras;
-            
+            return periodomaquinariasenobra;
+
         } catch (SQLException ex) {
             throw ex;
         }
-        
+
     }
 
-
-    public static boolean insertPeriodoMaquinariaEnObra(PeriodoMaquinariaEnObra periodoMaquinariaEnObra) throws SQLException{
+    public static boolean insertPeriodoMaquinariaEnObra(PeriodoMaquinariaEnObra periodomaquinariaenobra) throws SQLException {
         Connection conn = MySQL.getConnection();
-        String sql = "insert into periodomaquinariaenobra (EmpleadoAlmacenQueAsignaID, JefeDeObraQueSolicitaID, " 
-                + "FechaInicio, FechaFin, FechaSolicitud, FechaRecepcion, MaquinariaID, ObraID)" 
-                + " values (?, ?, ?, ?, ?, ?, ?, ?)";
-           
+        String sql = "insert into periodomaquinariaenobra(EmpleadoAlmacenQueAsignaID, JefeDeObraQueSolicitaID, FechaInicio, FechaFin, FechaSolicitud, FechaRecepcion, MaquinariaID, ObraID, AdministrativoObraQueVerificaID)"
+                + "values(?, ?, ?, ? , ? , ?, ?, ?, ?)";
+
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-            
+
             PreparedStatement ps = conn.prepareCall(sql);
-            ps.setInt(1, periodoMaquinariaEnObra.getEmpleadoAlmacen().getPK_ID());
-            ps.setInt(2, periodoMaquinariaEnObra.getJefeDeObra().getPK_ID());
-            ps.setString(3, sdf.format(periodoMaquinariaEnObra.getFechaInicio()));
-            ps.setString(4, sdf.format(periodoMaquinariaEnObra.getFechaFin()));
-            ps.setString(5, sdf.format(periodoMaquinariaEnObra.getFechaSolicitud()));
-            ps.setString(6, sdf.format(periodoMaquinariaEnObra.getFechaRecepcion()));
-            ps.setInt(7, periodoMaquinariaEnObra.getMaquinaria().getPK_ID());
-            ps.setInt(8, periodoMaquinariaEnObra.getObra().getPK_ID());
-           
+
+            ps.setInt(1, periodomaquinariaenobra.getEmpleadoAlmacen().getPK_ID());
+            ps.setInt(2, periodomaquinariaenobra.getJefeDeObra().getPK_ID());
+            ps.setString(3, sdf.format(periodomaquinariaenobra.getFechaInicio()));
+            ps.setString(4, sdf.format(periodomaquinariaenobra.getFechaFin()));
+            ps.setString(5, sdf.format(periodomaquinariaenobra.getFechaSolicitud()));
+            ps.setString(6, sdf.format(periodomaquinariaenobra.getFechaRecepcion()));
+            ps.setInt(7, periodomaquinariaenobra.getMaquinaria().getPK_ID());
+            ps.setInt(8, periodomaquinariaenobra.getObra().getPK_ID());
+            ps.setInt(9, periodomaquinariaenobra.getAdministrativoObra().getPK_ID());
             int n = ps.executeUpdate();
-            
-            if(n>0){
+            if (n > 0) {
                 //JOptionPane.showMessageDialog(null, "Datos guardados");
                 return true;
             }
-            
+
         } catch (SQLException ex) {
             throw ex;
-            
         }
         return false;
-    }
-    
 
-    public static boolean updatePeriodoMaquinariaEnObra(PeriodoMaquinariaEnObra periodoMaquinariaEnObra) throws SQLException{
+    }
+
+    public static boolean updatePeriodoMaquinariaEnObra(PeriodoMaquinariaEnObra periodomaquinariaenobra) throws SQLException {
         Connection conn = MySQL.getConnection();
         
-        String sql = "update periodomaquinariaenobra set EmpleadoAlmacenQueAsignaID=?, JefeDeObraQueSolicitaID=?, " 
-                + "FechaInicio=?, FechaFin=?, FechaSolicitud=?, FechaRecepcion=?," 
-                + "MaquinariaID=?, ObraID=?"
-                +" where ID=?";
+        String sql = "update periodomaquinariaenobra set EmpleadoAlmacenQueAsignaID=?, JefeDeObraQueSolicitaID=?, FechaInicio=?, FechaFin=?, FechaSolicitud=?, FechaRecepcion=?, MaquinariaID=?, ObraID=?, AdministrativoObraQueVerificaID=?"
+                + "where ID=?";
+
+
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         PreparedStatement ps;
         try {
             ps = conn.prepareCall(sql);
             
-            ps.setInt(1, periodoMaquinariaEnObra.getEmpleadoAlmacen().getPK_ID());
-            ps.setInt(2, periodoMaquinariaEnObra.getJefeDeObra().getPK_ID());
-            ps.setString(3, sdf.format(periodoMaquinariaEnObra.getFechaInicio()));
-            ps.setString(4, sdf.format(periodoMaquinariaEnObra.getFechaFin()));
-            ps.setString(5, sdf.format(periodoMaquinariaEnObra.getFechaSolicitud()));
-            ps.setString(6, sdf.format(periodoMaquinariaEnObra.getFechaRecepcion()));
-            ps.setInt(7, periodoMaquinariaEnObra.getMaquinaria().getPK_ID());
-            ps.setInt(8, periodoMaquinariaEnObra.getObra().getPK_ID());
-            ps.setInt(9, periodoMaquinariaEnObra.getPK_ID());
-            
+
+            ps.setInt(1, periodomaquinariaenobra.getEmpleadoAlmacen().getPK_ID());
+            ps.setInt(2, periodomaquinariaenobra.getJefeDeObra().getPK_ID());
+            ps.setString(3, sdf.format(periodomaquinariaenobra.getFechaInicio()));
+            ps.setString(4, sdf.format(periodomaquinariaenobra.getFechaFin()));
+            ps.setString(5, sdf.format(periodomaquinariaenobra.getFechaSolicitud()));
+            ps.setString(6, sdf.format(periodomaquinariaenobra.getFechaRecepcion()));
+            ps.setInt(7, periodomaquinariaenobra.getMaquinaria().getPK_ID());
+            ps.setInt(8, periodomaquinariaenobra.getObra().getPK_ID());
+            ps.setInt(9, periodomaquinariaenobra.getAdministrativoObra().getPK_ID());
+
             int n = ps.executeUpdate();
-            
-            if(n>0){
+            if (n > 0) {
                 return true;
             }
-            
+
         } catch (SQLException ex) {
             throw ex;
-        } 
+        }
         return false;
+
     }
-    
- 
-    public static boolean deletePeriodoMaquinariaEnObra(int identificador) throws SQLException{
+
+    public static boolean deletePeriodoMaquinariaEnObra(int identificador) throws SQLException {
+
         Connection conn = MySQL.getConnection();
         String sql = "delete from periodomaquinariaenobra where id=" + identificador;
         try {
             Statement sentencia = conn.createStatement();
             int n = sentencia.executeUpdate(sql);
-            if (n>0){
+
+            if (n > 0) {
+
                 //JOptionPane.showMessageDialog(null, "Datos Borrados");
                 return true;
             }
@@ -172,4 +177,5 @@ public static ArrayList<PeriodoMaquinariaEnObra> getPeriodoMaquinariasEnObras() 
         }
         return false;
     }
+
 }

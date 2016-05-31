@@ -229,6 +229,9 @@
                 <Property name="text" type="java.lang.String" value="Comprobar Recepci&#xf3;n Maquinaria en Obra"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

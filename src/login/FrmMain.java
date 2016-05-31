@@ -5,6 +5,7 @@
  */
 package login;
 
+import MaquinariaObra.DialogoMaquinariaObra;
 import POJOS.Empleado;
 import darDeAltaAProveedor.darDeAltaAProveedor;
 import dba.PersonaDba;
@@ -62,6 +63,8 @@ public class FrmMain extends javax.swing.JFrame {
 
                     break;
                 case ADMINISTRATIVO_OBRA:
+                    mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(true);
+                    mnuItemComprobarRecepcionMateriales.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
 
@@ -305,6 +308,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemComprobarRecepcionMaquinariaEnObra.setText("Comprobar Recepción Maquinaria en Obra");
         mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(false);
+        mnuItemComprobarRecepcionMaquinariaEnObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuItemComprobarRecepcionMaquinariaEnObra);
 
         jMenuBar1.add(jMenu2);
@@ -388,6 +396,7 @@ public class FrmMain extends javax.swing.JFrame {
 
 
 
+
     private void mnuItemDarDeAltaAEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
         DialogoEmpleado dialogoEmpleado = new DialogoEmpleado(this, true);
         dialogoEmpleado.setVisible(true);
@@ -429,6 +438,14 @@ public class FrmMain extends javax.swing.JFrame {
 
 
 
+
+
+    private void mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
+       DialogoMaquinariaObra dialogoMaquinariaObra = new DialogoMaquinariaObra(this, true);
+        dialogoMaquinariaObra.setVisible(true);
+    }//GEN-LAST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
+
+    
 
     /**
      * @param args the command line arguments

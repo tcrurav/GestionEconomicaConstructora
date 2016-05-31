@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/M:/TerceraEntregaETS/GestionEconomicaConstructora/src/darDeAltaAProveedor/darDeAltaAProveedor.java</file>
-            <file>file:/M:/TerceraEntregaETS/GestionEconomicaConstructora/src/dba/AltaProveedores.java</file>
-            <file>file:/M:/TerceraEntregaETS/GestionEconomicaConstructora/src/POJOS/Proveedor.java</file>
+            <file>file:/M:/TerceraEntregaETS/GestionEconomicaConstructora/src/MaquinariaObra/DialogoMaquinariaObra.java</file>
+            <file>file:/M:/TerceraEntregaETS/GestionEconomicaConstructora/src/dba/PeriodoMaquinariaEnObraDba.java</file>
+            <file>file:/M:/TerceraEntregaETS/GestionEconomicaConstructora/src/POJOS/Maquinaria.java</file>
         </group>
     </open-files>
 </project-private>
