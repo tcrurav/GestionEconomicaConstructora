@@ -11,4 +11,5 @@ public class AdministrativoObra extends Empleado {
 		throw new UnsupportedOperationException();
 	}
 
+
 }
