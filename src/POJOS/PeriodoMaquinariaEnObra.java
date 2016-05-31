@@ -4,6 +4,7 @@ import java.util.*;
 public class PeriodoMaquinariaEnObra {
 
 
+
         
         private int PK_ID;
 	private Obra obra;
@@ -140,9 +141,5 @@ public class PeriodoMaquinariaEnObra {
     public void setFechaRecepcion(Date fechaRecepcion) {
         this.fechaRecepcion = fechaRecepcion;
     }
-
-
-
-
 
 }

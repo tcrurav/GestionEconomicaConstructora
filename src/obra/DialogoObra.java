@@ -588,3 +588,4 @@ public class DialogoObra extends javax.swing.JDialog {
     private javax.swing.JTextField txtPresupuestoTotalEjecucion;
     // End of variables declaration//GEN-END:variables
 }
+

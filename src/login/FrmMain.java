@@ -17,7 +17,7 @@ import obra.DialogoObra;
 import obra.PanelObra;
 import empleado.DialogoEmpleado;
 import periodoMaquinariaEnObra.DialogoPeriodoMaquinariaEnObra;
-//import empleadoAlmacen.DarDeAltaMaterial;
+import empleadoAlmacen.DarDeAltaMaterial;
 import javax.swing.JDialog;
 
 /**
@@ -369,8 +369,8 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void mnuItemDarAltaAMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarAltaAMaterialActionPerformed
         // TODO add your handling code here:
-        /*DarDeAltaMaterial altaMaterial = new DarDeAltaMaterial(this, true);
-        altaMaterial.setVisible(true);*/
+        DarDeAltaMaterial altaMaterial = new DarDeAltaMaterial(this, true);
+        altaMaterial.setVisible(true);
 
     }//GEN-LAST:event_mnuItemDarAltaAMaterialActionPerformed
 
