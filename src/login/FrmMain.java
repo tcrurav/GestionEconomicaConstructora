@@ -6,6 +6,7 @@
 package login;
 
 import POJOS.Empleado;
+import darDeAltaAProveedor.darDeAltaAProveedor;
 import dba.PersonaDba;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
@@ -86,6 +87,7 @@ public class FrmMain extends javax.swing.JFrame {
                 case ADMINISTRATIVO_CONTABILIDAD:
                     break;
                 case CONTACTO_PROVEEDOR:
+                    mnuItemDarAltaProveedores.setEnabled(true);
                     break;
             }
         } catch (SQLException ex) {
@@ -204,16 +206,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemSolicitarMaterialParaUnaObra.setText("Solicitar Material para una Obra");
         mnuItemSolicitarMaterialParaUnaObra.setEnabled(false);
-
-
         mnuItemSolicitarMaterialParaUnaObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemSolicitarMaterialParaUnaObraActionPerformed(evt);
             }
         });
-
-
-
         mnuMaterial.add(mnuItemSolicitarMaterialParaUnaObra);
 
         mnuItemAsignarMaterialAObra.setText("Asignar Material a Obra");
@@ -222,17 +219,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarAltaAMaterial.setText("Dar de Alta a Material");
         mnuItemDarAltaAMaterial.setEnabled(false);
-
-
-
-
         mnuItemDarAltaAMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemDarAltaAMaterialActionPerformed(evt);
             }
         });
-
-
         mnuMaterial.add(mnuItemDarAltaAMaterial);
 
         mnuItemComprobarRecepcionMateriales.setText("Comprobar Recepción de Materiales");
@@ -262,18 +253,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarDeAltaAEmpleado.setText("Dar de Alta a Empleado");
         mnuItemDarDeAltaAEmpleado.setEnabled(false);
-
-
-
-
-
         mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
             }
         });
-
-
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
 
         mnuItemDarAltaCategoriaEmpleado.setText("Dar de Alta a Categoria de Empleado");
@@ -286,6 +270,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarAltaProveedores.setText("Dar de Alta a Proveedores");
         mnuItemDarAltaProveedores.setEnabled(false);
+        mnuItemDarAltaProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDarAltaProveedoresActionPerformed(evt);
+            }
+        });
         mnuProveedor.add(mnuItemDarAltaProveedores);
 
         jMenuBar1.add(mnuProveedor);
@@ -303,18 +292,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemAsignarMaquinariaAObra.setText("Asignar Maquinaria a Obra");
         mnuItemAsignarMaquinariaAObra.setEnabled(false);
-
-
-
-
-
         mnuItemAsignarMaquinariaAObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemAsignarMaquinariaAObraActionPerformed(evt);
             }
         });
-
-
         jMenu2.add(mnuItemAsignarMaquinariaAObra);
 
         mnuDarAltaMaquinaria.setText("Dar de Alta a Maquinaria");
@@ -437,6 +419,12 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(PanelSolicitarMaterial);
         pack();
     }//GEN-LAST:event_mnuItemSolicitarMaterialParaUnaObraActionPerformed
+
+    private void mnuItemDarAltaProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarAltaProveedoresActionPerformed
+        // TODO add your handling code here:
+        darDeAltaAProveedor altaProveedor = new darDeAltaAProveedor(this, true);
+        altaProveedor.setVisible(true);
+    }//GEN-LAST:event_mnuItemDarAltaProveedoresActionPerformed
 
 
 

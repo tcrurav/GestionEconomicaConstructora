@@ -8,10 +8,19 @@ public class Proveedor {
 	Collection<Albaran> albaran;
 	private String nombre;
 	private String direccion;
+        int PK_ID;
 
 	public String getNombre() {
 		return this.nombre;
 	}
+
+    public void setPK_ID(int PK_ID) {
+        this.PK_ID = PK_ID;
+    }
+
+    public int getPK_ID() {
+        return PK_ID;
+    }
 
 	/**
 	 * 
@@ -33,9 +42,9 @@ public class Proveedor {
 		this.direccion = direccion;
 	}
 
-	public Proveedor() {
+	/*public Proveedor() {
 		// TODO - implement Proveedor.Proveedor
 		throw new UnsupportedOperationException();
-	}
+	}*/
 
 }
