@@ -1,5 +1,6 @@
 package POJOS;
 
+
 import java.util.*;
 public class PeriodoMaquinariaEnObra {
 
@@ -44,6 +45,7 @@ public class PeriodoMaquinariaEnObra {
         this.obra = obra;
     }
 
+
     /**
      * @return the maquinaria
      */
@@ -51,12 +53,15 @@ public class PeriodoMaquinariaEnObra {
         return maquinaria;
     }
 
+
     /**
      * @param maquinaria the maquinaria to set
      */
+
     public void setMaquinaria(Maquinaria maquinaria) {
         this.maquinaria = maquinaria;
     }
+
 
     /**
      * @return the fechaInicio
@@ -71,6 +76,7 @@ public class PeriodoMaquinariaEnObra {
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
+
 
     /**
      * @return the fechaFin
@@ -141,5 +147,5 @@ public class PeriodoMaquinariaEnObra {
     public void setFechaRecepcion(Date fechaRecepcion) {
         this.fechaRecepcion = fechaRecepcion;
     }
-
 }
+

@@ -6,10 +6,14 @@
 package dba;
 
 
+
 import POJOS.Empleado;
 import POJOS.EmpleadoAlmacen;
 import POJOS.AdministrativoObra;
 import POJOS.Empleado;
+import POJOS.AdministrativoObra;
+import POJOS.Empleado;
+import POJOS.EmpleadoAlmacen;
 import POJOS.JefeDeObra;
 import POJOS.Persona;
 import static gestioneconomicaconstructora.TiposDePersona.*;
@@ -59,14 +63,11 @@ public class PersonaDba {
             //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
             throw ex;
         } finally {
-
             rs.close();
         }
 
         return jefeDeObra;
     }
-
-
 
 
     public static EmpleadoAlmacen getEmpleadoAlmacen(int identificador) throws SQLException {
@@ -101,8 +102,6 @@ public class PersonaDba {
         return empleadoAlmacen;
     }
 
-
-    
     
     public static int getDiscriminator(Empleado empleado) throws SQLException{
         int identificador = empleado.getPK_ID();
@@ -152,6 +151,7 @@ public class PersonaDba {
             //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
             throw ex;
         } finally {
+
             rs.close();
         }
 
@@ -161,11 +161,7 @@ public class PersonaDba {
     public static Empleado getEmpleado(String usuario, String contrasena) throws SQLException {
         Empleado empleado = new Empleado();
 
-
-
-
         String sql = "select * from persona where Usuario='" + usuario + "' and Contra='" + contrasena + "'";
-
 
         try {
 
@@ -224,9 +220,7 @@ public class PersonaDba {
 
     public static ArrayList<JefeDeObra> getJefesDeObra() throws SQLException {
         conn = MySQL.getConnection();
-
         String sql = "select * from persona where Discriminator=" + JEFE_DE_OBRA;
-
 
         ArrayList<JefeDeObra> jefesDeObra = new ArrayList<JefeDeObra>();
 
@@ -259,10 +253,6 @@ public class PersonaDba {
     }
 
 
-
-
-    
-    
     public static ArrayList<EmpleadoAlmacen> getEmpleadosAlmacen() throws SQLException {
         conn = MySQL.getConnection();
        String sql = "select * from persona where Discriminator=" + EMPLEADO_ALMACEN;
@@ -302,7 +292,6 @@ public class PersonaDba {
         conn = MySQL.getConnection();
         String sql = "select * from persona";
 
-
         ArrayList<Empleado> empleados = new ArrayList<>();
 
         try {
@@ -332,15 +321,11 @@ public class PersonaDba {
 
         //return null;
     }
-
     
 
     public static ArrayList<Persona> getPersonas() throws SQLException {
         conn = MySQL.getConnection();
         String sql = "select * from persona";
-
-
-
 
         ArrayList<Persona> personas = new ArrayList<>();
 
@@ -402,12 +387,7 @@ public class PersonaDba {
         return false;
     }
 
-
-
         public static boolean insertEmpleado(Empleado empleado) throws SQLException{
-                        
-
-
 
         Connection conn = MySQL.getConnection();
         String sql = "insert into persona (Nombre, Apellidos, Telefono, Dni, CategoriaID, Usuario, Contra) " +
@@ -415,11 +395,7 @@ public class PersonaDba {
            
         try {
 
-
-
             PreparedStatement ps = conn.prepareStatement(sql);
-
-
 
             ps.setString(1, empleado.getNombre());
             ps.setString(2, empleado.getApellidos());
@@ -431,21 +407,11 @@ public class PersonaDba {
             int n = ps.executeUpdate();
             
             if(n>0){
-
-
-             //   JOptionPane.showMessageDialog(null, "Datos guardados");
-
-
-
                 return true;
             }
             
         } catch (SQLException ex) {
-
-
                 JOptionPane.showMessageDialog(null, "Se ha producido un Error. Error:" + ex.getMessage());
-
-
             throw ex;
             
         }
@@ -476,9 +442,6 @@ public class PersonaDba {
         }
         return false;
     }
-
-
-    
 
     public static boolean updateJefeDeObra(JefeDeObra jefeDeObra) throws SQLException {
         conn = MySQL.getConnection();
@@ -513,12 +476,7 @@ public class PersonaDba {
         return false;
     }
 
-
-
-
-        public static boolean updateEmpleado(Empleado empleado) throws SQLException{
-
-            
+    public static boolean updateEmpleado(Empleado empleado) throws SQLException{
 
         Connection conn = MySQL.getConnection();
         
@@ -527,11 +485,7 @@ public class PersonaDba {
 
         PreparedStatement ps;
         try {
-            
-
             ps = conn.prepareStatement(sql);
-
-
 
             ps.setString(1, empleado.getNombre());
             ps.setString(2, empleado.getApellidos());
@@ -549,11 +503,7 @@ public class PersonaDba {
             }
             
         } catch (SQLException ex) {
-            
-
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-
-            
 
             throw ex;
         } 
@@ -582,14 +532,13 @@ public class PersonaDba {
             }
             
         } catch (SQLException ex) {
-
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-
 
             throw ex;
         } 
         return false;
     }
+
 
     public static boolean deletePersona(int identificador) throws SQLException {
         conn = MySQL.getConnection();
@@ -606,9 +555,6 @@ public class PersonaDba {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-
-
-
             throw ex;
         } finally {
             close();
@@ -668,10 +614,12 @@ public class PersonaDba {
 
         return administrativoObra;
     }
+
     
     public static ArrayList<AdministrativoObra> getAdministrativosObra() throws SQLException {
         conn = MySQL.getConnection();
         String sql = "Select * from persona where Discriminator=" + ADMINISTRATIVO_OBRA;
+
 
         ArrayList<AdministrativoObra> administrativosObra = new ArrayList<AdministrativoObra>();
 
@@ -703,6 +651,5 @@ public class PersonaDba {
         //return null;
     }
     
-
 }
 

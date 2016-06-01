@@ -1,6 +1,10 @@
 package POJOS;
 
 public class Empleado extends Persona {
+    
+    private Categoria categoria;
+    private String usuario;
+    private String contra;
 
     public Empleado() {
 
@@ -30,9 +34,6 @@ public class Empleado extends Persona {
         this.contra = contra;
     }
 
-    private Categoria categoria;
-    private String usuario;
-    private String contra;
 
     public Categoria getCategoria() {
         return categoria;

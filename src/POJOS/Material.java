@@ -9,8 +9,6 @@ public class Material {
 
         
         int PK_ID;
-
-
 	private String codigo;
 	private String descripcion;
 	private int stockMedio;
@@ -25,9 +23,6 @@ public class Material {
 	 */
 	private float precio;
 	private int stock;
-
-        
-
         public void setPK_ID(int PK_ID) {
             this.PK_ID = PK_ID;
         } 
@@ -36,9 +31,6 @@ public class Material {
         public int getPK_ID() {
             return PK_ID;
         }
-        
-
-        
 	public String getCodigo() {
 		return this.codigo;
 	}
@@ -48,7 +40,6 @@ public class Material {
 	 * @param codigo
 	 */
 
-        
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
@@ -113,16 +104,9 @@ public class Material {
 		this.stock = stock;
 	}
 
-
-
-	/*public Material() {
+	public Material() {
 		// TODO - implement Material.Material
 		throw new UnsupportedOperationException();
-	}*/
-
-    /*public void set(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
-
+	}
 
 }

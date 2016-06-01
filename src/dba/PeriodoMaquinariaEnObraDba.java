@@ -5,7 +5,10 @@
  */
 package dba;
 
+
 import POJOS.Obra;
+import POJOS.EmpleadoAlmacen;
+import POJOS.Maquinaria;
 import POJOS.PeriodoMaquinariaEnObra;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -129,6 +132,7 @@ public static ArrayList<PeriodoMaquinariaEnObra> getPeriodoMaquinariasEnObras() 
                 + "FechaInicio=?, FechaFin=?, FechaSolicitud=?, FechaRecepcion=?," 
                 + "MaquinariaID=?, ObraID=?"
                 +" where ID=?";
+
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         PreparedStatement ps;
         try {
@@ -163,7 +167,9 @@ public static ArrayList<PeriodoMaquinariaEnObra> getPeriodoMaquinariasEnObras() 
         try {
             Statement sentencia = conn.createStatement();
             int n = sentencia.executeUpdate(sql);
+
             if (n>0){
+
                 //JOptionPane.showMessageDialog(null, "Datos Borrados");
                 return true;
             }

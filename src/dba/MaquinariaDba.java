@@ -82,7 +82,7 @@ public class MaquinariaDba {
         Connection conn = MySQL.getConnection();
         String sql = "insert into maquinaria (Nombre, PrecioDeCompra, FechaFinVidaUtil, " 
                 + "FechaCompra, CodInventario) values (?, ?, ?, ?, ?)";
-           
+
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             PreparedStatement ps = conn.prepareCall(sql);
@@ -93,6 +93,7 @@ public class MaquinariaDba {
             ps.setString(5, maquinaria.getCodInventario());
 
             int n = ps.executeUpdate();
+
             
             if(n>0){
                 //JOptionPane.showMessageDialog(null, "Datos guardados");
@@ -142,7 +143,9 @@ public class MaquinariaDba {
         try {
             Statement sentencia = conn.createStatement();
             int n = sentencia.executeUpdate(sql);
+
             if (n>0){
+
                 //JOptionPane.showMessageDialog(null, "Datos Borrados");
                 return true;
             }
@@ -151,4 +154,5 @@ public class MaquinariaDba {
         }
         return false;
     }
+
 }
