@@ -8,7 +8,7 @@ public class AdministrativoObra extends Empleado {
 
 	public AdministrativoObra() {
 		// TODO - implement AdministrativoObra.AdministrativoObra
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
 	}
 
 }

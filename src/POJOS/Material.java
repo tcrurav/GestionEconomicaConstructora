@@ -118,6 +118,6 @@ public class Material {
 
 	public Material() {
 		// TODO - implement Material.Material
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
 	}
 }

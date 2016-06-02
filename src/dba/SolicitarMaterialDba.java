@@ -6,6 +6,7 @@
 package dba;
 
 import POJOS.AdministrativoObra;
+import POJOS.EmpleadoAlmacen;
 import POJOS.MaterialParaObra;
 import POJOS.JefeDeObra;
 import POJOS.Material;
@@ -17,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import login.FrmLogin;
 
 /**
  *
@@ -52,7 +54,13 @@ public class SolicitarMaterialDba {
                     materialParaObra.setObra(dba.ObraDba.getObra(rs.getInt("ObraID")));
 
                     materialParaObra.setMaterial(dba.MaterialDba.getMaterial(rs.getInt("MaterialID")));
-
+                    if(rs.getInt("EmpleadoDeAlmacenQueAsignaID")==0){
+                        EmpleadoAlmacen empleadoAlmacenVacio=new EmpleadoAlmacen();
+                        empleadoAlmacenVacio.setPK_ID(0);
+                        materialParaObra.setEmpleadoAlmacen(empleadoAlmacenVacio);
+                    }else{
+                        materialParaObra.setEmpleadoAlmacen(dba.PersonaDba.getEmpleadoAlmacen(rs.getInt("EmpleadoDeAlmacenQueAsignaID")));
+                    }
                 } else {
                     return null;
                 }
@@ -92,6 +100,52 @@ public class SolicitarMaterialDba {
                 materialParaObra.setObra(dba.ObraDba.getObra(rs.getInt("ObraID")));
 
                 materialParaObra.setMaterial(dba.MaterialDba.getMaterial(rs.getInt("MaterialID")));//HAY QUE HACER LA dba.Material!!!
+                
+                try{
+                materialParaObra.setEmpleadoAlmacen(dba.PersonaDba.getEmpleadoAlmacen(rs.getInt("EmpleadoDeAlmacenQueAsignaID")));
+                }catch(SQLException ex){
+                    System.out.println("No hay empleado de almacen");
+                }
+                materialesParaObras.add(materialParaObra);
+            }
+            
+            return materialesParaObras;
+            
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        
+    }
+    
+        public static ArrayList<MaterialParaObra> getMaterialesParaObrasSinAsignar() throws SQLException{        
+        Connection conn = MySQL.getConnection();
+        String sql = "select * from materialparaobra where EmpleadoDeAlmacenQueAsignaID is NULL";
+        
+        ArrayList<MaterialParaObra> materialesParaObras = new ArrayList<MaterialParaObra>();
+        
+        try {
+            Statement sentencia = conn.createStatement();
+            ResultSet rs = sentencia.executeQuery(sql);
+            
+            while(rs.next()){
+                MaterialParaObra materialParaObra=new MaterialParaObra();             
+                materialParaObra.setPK_ID(rs.getInt("ID"));
+                
+                materialParaObra.setJefeDeObra(dba.PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));
+         
+                materialParaObra.setAdministrativoObra(dba.PersonaDba.getAdministrativoObra(rs.getInt("AdministrativoObraQueRecogeID")));//CREAR getAdministrativoObra
+
+                materialParaObra.setCantidadMaterial(rs.getFloat("CantidadMaterial"));
+                materialParaObra.setCoste(rs.getFloat("Coste"));
+                materialParaObra.setFechaSolicitud(rs.getDate("FechaSolicitud"));
+                materialParaObra.setFechaRecepcion(rs.getDate("FechaRecepcion"));
+
+                //Al ArrayList materialParaObra le añadimos la Obra que
+                //consultando la BBDD Obra, coincida el ID con el ID recibido en la consulta  
+                materialParaObra.setObra(dba.ObraDba.getObra(rs.getInt("ObraID")));
+
+                materialParaObra.setMaterial(dba.MaterialDba.getMaterial(rs.getInt("MaterialID")));//HAY QUE HACER LA dba.Material!!!
+                
 
                 materialesParaObras.add(materialParaObra);
             }
@@ -103,6 +157,57 @@ public class SolicitarMaterialDba {
         }
         
     }
+        
+     public static ArrayList<MaterialParaObra> getMaterialesParaObrasAsignadosPorMi() throws SQLException{        
+        Connection conn = MySQL.getConnection();
+        String sql = "select * from materialparaobra where EmpleadoDeAlmacenQueAsignaID=?";
+        
+        
+        ArrayList<MaterialParaObra> materialesParaObras = new ArrayList<MaterialParaObra>();
+        
+ 
+        
+        try {
+            /*
+            Statement sentencia = conn.createStatement();
+            ResultSet rs = sentencia.executeQuery(sql);*/
+            PreparedStatement ps = conn.prepareCall(sql);
+            ps.setInt(1, FrmLogin.empleadoLogin.getPK_ID());    
+            System.out.println("Sentencia sql-->"+ps.toString());           
+            ResultSet rs = ps.executeQuery();
+            
+            
+            while(rs.next()){
+                MaterialParaObra materialParaObra=new MaterialParaObra();             
+                materialParaObra.setPK_ID(rs.getInt("ID"));
+                
+                materialParaObra.setJefeDeObra(dba.PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));
+         
+                materialParaObra.setAdministrativoObra(dba.PersonaDba.getAdministrativoObra(rs.getInt("AdministrativoObraQueRecogeID")));//CREAR getAdministrativoObra
+
+                materialParaObra.setCantidadMaterial(rs.getFloat("CantidadMaterial"));
+                materialParaObra.setCoste(rs.getFloat("Coste"));
+                materialParaObra.setFechaSolicitud(rs.getDate("FechaSolicitud"));
+                materialParaObra.setFechaRecepcion(rs.getDate("FechaRecepcion"));
+
+                //Al ArrayList materialParaObra le añadimos la Obra que
+                //consultando la BBDD Obra, coincida el ID con el ID recibido en la consulta  
+                materialParaObra.setObra(dba.ObraDba.getObra(rs.getInt("ObraID")));
+
+                materialParaObra.setMaterial(dba.MaterialDba.getMaterial(rs.getInt("MaterialID")));//HAY QUE HACER LA dba.Material!!!
+                
+
+                materialesParaObras.add(materialParaObra);
+            }
+            
+            return materialesParaObras;
+            
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        
+    }   
+        
     
     public static boolean insertMaterialParaObra(MaterialParaObra materialParaObra) throws SQLException{     
         System.out.println("DENTRO DE InsertMaterialparaOBra");
@@ -196,4 +301,61 @@ public class SolicitarMaterialDba {
         return false;
     }
     
-}
+    
+    
+    public static boolean updateAsignacionMaterialParaObra(MaterialParaObra materialParaObra) throws SQLException{        
+        System.out.println("Entro en UpdateAsignacionMaterialParaObra");
+        Connection conn = MySQL.getConnection();
+        
+        String sql = "update materialparaobra set EmpleadoDeAlmacenQueAsignaID=?"
+                +" where ID=?";
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareCall(sql);
+            System.out.println("Comenzando la sentencia");
+            ps.setInt(1, materialParaObra.getEmpleadoAlmacen().getPK_ID());
+            ps.setInt(2, materialParaObra.getPK_ID());
+            
+            System.out.println("Sentencia sql-->"+ps.toString()); 
+            int n = ps.executeUpdate();
+            
+            if(n>0){
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            throw ex;
+        } 
+        return false;
+    }
+    
+  public static boolean updateAsignacionMaterialParaObraANulo(MaterialParaObra materialParaObra) throws SQLException{        
+        System.out.println("Entro en UpdateAsignacionMaterialParaObra");
+        Connection conn = MySQL.getConnection();
+        
+        String sql = "update materialparaobra set EmpleadoDeAlmacenQueAsignaID=NULL"
+                +" where ID=?";
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareCall(sql);
+            System.out.println("Comenzando la sentencia");
+            ps.setInt(1, materialParaObra.getPK_ID());
+            
+            System.out.println("Sentencia sql-->"+ps.toString()); 
+            int n = ps.executeUpdate();
+            
+            if(n>0){
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            throw ex;
+        } 
+        return false;
+    }
+    
+    
+    
+}//Fin Class

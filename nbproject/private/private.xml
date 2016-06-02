@@ -3,15 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/X:/DAM/GestionEconomicaConstructora/src/POJOS/PeriodoMaquinariaEnObra.java</file>
-            <file>file:/X:/DAM/GestionEconomicaConstructora/src/dba/MySQL.java</file>
+            <file>file:/X:/DAM/GestionEconomicaConstructora/src/gestioneconomicaconstructora/Main.java</file>
+            <file>file:/X:/DAM/GestionEconomicaConstructora/src/POJOS/EmpleadoAlmacen.java</file>
             <file>file:/X:/DAM/GestionEconomicaConstructora/src/dba/PersonaDba.java</file>
-            <file>file:/X:/DAM/GestionEconomicaConstructora/src/jefeDeObra/PanelSolicitarMaterialObra.java</file>
+            <file>file:/X:/DAM/GestionEconomicaConstructora/src/POJOS/MaterialParaObra.java</file>
+            <file>file:/X:/DAM/GestionEconomicaConstructora/src/empleadoAlmacen/AsignarMaterialesAObra.java</file>
+            <file>file:/X:/DAM/GestionEconomicaConstructora/src/dba/SolicitarMaterialDba.java</file>
+            <file>file:/X:/DAM/GestionEconomicaConstructora/src/dba/MaterialDba.java</file>
+            <file>file:/X:/DAM/GestionEconomicaConstructora/src/POJOS/Persona.java</file>
+            <file>file:/X:/DAM/GestionEconomicaConstructora/src/login/FrmLogin.java</file>
+            <file>file:/X:/DAM/GestionEconomicaConstructora/src/POJOS/Empleado.java</file>
             <file>file:/X:/DAM/GestionEconomicaConstructora/src/login/FrmMain.java</file>
-            <file>file:/X:/DAM/GestionEconomicaConstructora/src/obra/PanelObra.java</file>
-            <file>file:/X:/DAM/GestionEconomicaConstructora/src/obra/FrmObra.java</file>
-            <file>file:/X:/DAM/GestionEconomicaConstructora/src/periodoMaquinariaEnObra/DialogoPeriodoMaquinariaEnObra.java</file>
-            <file>file:/X:/DAM/GestionEconomicaConstructora/src/obra/DialogoObra.java</file>
         </group>
     </open-files>
 </project-private>

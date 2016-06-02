@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class FrmLogin extends javax.swing.JFrame {
 
     Connection conn;
-
+    static public Empleado empleadoLogin=new Empleado();
     /**
      * Creates new form LoginFormulario
      */
@@ -48,6 +48,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Usuario Autentificado Correctamente.");
                 this.setVisible(false); //Cerrar Ventana Login
                 new FrmMain(empleado).setVisible(true); //Abrir Ventana Principal
+                empleadoLogin=empleado;
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña incorrectos.");

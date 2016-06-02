@@ -1,5 +1,6 @@
 public class MaterialAsignadoAObra extends Asignacion {
 
+        private int PK_ID;
 	Material material;
 	Obra obra;
 	private String fecha;

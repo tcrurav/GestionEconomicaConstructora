@@ -10,6 +10,7 @@ public class MaterialParaObra {
 	private float CantidadMaterial;
 	public AdministrativoObra administrativoObra;
 	public JefeDeObra jefeDeObra;
+        public EmpleadoAlmacen empleadoAlmacen;
 	private float coste;
 	private Date fechaSolicitud;
 	private Date fechaRecepcion;
@@ -109,6 +110,14 @@ public class MaterialParaObra {
 
     public void setJefeDeObra(JefeDeObra jefeDeObra) {
         this.jefeDeObra = jefeDeObra;
+    }
+
+    public EmpleadoAlmacen getEmpleadoAlmacen() {
+        return empleadoAlmacen;
+    }
+
+    public void setEmpleadoAlmacen(EmpleadoAlmacen empleadoAlmacen) {
+        this.empleadoAlmacen = empleadoAlmacen;
     }
 
 }
