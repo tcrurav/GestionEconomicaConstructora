@@ -176,7 +176,7 @@ public class PersonaDba {
 
     public static ArrayList<JefeDeObra> getJefesDeObra() throws SQLException {
         conn = MySQL.getConnection();
-        String sql = "select * from jefeDeObra";
+        String sql = "select * from persona where Discriminator= " + JEFE_DE_OBRA;
 
         ArrayList<JefeDeObra> jefesDeObra = new ArrayList<JefeDeObra>();
 
@@ -244,7 +244,7 @@ public class PersonaDba {
     
     public static ArrayList<EmpleadoObra> getEmpleadosObra() throws SQLException {
         conn = MySQL.getConnection();
-        String sql = "select * from persona where CategoriaId = 1 or CategoriaId = 2";
+        String sql = "select * from persona where Discriminator= " + EMPLEADO_OBRA;
 
         ArrayList<EmpleadoObra> empleadosObra = new ArrayList<>();
 

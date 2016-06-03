@@ -35,6 +35,7 @@ public class AsignarHorasDeTrabajadorEnObra extends javax.swing.JDialog {
         this.pack();      
         this.setLocationRelativeTo(null);
         llenarCombos();
+        llenar();
     }
 
     DefaultTableModel modelo;
@@ -60,7 +61,7 @@ public class AsignarHorasDeTrabajadorEnObra extends javax.swing.JDialog {
         comboIdJefeDeObraQueLoSolicita.setEnabled(true);
         comboIdDeLaObra.setEnabled(true);
         comboIdDelEmpleadoDeObra.setEnabled(true);
-        txtCoste.setEnabled(false); // Se calcula automaticamente (ver metodo en el POJO PerioEmpleadoEnObra.java)
+        txtCoste.setEnabled(true); 
     }
 
     public void deshabilitar() {
@@ -120,7 +121,7 @@ public class AsignarHorasDeTrabajadorEnObra extends javax.swing.JDialog {
             }
 
             for (EmpleadoObra empleadoObra : empleadosObra) {
-                comboIdDeLaObra.addItem(Integer.toString(empleadoObra.getPK_ID()));
+                comboIdDelEmpleadoDeObra.addItem(Integer.toString(empleadoObra.getPK_ID()));
             }
         } 
     // FIN DE LOS METODOS PARA LLENAR LOS COMBOBOX:
@@ -160,23 +161,21 @@ public class AsignarHorasDeTrabajadorEnObra extends javax.swing.JDialog {
     public void nuevo() {
          PeriodoEmpleadoEnObra periodoEmpleadoEnObra = new PeriodoEmpleadoEnObra();
         
-        periodoEmpleadoEnObra.setJefeDeObra_ID(comboIdJefeDeObraQueLoSolicita.getSelectedIndex());
+        periodoEmpleadoEnObra.setJefeDeObra_ID(Integer.parseInt(""+comboIdJefeDeObraQueLoSolicita.getSelectedItem()));
         periodoEmpleadoEnObra.setAdministrativoManoObra_ID(4); // Discriminador del administrativo
-        periodoEmpleadoEnObra.setObra_ID(comboIdDeLaObra.getSelectedIndex());
-        periodoEmpleadoEnObra.setEmpleadoObra_ID(comboIdDelEmpleadoDeObra.getSelectedIndex());
+        periodoEmpleadoEnObra.setObra_ID(Integer.parseInt(""+comboIdDeLaObra.getSelectedItem()));
+        periodoEmpleadoEnObra.setEmpleadoObra_ID(Integer.parseInt(""+comboIdDelEmpleadoDeObra.getSelectedItem()));
         periodoEmpleadoEnObra.setFechaInicio(pickerInicio.getDate());
         periodoEmpleadoEnObra.setFechaFin(pickerFinalizacion.getDate());
         periodoEmpleadoEnObra.setFechaSolicitud(pickerSolicitud.getDate());
         periodoEmpleadoEnObra.setFechaRecepcion(pickerRecepcion.getDate());
-        float costeCalculado = periodoEmpleadoEnObra.calcularCoste(comboIdDelEmpleadoDeObra.getSelectedIndex(), pickerInicio.getDate(), pickerFinalizacion.getDate());
-        periodoEmpleadoEnObra.setCoste(costeCalculado);
+        periodoEmpleadoEnObra.setCoste(Float.parseFloat(txtCoste.getText()));
         
         try {
             if (dba.HorasEnObraDba.insertPeriodoEmpleadoEnObra(periodoEmpleadoEnObra)) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR, algo ha ido mal - Metodo: nuevo()");
             Logger.getLogger(AsignarHorasDeTrabajadorEnObra.class.getName()).log(Level.SEVERE, null, ex);
         } 
 
@@ -190,16 +189,17 @@ public class AsignarHorasDeTrabajadorEnObra extends javax.swing.JDialog {
 
         try {
             periodoEmpleadoEnObra.setPK_ID(Integer.parseInt(identificador));
-            periodoEmpleadoEnObra.setJefeDeObra_ID(comboIdJefeDeObraQueLoSolicita.getSelectedIndex());
+            periodoEmpleadoEnObra.setJefeDeObra_ID(Integer.parseInt(""+comboIdJefeDeObraQueLoSolicita.getSelectedItem()));
             periodoEmpleadoEnObra.setAdministrativoManoObra_ID(4); // Discriminador del administrativo
-            periodoEmpleadoEnObra.setObra_ID(comboIdDeLaObra.getSelectedIndex());
-            periodoEmpleadoEnObra.setEmpleadoObra_ID(comboIdDelEmpleadoDeObra.getSelectedIndex());
+            periodoEmpleadoEnObra.setObra_ID(Integer.parseInt(""+comboIdDeLaObra.getSelectedItem()));
+            periodoEmpleadoEnObra.setEmpleadoObra_ID(Integer.parseInt(""+comboIdDelEmpleadoDeObra.getSelectedItem()));
             periodoEmpleadoEnObra.setFechaInicio(pickerInicio.getDate());
             periodoEmpleadoEnObra.setFechaFin(pickerFinalizacion.getDate());
             periodoEmpleadoEnObra.setFechaSolicitud(pickerSolicitud.getDate());
             periodoEmpleadoEnObra.setFechaRecepcion(pickerRecepcion.getDate());
-            float costeCalculado = periodoEmpleadoEnObra.calcularCoste(comboIdDelEmpleadoDeObra.getSelectedIndex(), pickerInicio.getDate(), pickerFinalizacion.getDate());
-            periodoEmpleadoEnObra.setCoste(costeCalculado);
+            periodoEmpleadoEnObra.setCoste(Float.parseFloat(txtCoste.getText()));
+      //      float costeCalculado = periodoEmpleadoEnObra.calcularCoste(comboIdDelEmpleadoDeObra.getSelectedIndex(), pickerInicio.getDate(), pickerFinalizacion.getDate());
+
 
             if (dba.HorasEnObraDba.updatePeriodoEmpleadoEnObra(periodoEmpleadoEnObra)) {
                 JOptionPane.showMessageDialog(null, "Datos Modificados");
@@ -271,7 +271,7 @@ public class AsignarHorasDeTrabajadorEnObra extends javax.swing.JDialog {
 
         jLabel3.setText("Fecha de finalización:");
 
-        jLabel4.setText("Coste (cálculo automático): ");
+        jLabel4.setText("Coste: ");
 
         txtCoste.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,6 +298,11 @@ public class AsignarHorasDeTrabajadorEnObra extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaAsignarHorasDeTrabajadorEnObra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaAsignarHorasDeTrabajadorEnObraMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaAsignarHorasDeTrabajadorEnObra);
 
         btnGuardarLaNuevaAsignacion.setText("Guardar la nueva asignación");
@@ -344,22 +349,23 @@ public class AsignarHorasDeTrabajadorEnObra extends javax.swing.JDialog {
                                 .addGap(23, 23, 23)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8))
-                                        .addGap(32, 32, 32)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(comboIdJefeDeObraQueLoSolicita, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(comboIdDeLaObra, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(comboIdDelEmpleadoDeObra, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtCoste, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(97, 97, 97)
-                                        .addComponent(btnNuevaAsignacion))))
+                                        .addComponent(btnNuevaAsignacion))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtCoste, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel1)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel8))
+                                            .addGap(32, 32, 32)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(comboIdJefeDeObraQueLoSolicita, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(comboIdDeLaObra, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(comboIdDelEmpleadoDeObra, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnGuardarLaNuevaAsignacion)
                                 .addGap(45, 45, 45)))
@@ -494,6 +500,36 @@ public class AsignarHorasDeTrabajadorEnObra extends javax.swing.JDialog {
         limpiar();
         habilitar();
     }//GEN-LAST:event_btnNuevaAsignacionActionPerformed
+
+    private void tablaAsignarHorasDeTrabajadorEnObraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAsignarHorasDeTrabajadorEnObraMouseClicked
+        if (evt.getButton() == 1) {
+            int fila = tablaAsignarHorasDeTrabajadorEnObra.getSelectedRow();
+            PeriodoEmpleadoEnObra periodoEmpleadoEnObra = new PeriodoEmpleadoEnObra();
+            try {
+                periodoEmpleadoEnObra = dba.HorasEnObraDba.getPeriodoEmpleadoEnObra(Integer.parseInt(String.valueOf(tablaAsignarHorasDeTrabajadorEnObra.getValueAt(fila, 0))));
+            } catch (SQLException ex) {
+                Logger.getLogger(FrmObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            try {
+                comboIdDelEmpleadoDeObra.setSelectedItem(String.valueOf(periodoEmpleadoEnObra.getEmpleadoObra_ID()));
+                comboIdJefeDeObraQueLoSolicita.setSelectedItem(String.valueOf(periodoEmpleadoEnObra.getJefeDeObra_ID()));
+                comboIdDeLaObra.setSelectedItem(String.valueOf(periodoEmpleadoEnObra.getObra_ID()));
+                txtCoste.setText(String.valueOf(periodoEmpleadoEnObra.getCoste()));
+                pickerInicio.setDate(periodoEmpleadoEnObra.getFechaInicio());
+                pickerFinalizacion.setDate(periodoEmpleadoEnObra.getFechaFin());
+                pickerSolicitud.setDate(periodoEmpleadoEnObra.getFechaFin());
+                pickerRecepcion.setDate(periodoEmpleadoEnObra.getFechaFin());
+                
+                
+
+                habilitar();
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+            }
+        }
+    }//GEN-LAST:event_tablaAsignarHorasDeTrabajadorEnObraMouseClicked
 
     /**
      * @param args the command line arguments

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import obra.DialogoObra;
 import obra.PanelObra;
+import trabajadorEnObra.AsignarHorasDeTrabajadorEnObra;
 
 /**
  *
@@ -335,9 +336,8 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void mnuAsignarHorasDeTrabajadorEnObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAsignarHorasDeTrabajadorEnObraActionPerformed
         
-        
-        
-        
+        AsignarHorasDeTrabajadorEnObra asignarHorasDeTrabajadorEnObra = new AsignarHorasDeTrabajadorEnObra(this, true);
+        asignarHorasDeTrabajadorEnObra.setVisible(true);
         
     }//GEN-LAST:event_mnuAsignarHorasDeTrabajadorEnObraActionPerformed
 

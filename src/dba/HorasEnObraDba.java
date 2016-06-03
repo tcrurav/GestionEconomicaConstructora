@@ -23,7 +23,7 @@ public class HorasEnObraDba {
     public static PeriodoEmpleadoEnObra getPeriodoEmpleadoEnObra(int identificador) throws SQLException{
         PeriodoEmpleadoEnObra periodoEmpleadoEnObra = new PeriodoEmpleadoEnObra();
         
-        String sql = "Select * from periodoEmpleadoEnObra where ID=" + identificador;
+        String sql = "Select * from periodoempleadoenobra where ID=" + identificador;
             try {
                 Connection conn = MySQL.getConnection();
                 Statement sentencia = conn.createStatement();
@@ -54,7 +54,7 @@ public class HorasEnObraDba {
     
     public static ArrayList<PeriodoEmpleadoEnObra> getPeriodosEmpleadoEnObras() throws SQLException{
         Connection conn = MySQL.getConnection();
-        String sql = "select * from periodoEmpleadoEnObra";
+        String sql = "select * from periodoempleadoenobra";
         
         ArrayList<PeriodoEmpleadoEnObra> periodosEmpleadoEnObra = new ArrayList<PeriodoEmpleadoEnObra>();
         
@@ -86,10 +86,12 @@ public class HorasEnObraDba {
     
     public static boolean insertPeriodoEmpleadoEnObra(PeriodoEmpleadoEnObra periodoEmpleadoEnObra) throws SQLException{
         Connection conn = MySQL.getConnection();
-        String sql = "insert into periodoEmpleadoEnObra (JefeDeObraQueSolicitaID, AdministrativoManoDeObraQueAsignaID, FechaInicio, FechaFin, Coste, FechaSolicitud, FechaRecepcion, ObraID, EmpleadoDeObraID) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into periodoempleadoenobra (JefeDeObraQueSolicitaID, AdministrativoManoDeObraQueAsignaID, FechaInicio, FechaFin, Coste, FechaSolicitud, FechaRecepcion, ObraID, EmpleadoDeObraID) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
            
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
+            System.out.println(periodoEmpleadoEnObra.getJefeDeObra_ID());
+            System.out.println(periodoEmpleadoEnObra.getAdministrativoManoObra_ID());
             PreparedStatement ps = conn.prepareStatement(sql); // Era conn.prepareCall
             ps.setInt(1, periodoEmpleadoEnObra.getJefeDeObra_ID());
             ps.setInt(2, periodoEmpleadoEnObra.getAdministrativoManoObra_ID());
@@ -116,7 +118,7 @@ public class HorasEnObraDba {
     public static boolean updatePeriodoEmpleadoEnObra(PeriodoEmpleadoEnObra periodoEmpleadoEnObra) throws SQLException{
         Connection conn = MySQL.getConnection();
         
-        String sql = "update periodoEmpleadoEnObra set JefeDeObraQueSolicitaID=?, AdministrativoManoDeObraQueAsignaID=?, FechaInicio=?, FechaFin=?, Coste=?, FechaSolicitud=?, FechaRecepcion=?, ObraID=?, EmpleadoDeObraID=?"
+        String sql = "update periodoempleadoenobra set JefeDeObraQueSolicitaID=?, AdministrativoManoDeObraQueAsignaID=?, FechaInicio=?, FechaFin=?, Coste=?, FechaSolicitud=?, FechaRecepcion=?, ObraID=?, EmpleadoDeObraID=?"
                 +" where ID=?";
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         PreparedStatement ps;
@@ -147,7 +149,7 @@ public class HorasEnObraDba {
     
     public static boolean deletePeriodoEmpleadoEnObra(int identificador) throws SQLException{
         Connection conn = MySQL.getConnection();
-        String sql = "delete from periodoEmpleadoEnObra where id=" + identificador;
+        String sql = "delete from periodoempleadoenobra where id=" + identificador;
         try {
             Statement sentencia = conn.createStatement();
             int n = sentencia.executeUpdate(sql);
