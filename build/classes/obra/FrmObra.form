@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -46,10 +62,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
                       <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -58,7 +74,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
@@ -81,10 +97,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnModificar" min="-2" max="-2" attributes="0"/>
@@ -93,7 +109,7 @@
                               <EmptySpace pref="326" max="32767" attributes="0"/>
                               <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -109,19 +125,19 @@
                               </Group>
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtCantidadFacturada" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtCantidadCobrada" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPorcentajeDeObraEjecutado" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtEstimacionBeneficioIndustrial" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtEstimacionGastosGenerales" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtEstimacionCosteManoDeObra" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtEstimacionCosteMateriales" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPresupuestoTotalEjecucion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtCantidadFacturada" max="32767" attributes="0"/>
+                                  <Component id="txtCantidadCobrada" max="32767" attributes="0"/>
+                                  <Component id="txtPorcentajeDeObraEjecutado" max="32767" attributes="0"/>
+                                  <Component id="txtEstimacionBeneficioIndustrial" max="32767" attributes="0"/>
+                                  <Component id="txtEstimacionGastosGenerales" max="32767" attributes="0"/>
+                                  <Component id="txtEstimacionCosteManoDeObra" max="32767" attributes="0"/>
+                                  <Component id="txtEstimacionCosteMateriales" max="32767" attributes="0"/>
+                                  <Component id="txtPresupuestoTotalEjecucion" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtDireccion" pref="149" max="32767" attributes="0"/>
-                                          <Component id="jXDatePickerFechaInicio" max="32767" attributes="0"/>
-                                          <Component id="jXDatePickerFechaFin" max="32767" attributes="0"/>
+                                          <Component id="txtDireccion" alignment="0" pref="149" max="32767" attributes="0"/>
+                                          <Component id="jXDatePickerFechaFin" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jXDatePickerFechaInicio" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -135,7 +151,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jXDatePickerFechaInicio" alignment="3" min="-2" max="-2" attributes="0"/>
