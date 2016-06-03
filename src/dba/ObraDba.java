@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package dba;
+import POJOS.AdministrativoManoDeObra;
+import POJOS.EmpleadoObra;
+import POJOS.JefeDeObra;
 import POJOS.Obra;
+import POJOS.PeriodoEmpleadoEnObra;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -121,6 +125,71 @@ public class ObraDba {
         return false;
     }
     
+    public static boolean insertPeriodoDeEmpleadoEnObra(PeriodoEmpleadoEnObra periodoEmpleadoEnObra) throws SQLException{
+        Connection conn = MySQL.getConnection();
+        String sql = "insert into periodoempleadoenobra (JefeDeObraQueSolicitaID, "
+                + "AdministrativoManoDeObraQueAsignaID, FechaInicio, FechaFin, Coste, "
+                + "FechaSolicitud, ObraID, EmpleadoDeObraID) "
+                + "values (?, ?, ?, ?, ?, ?, ?, ?)";
+           
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            PreparedStatement ps = conn.prepareCall(sql);
+            ps.setInt(1, periodoEmpleadoEnObra.getJefeDeObra().getPK_ID());
+            ps.setInt(2, periodoEmpleadoEnObra.getAdministrativoManoObra().getPK_ID());
+            ps.setString(3, sdf.format(periodoEmpleadoEnObra.getFechaInicio()));
+            ps.setString(4, sdf.format(periodoEmpleadoEnObra.getFechaFin()));
+            ps.setFloat(5, periodoEmpleadoEnObra.getCoste());
+            ps.setString(6, sdf.format(periodoEmpleadoEnObra.getFechaSolicitud()));
+            ps.setInt(7, periodoEmpleadoEnObra.getObra().getPK_ID());
+            ps.setInt(8, periodoEmpleadoEnObra.getEmpleado().getPK_ID());
+            int n = ps.executeUpdate();
+            
+            if(n>0){
+                //JOptionPane.showMessageDialog(null, "Datos guardados");
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            throw ex;
+            
+        }
+        return false;
+    }
+    
+    public static boolean updatePeriodoEmpleadoEnObra(PeriodoEmpleadoEnObra periodoEmpleadoEnObra) throws SQLException{
+        Connection conn = MySQL.getConnection();
+        String sql = "update periodoempleadoenobra set JefeDeObraQueSolicitaID = ?, "
+                + "AdministrativoManoDeObraQueAsignaID=?, FechaInicio=?, FechaFin=?, Coste=?, "
+                + "FechaSolicitud=?, ObraID=?, EmpleadoDeObraID=? "
+                + "where ID = ?";
+           
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            PreparedStatement ps = conn.prepareCall(sql);
+            ps.setInt(1, periodoEmpleadoEnObra.getJefeDeObra().getPK_ID());
+            ps.setInt(2, periodoEmpleadoEnObra.getAdministrativoManoObra().getPK_ID());
+            ps.setString(3, sdf.format(periodoEmpleadoEnObra.getFechaInicio()));
+            ps.setString(4, sdf.format(periodoEmpleadoEnObra.getFechaFin()));
+            ps.setFloat(5, periodoEmpleadoEnObra.getCoste());
+            ps.setString(6, sdf.format(periodoEmpleadoEnObra.getFechaSolicitud()));
+            ps.setInt(7, periodoEmpleadoEnObra.getObra().getPK_ID());
+            ps.setInt(8, periodoEmpleadoEnObra.getEmpleado().getPK_ID());
+            ps.setInt(9, periodoEmpleadoEnObra.getId());
+            int n = ps.executeUpdate();
+            
+            if(n>0){
+                //JOptionPane.showMessageDialog(null, "Datos guardados");
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            throw ex;
+            
+        }
+        return false;
+    }
+    
     public static boolean updateObra(Obra obra) throws SQLException{
         Connection conn = MySQL.getConnection();
         
@@ -161,6 +230,84 @@ public class ObraDba {
     public static boolean deleteObra(int identificador) throws SQLException{
         Connection conn = MySQL.getConnection();
         String sql = "delete from obra where id=" + identificador;
+        try {
+            Statement sentencia = conn.createStatement();
+            int n = sentencia.executeUpdate(sql);
+            if (n>0){
+                //JOptionPane.showMessageDialog(null, "Datos Borrados");
+                return true;
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return false;
+    }
+    
+    public static PeriodoEmpleadoEnObra getPeriodoDeEmpleadoEnObra(int identificador) throws SQLException{
+        Connection conn = MySQL.getConnection();
+        String sql = "select * from periodoempleadoenobra where id = " + identificador;
+        
+        PeriodoEmpleadoEnObra periodoEmpleadoEnObra = new PeriodoEmpleadoEnObra();
+        
+        try {
+            Statement sentencia = conn.createStatement();
+            ResultSet rs = sentencia.executeQuery(sql);
+            
+            while(rs.next()){
+                periodoEmpleadoEnObra.setId(rs.getInt("ID"));
+                periodoEmpleadoEnObra.setFechaInicio(rs.getDate("FechaInicio"));
+                periodoEmpleadoEnObra.setFechaFin(rs.getDate("FechaFin"));
+                periodoEmpleadoEnObra.setFechaSolicitud(rs.getDate("FechaSolicitud"));
+                periodoEmpleadoEnObra.setCoste(rs.getFloat("Coste"));
+                periodoEmpleadoEnObra.setAdministrativoManoObra(PersonaDba.getAdministrativoManoDeObra(rs.getInt("AdministrativoManoDeObraQueAsignaID")));
+                periodoEmpleadoEnObra.setEmpleado(PersonaDba.getEmpleadoObra(rs.getInt("EmpleadoDeObraID")));
+                periodoEmpleadoEnObra.setJefeDeObra(PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));
+                periodoEmpleadoEnObra.setObra(ObraDba.getObra(rs.getInt("ObraID")));       
+            }
+            
+            return periodoEmpleadoEnObra;
+            
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        
+    }
+    
+    public static ArrayList<PeriodoEmpleadoEnObra> getPeriodoDeEmpleadoEnObras() throws SQLException{
+        Connection conn = MySQL.getConnection();
+        String sql = "select * from periodoempleadoenobra";
+        
+        ArrayList<PeriodoEmpleadoEnObra> periodoEmpleadoEnObras = new ArrayList<PeriodoEmpleadoEnObra>();
+        
+        try {
+            Statement sentencia = conn.createStatement();
+            ResultSet rs = sentencia.executeQuery(sql);
+            
+            while(rs.next()){
+                PeriodoEmpleadoEnObra periodoEmpleadoEnObra = new PeriodoEmpleadoEnObra();
+                periodoEmpleadoEnObra.setId(rs.getInt("ID"));
+                periodoEmpleadoEnObra.setFechaInicio(rs.getDate("FechaInicio"));
+                periodoEmpleadoEnObra.setFechaFin(rs.getDate("FechaFin"));
+                periodoEmpleadoEnObra.setFechaSolicitud(rs.getDate("FechaSolicitud"));
+                periodoEmpleadoEnObra.setCoste(rs.getFloat("Coste"));
+                periodoEmpleadoEnObra.setAdministrativoManoObra(PersonaDba.getAdministrativoManoDeObra(rs.getInt("AdministrativoManoDeObraQueAsignaID")));
+                periodoEmpleadoEnObra.setEmpleado(PersonaDba.getEmpleadoObra(rs.getInt("EmpleadoDeObraID")));
+                periodoEmpleadoEnObra.setJefeDeObra(PersonaDba.getJefeDeObra(rs.getInt("JefeDeObraQueSolicitaID")));
+                periodoEmpleadoEnObra.setObra(ObraDba.getObra(rs.getInt("ObraID")));       
+                periodoEmpleadoEnObras.add(periodoEmpleadoEnObra);
+            }
+            
+            return periodoEmpleadoEnObras;
+            
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        
+    }
+    
+    public static boolean deletePeriodoDeEmpleadoEnObra(int identificador) throws SQLException{
+        Connection conn = MySQL.getConnection();
+        String sql = "delete from periodoempleadoenobra where id=" + identificador;
         try {
             Statement sentencia = conn.createStatement();
             int n = sentencia.executeUpdate(sql);

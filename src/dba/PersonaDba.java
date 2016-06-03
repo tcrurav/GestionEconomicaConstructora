@@ -5,7 +5,9 @@
  */
 package dba;
 
+import POJOS.AdministrativoManoDeObra;
 import POJOS.Empleado;
+import POJOS.EmpleadoObra;
 import POJOS.JefeDeObra;
 import POJOS.Persona;
 import static gestioneconomicaconstructora.TiposDePersona.*;
@@ -30,8 +32,7 @@ public class PersonaDba {
     public static JefeDeObra getJefeDeObra(int identificador) throws SQLException {
         JefeDeObra jefeDeObra = new JefeDeObra();
 
-        String sql = "Select * from persona where ID=" + identificador
-                + " and Discriminator=" + JEFE_DE_OBRA;
+        String sql = "Select * from persona where ID=" + identificador;
         try {
             conn = MySQL.getConnection();
             sentencia = conn.createStatement();
@@ -57,6 +58,163 @@ public class PersonaDba {
         }
 
         return jefeDeObra;
+    }
+    
+    public static JefeDeObra getJefeDeObra(String identificador) throws SQLException {
+        JefeDeObra jefeDeObra = new JefeDeObra();
+
+        String sql = "Select * from persona where Nombre like '" + identificador + "'";
+        try {
+            conn = MySQL.getConnection();
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+            if (rs.next()) {
+                jefeDeObra.setPK_ID(rs.getInt("ID"));
+                jefeDeObra.setNombre(rs.getString("Nombre"));
+                jefeDeObra.setApellidos(rs.getString("Apellidos"));
+                jefeDeObra.setTelefono(rs.getString("Telefono"));
+                jefeDeObra.setDni(rs.getString("Dni"));
+                jefeDeObra.setUsuario(rs.getString("Usuario"));
+                jefeDeObra.setContra(rs.getString("Contra"));
+                jefeDeObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+            throw ex;
+        } finally {
+            close();
+        }
+
+        return jefeDeObra;
+    }
+    
+    public static EmpleadoObra getEmpleadoObra(int identificador) throws SQLException {
+        EmpleadoObra empleadoObra = new EmpleadoObra();
+
+        String sql = "Select * from persona where ID=" + identificador;
+        System.out.println(sql);
+        try {
+            conn = MySQL.getConnection();
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+            if (rs.next()) {
+                empleadoObra.setPK_ID(rs.getInt("ID"));
+                empleadoObra.setNombre(rs.getString("Nombre"));
+                empleadoObra.setApellidos(rs.getString("Apellidos"));
+                empleadoObra.setTelefono(rs.getString("Telefono"));
+                empleadoObra.setDni(rs.getString("Dni"));
+                empleadoObra.setUsuario(rs.getString("Usuario"));
+                empleadoObra.setContra(rs.getString("Contra"));
+                empleadoObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+            throw ex;
+        } finally {
+            close();
+        }
+
+        return empleadoObra;
+    }
+    
+    public static EmpleadoObra getEmpleadoObra(String identificador) throws SQLException {
+        EmpleadoObra empleadoObra = new EmpleadoObra();
+
+        String sql = "Select * from persona where Nombre like '" + identificador + "'";
+        System.out.println(sql);
+        try {
+            conn = MySQL.getConnection();
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+            if (rs.next()) {
+                empleadoObra.setPK_ID(rs.getInt("ID"));
+                empleadoObra.setNombre(rs.getString("Nombre"));
+                empleadoObra.setApellidos(rs.getString("Apellidos"));
+                empleadoObra.setTelefono(rs.getString("Telefono"));
+                empleadoObra.setDni(rs.getString("Dni"));
+                empleadoObra.setUsuario(rs.getString("Usuario"));
+                empleadoObra.setContra(rs.getString("Contra"));
+                empleadoObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+            throw ex;
+        } finally {
+            close();
+        }
+
+        return empleadoObra;
+    }
+    
+    public static AdministrativoManoDeObra getAdministrativoManoDeObra(int identificador) throws SQLException {
+        AdministrativoManoDeObra administrativoManoDeObra = new AdministrativoManoDeObra();
+
+        String sql = "Select * from persona where ID=" + identificador;
+        try {
+            conn = MySQL.getConnection();
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+            if (rs.next()) {
+                administrativoManoDeObra.setPK_ID(rs.getInt("ID"));
+                administrativoManoDeObra.setNombre(rs.getString("Nombre"));
+                administrativoManoDeObra.setApellidos(rs.getString("Apellidos"));
+                administrativoManoDeObra.setTelefono(rs.getString("Telefono"));
+                administrativoManoDeObra.setDni(rs.getString("Dni"));
+                administrativoManoDeObra.setUsuario(rs.getString("Usuario"));
+                administrativoManoDeObra.setContra(rs.getString("Contra"));
+                administrativoManoDeObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+            throw ex;
+        } finally {
+            close();
+        }
+
+        return administrativoManoDeObra;
+    }
+    
+    public static AdministrativoManoDeObra getAdministrativoManoDeObra(String identificador) throws SQLException {
+        AdministrativoManoDeObra administrativoManoDeObra = new AdministrativoManoDeObra();
+
+        String sql = "Select * from persona where Nombre like '" + identificador + "'";
+        try {
+            conn = MySQL.getConnection();
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+            if (rs.next()) {
+                administrativoManoDeObra.setPK_ID(rs.getInt("ID"));
+                administrativoManoDeObra.setNombre(rs.getString("Nombre"));
+                administrativoManoDeObra.setApellidos(rs.getString("Apellidos"));
+                administrativoManoDeObra.setTelefono(rs.getString("Telefono"));
+                administrativoManoDeObra.setDni(rs.getString("Dni"));
+                administrativoManoDeObra.setUsuario(rs.getString("Usuario"));
+                administrativoManoDeObra.setContra(rs.getString("Contra"));
+                administrativoManoDeObra.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+            throw ex;
+        } finally {
+            close();
+        }
+
+        return administrativoManoDeObra;
     }
 
     
@@ -84,8 +242,7 @@ public class PersonaDba {
     public static Empleado getEmpleado(int identificador) throws SQLException {
         Empleado empleado = new Empleado();
 
-        String sql = "Select * from persona where ID=" + identificador
-                + " and Discriminator<>" + CONTACTO_PROVEEDOR;
+        String sql = "Select * from persona where ID=" + identificador;
         try {
             conn = MySQL.getConnection();
             sentencia = conn.createStatement();

@@ -3,18 +3,19 @@ package POJOS;
 import java.util.*;
 public class PeriodoEmpleadoEnObra {
 
-	EmpleadoObra empleado;
-	Obra obra;
+	private EmpleadoObra empleado;
+	private Obra obra;
 	private Date fechaInicio;
 	private Date fechaFin;
-	JefeDeObra jefeDeObra;
-	AdministrativoManoDeObra administrativoManoObra;
+	private JefeDeObra jefeDeObra;
+	private AdministrativoManoDeObra administrativoManoObra;
 	/**
 	 * Parte proporcional del sueldo correspondiente a la categor�a del trabajador en el momento de la asignaci�n
 	 */
 	private float coste;
 	private Date fechaSolicitud;
 	private Date fechaRecepcion;
+        private int id;
 
 	public Date getFechaFin() {
 		return this.fechaFin;
@@ -77,8 +78,46 @@ public class PeriodoEmpleadoEnObra {
 	}
 
 	public PeriodoEmpleadoEnObra() {
-		// TODO - implement PeriodoEmpleadoEnObra.PeriodoEmpleadoEnObra
-		throw new UnsupportedOperationException();
 	}
+
+        public EmpleadoObra getEmpleado() {
+            return empleado;
+        }
+
+        public void setEmpleado(EmpleadoObra empleado) {
+            this.empleado = empleado;
+        }
+
+        public Obra getObra() {
+            return obra;
+        }
+
+        public void setObra(Obra obra) {
+            this.obra = obra;
+        }
+
+        public JefeDeObra getJefeDeObra() {
+            return jefeDeObra;
+        }
+
+        public void setJefeDeObra(JefeDeObra jefeDeObra) {
+            this.jefeDeObra = jefeDeObra;
+        }
+
+        public AdministrativoManoDeObra getAdministrativoManoObra() {
+            return administrativoManoObra;
+        }
+
+        public void setAdministrativoManoObra(AdministrativoManoDeObra administrativoManoObra) {
+            this.administrativoManoObra = administrativoManoObra;
+        }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 }

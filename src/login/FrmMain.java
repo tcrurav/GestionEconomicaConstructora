@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import obra.DialogoObra;
 import obra.PanelObra;
+import obra.PeriodoDeEmpleadoEnObraPanel;
 
 /**
  *
@@ -54,7 +55,7 @@ public class FrmMain extends javax.swing.JFrame {
                 case EMPLEADO_OBRA:
                     break;
                 case JEFE_DE_OBRA:
-                    
+                    mnuItemSolicitarPeriodoTrabajadorObra.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_PRESUPUESTOS:
                     mnuItemCrearObra.setEnabled(true);
@@ -301,7 +302,9 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuItemCrearObraActionPerformed
 
     private void mnuItemSolicitarPeriodoTrabajadorObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemSolicitarPeriodoTrabajadorObraActionPerformed
-        // TODO add your handling code here:
+        JPanel panel = new PeriodoDeEmpleadoEnObraPanel(MNU_INTRODUCIR_PRESUPUESTO);
+        setContentPane(panel);
+        pack();
     }//GEN-LAST:event_mnuItemSolicitarPeriodoTrabajadorObraActionPerformed
 
     private void jMenu2ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jMenu2ComponentHidden
