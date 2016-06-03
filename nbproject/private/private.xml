@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/obra/PanelObra.java</file>
             <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/dba/PeriodoMaquinariaEnObraDba.java</file>
             <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/MaquinariaObra/DialogoMaquinariaObra.java</file>
@@ -11,6 +12,13 @@
             <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/obra/DialogoObra.java</file>
             <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/dba/PersonaDba.java</file>
             <file>file:/C:/Users/Albbe/Documents/ProyectoETS2/GestionEconomicaConstructora/src/POJOS/Maquinaria.java</file>
+=======
+            <file>file:/M:/GestionEconomicaConstructora/src/empleadoAlmacen/DarDeAltaMaterial.java</file>
+            <file>file:/M:/GestionEconomicaConstructora/src/POJOS/EmpleadoAlmacen.java</file>
+            <file>file:/M:/GestionEconomicaConstructora/src/POJOS/Material.java</file>
+            <file>file:/M:/GestionEconomicaConstructora/src/Material.java</file>
+            <file>file:/M:/GestionEconomicaConstructora/src/dba/AltasMaterialDba.java</file>
+>>>>>>> origin/DarDeAltaMaterial
         </group>
     </open-files>
 </project-private>

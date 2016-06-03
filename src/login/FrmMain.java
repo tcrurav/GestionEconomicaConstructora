@@ -5,6 +5,7 @@
  */
 package login;
 
+
 import MaquinariaObra.DialogoMaquinariaObra;
 import POJOS.Empleado;
 import dba.PersonaDba;
@@ -15,6 +16,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import obra.DialogoObra;
 import obra.PanelObra;
+import empleadoAlmacen.DarDeAltaMaterial;
+import javax.swing.JDialog;
+
 
 /**
  *
@@ -49,6 +53,7 @@ public class FrmMain extends javax.swing.JFrame {
                 case ADMINISTRATIVO_OBRA:
                     mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(true);
                     mnuItemComprobarRecepcionMateriales.setEnabled(true);
+                    mnuItemDarAltaAMaterial.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
                     
@@ -186,6 +191,12 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarAltaAMaterial.setText("Dar de Alta a Material");
         mnuItemDarAltaAMaterial.setEnabled(false);
+		
+        mnuItemDarAltaAMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDarAltaAMaterialActionPerformed(evt);
+            }
+        });
         mnuMaterial.add(mnuItemDarAltaAMaterial);
 
         mnuItemComprobarRecepcionMateriales.setText("Comprobar Recepción de Materiales");
@@ -252,11 +263,13 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemComprobarRecepcionMaquinariaEnObra.setText("Comprobar Recepción Maquinaria en Obra");
         mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(false);
+
         mnuItemComprobarRecepcionMaquinariaEnObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(evt);
             }
         });
+
         jMenu2.add(mnuItemComprobarRecepcionMaquinariaEnObra);
 
         jMenuBar1.add(jMenu2);
@@ -287,6 +300,7 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void mnuItemCrearObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCrearObraActionPerformed
         // Para hacerlo con un JDialog (alternativamente)
+
         DialogoObra dialogoObra = new DialogoObra(this, true);
         dialogoObra.setVisible(true);
         
@@ -294,6 +308,7 @@ public class FrmMain extends javax.swing.JFrame {
         //JPanel panel = new PanelObra(MNU_CREAR_OBRA);
         //setContentPane(panel);
         //pack();
+
     }//GEN-LAST:event_mnuItemCrearObraActionPerformed
 
     private void mnuItemSolicitarPeriodoTrabajadorObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemSolicitarPeriodoTrabajadorObraActionPerformed
@@ -319,10 +334,19 @@ public class FrmMain extends javax.swing.JFrame {
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
 
+
     private void mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
        DialogoMaquinariaObra dialogoMaquinariaObra = new DialogoMaquinariaObra(this, true);
         dialogoMaquinariaObra.setVisible(true);
     }//GEN-LAST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
+
+    private void mnuItemDarAltaAMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarAltaAMaterialActionPerformed
+        // TODO add your handling code here:
+        DarDeAltaMaterial altaMaterial = new DarDeAltaMaterial(this, true);
+        altaMaterial.setVisible(true);
+       
+    }//GEN-LAST:event_mnuItemDarAltaAMaterialActionPerformed
+
 
     
     /**

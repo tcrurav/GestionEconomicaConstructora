@@ -5,6 +5,7 @@
  */
 package dba;
 
+
 import POJOS.AdministrativoObra;
 import POJOS.Empleado;
 import POJOS.EmpleadoAlmacen;
@@ -177,7 +178,9 @@ public class PersonaDba {
 
     public static ArrayList<JefeDeObra> getJefesDeObra() throws SQLException {
         conn = MySQL.getConnection();
+
         String sql = "select * from persona where discriminator =" +JEFE_DE_OBRA;
+
 
         ArrayList<JefeDeObra> jefesDeObra = new ArrayList<JefeDeObra>();
 
@@ -593,6 +596,7 @@ public class PersonaDba {
     }
      
        public static boolean deletePersona(int identificador) throws SQLException {
+
         conn = MySQL.getConnection();
         String sql = "delete from persona where id=" + identificador;
         try {
@@ -629,7 +633,6 @@ public class PersonaDba {
 
         }
     }
-     
-    
+
     
 }

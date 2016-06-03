@@ -1,5 +1,6 @@
 package POJOS;
 
+
 import java.util.Date;
 
 public class PeriodoMaquinariaEnObra {
@@ -120,4 +121,15 @@ public class PeriodoMaquinariaEnObra {
         this.PK_ID = ID;
     }
 
+
+
+
+	/**
+	 * 
+	 * @param parameter
+	 */
+	public PeriodoMaquinariaEnObra(int parameter) {
+		// TODO - implement PeriodoMaquinariaEnObra.PeriodoMaquinariaEnObra
+		throw new UnsupportedOperationException();
+	}
 }
