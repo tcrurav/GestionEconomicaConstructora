@@ -2,6 +2,7 @@ package POJOS;
 
 import java.util.*;
 
+
 public class MaterialParaObra {
 
         private Material material;
@@ -9,6 +10,7 @@ public class MaterialParaObra {
 	private float CantidadMaterial;
 	private AdministrativoObra administrativoObra;
 	private JefeDeObra jefeDeObra;
+
 	/**
 	 * Este es el coste del material en el momento de la asignaci�n a la obra.
 	 */

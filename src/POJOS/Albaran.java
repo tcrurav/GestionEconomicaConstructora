@@ -10,7 +10,7 @@ public class Albaran {
 	Collection<LineaAlbaran> lineaAlbaran;
 	private String numAlbaran;
 
-        
+
 	public Date getFecha() {
 		return this.fecha;
 	}

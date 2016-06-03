@@ -4,6 +4,7 @@
 --
 -- Servidor: 127.0.0.1
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Tiempo de generación: 03-05-2016 a las 19:17:09
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.5
@@ -12,6 +13,11 @@
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.20
 >>>>>>> remotes/origin/AdministrativoManoDeObraIzq
+=======
+-- Tiempo de generación: 03-05-2016 a las 19:17:09
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 7.0.5
+>>>>>>> remotes/origin/ComprobarRecepcionDeMaquinariaEnObra
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,6 +38,9 @@ USE `constructora`;
 
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> remotes/origin/ComprobarRecepcionDeMaquinariaEnObra
 -- Estructura de tabla para la tabla `albaran`
 --
 
@@ -153,6 +162,7 @@ CREATE TABLE `obra` (
 INSERT INTO `obra` (`ID`, `FechaInicio`, `FechaFin`, `Direccion`, `PresupuestoTotalEjecucion`, `EstimacionCosteMateriales`, `EstimacionCosteManoDeObra`, `EstimacionGastosGenerales`, `EstimacionBeneficioIndustrial`, `PorcentajeDeObraEjecutado`, `CantidadCobrada`, `CantidadFacturada`) VALUES
 (5, '2010-02-02', '2010-02-10', '1', 2, 3, 4, 5, 6, 7, 8, 9),
 (6, '2010-02-02', '2010-02-02', '1', 2, 3, 4, 5, 6, 1010, 8, 9);
+<<<<<<< HEAD
 =======
 -- Estructura de tabla para la tabla `empleados`
 --
@@ -171,11 +181,16 @@ INSERT INTO `empleados` (`dni`, `sueldo`, `tipo`) VALUES
 ('45666333b', 3000, 'administrativoManoDeObra'),
 ('48666225S', 300, 'administrativoManoDeObra');
 >>>>>>> remotes/origin/AdministrativoManoDeObraIzq
+=======
+>>>>>>> remotes/origin/ComprobarRecepcionDeMaquinariaEnObra
 
 -- --------------------------------------------------------
 
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> remotes/origin/ComprobarRecepcionDeMaquinariaEnObra
 -- Estructura de tabla para la tabla `periodoempleadoenobra`
 --
 
@@ -272,6 +287,7 @@ CREATE TABLE `proveedor` (
   `Nombre` varchar(255) DEFAULT NULL,
   `Direccion` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+<<<<<<< HEAD
 =======
 -- Estructura de tabla para la tabla `personas`
 --
@@ -292,6 +308,8 @@ INSERT INTO `personas` (`dni`, `nombre`, `apellidos`, `telefono`, `tipo`) VALUES
 ('45666333b', 'Samuel', 'Ruiz', '928554488', 'empleado'),
 ('48666225S', 'Marcossssssss', 'Garcíassssssss', '928663322', 'empleado');
 >>>>>>> remotes/origin/AdministrativoManoDeObraIzq
+=======
+>>>>>>> remotes/origin/ComprobarRecepcionDeMaquinariaEnObra
 
 --
 -- Índices para tablas volcadas
@@ -299,6 +317,9 @@ INSERT INTO `personas` (`dni`, `nombre`, `apellidos`, `telefono`, `tipo`) VALUES
 
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> remotes/origin/ComprobarRecepcionDeMaquinariaEnObra
 -- Indices de la tabla `albaran`
 --
 ALTER TABLE `albaran`
@@ -460,6 +481,7 @@ ALTER TABLE `persona`
 ALTER TABLE `proveedor`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
+<<<<<<< HEAD
 =======
 -- Indices de la tabla `empleados`
 --
@@ -474,11 +496,16 @@ ALTER TABLE `personas`
 
 --
 >>>>>>> remotes/origin/AdministrativoManoDeObraIzq
+=======
+>>>>>>> remotes/origin/ComprobarRecepcionDeMaquinariaEnObra
 -- Restricciones para tablas volcadas
 --
 
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> remotes/origin/ComprobarRecepcionDeMaquinariaEnObra
 -- Filtros para la tabla `albaran`
 --
 ALTER TABLE `albaran`
@@ -531,12 +558,15 @@ ALTER TABLE `periodomaquinariaenobra`
 --
 ALTER TABLE `persona`
   ADD CONSTRAINT `es de` FOREIGN KEY (`CategoriaID`) REFERENCES `categoria` (`ID`);
+<<<<<<< HEAD
 =======
 -- Filtros para la tabla `empleados`
 --
 ALTER TABLE `empleados`
   ADD CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`dni`) REFERENCES `personas` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE;
 >>>>>>> remotes/origin/AdministrativoManoDeObraIzq
+=======
+>>>>>>> remotes/origin/ComprobarRecepcionDeMaquinariaEnObra
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
