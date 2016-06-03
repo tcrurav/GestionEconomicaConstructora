@@ -6,7 +6,7 @@
 package form;
 
 
-import dba.Mysql;
+import dba.MySQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +34,7 @@ public class EmpleadoObra extends javax.swing.JFrame {
      */
     public EmpleadoObra() {
         initComponents();
-        conn = Mysql.getConnection();
+        conn = MySQL.getConnection();
         Deshabilitar();
         Limpiar();
         Llenar();
@@ -68,7 +68,7 @@ public class EmpleadoObra extends javax.swing.JFrame {
 
     public void Llenar() {
         try {
-            conn = Mysql.getConnection();
+            conn = MySQL.getConnection();
             String titulos[] = {"Dni", "Nombre", "Apellidos", "Direccion", "Telefono"};
             String sql = "Select * from empleadoObra";
             model = new DefaultTableModel(null, titulos);

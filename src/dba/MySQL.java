@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class MySQL {
     private static Connection conn = null;
-    private static final String db = "constructora";
+    private static final String db = "Constructora";
     private static final String user = "root";
     private static final String password = "";
     private static String url = "jdbc:mysql://localhost/" + db;
@@ -27,7 +27,7 @@ public class MySQL {
             conn = DriverManager.getConnection(url,user,password);
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Eror:"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Eror: " + e.getMessage());
         }
         return conn;
     }
