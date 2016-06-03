@@ -35,32 +35,32 @@ public class Albaran {
 		this.numAlbaran = numAlbaran;
 	}
 
-    /**
-     * @return the proveedor
-     */
-    public Persona getProveedor() {
-        return proveedor;
-    }
+        /**
+         * @return the proveedor
+         */
+        public Persona getProveedor() {
+            return proveedor;
+        }
 
-    /**
-     * @param proveedor the proveedor to set
-     */
-    public void setProveedor(Persona proveedor) {
-        this.proveedor = proveedor;
-    }
+        /**
+         * @param proveedor the proveedor to set
+         */
+        public void setProveedor(Persona proveedor) {
+            this.proveedor = proveedor;
+        }
 
-    /**
-     * @return the empleado
-     */
-    public Empleado getEmpleado() {
-        return empleado;
-    }
+        /**
+         * @return the empleado
+         */
+        public Empleado getEmpleado() {
+            return empleado;
+        }
 
-    /**
-     * @param empleado the empleado to set
-     */
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
+        /**
+         * @param empleado the empleado to set
+         */
+        public void setEmpleado(Empleado empleado) {
+            this.empleado = empleado;
+        }
 
 }
