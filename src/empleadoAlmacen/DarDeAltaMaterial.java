@@ -73,7 +73,7 @@ public class DarDeAltaMaterial extends javax.swing.JDialog {
         String fila[] = new String[7];
         ArrayList<Material> almacen = new ArrayList<>();
         try {
-            almacen = dba.AltasMaterialDba.getMateriales();
+            almacen = dba.AltasMaterialDba.getMaterial();
         } catch (SQLException ex) {
             Logger.getLogger(DarDeAltaMaterial.class.getName()).log(Level.SEVERE, null, ex);
         }

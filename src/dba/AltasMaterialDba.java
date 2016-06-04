@@ -48,7 +48,7 @@ public class AltasMaterialDba {
         return almacen;
     }
     
-    public static ArrayList<Material> getMateriales() throws SQLException{
+    public static ArrayList<Material> getMaterial() throws SQLException{
         Connection conn = MySQL.getConnection();
         String sql = "select * from material";
         

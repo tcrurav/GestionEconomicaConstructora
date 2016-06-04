@@ -9,6 +9,15 @@ public class Proveedor {
 	private String nombre;
 	private String direccion;
         int PK_ID;
+        private String dni;
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getDni() {
+        return dni;
+    }
 
 	public String getNombre() {
 		return this.nombre;
