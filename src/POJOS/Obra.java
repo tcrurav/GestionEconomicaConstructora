@@ -170,4 +170,10 @@ public class Obra {
         this.PK_ID = PK_ID;
     }
 
+    
+    @Override
+    public String toString() {
+	return direccion;
+    }
+    
 }

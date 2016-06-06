@@ -6,6 +6,7 @@
 package dba;
 
 import POJOS.Empleado;
+import POJOS.EmpleadoAlmacen;
 import POJOS.JefeDeObra;
 import POJOS.Persona;
 import static gestioneconomicaconstructora.TiposDePersona.*;
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Tiburcio
+ * @author Pablo
  */
 public class PersonaDba {
 
@@ -113,6 +114,38 @@ public class PersonaDba {
         return empleado;
     }
 
+    public static EmpleadoAlmacen getEmpleadoAlmacen(int identificador) throws SQLException {
+        EmpleadoAlmacen empleadoAlmacen = new EmpleadoAlmacen();
+
+        String sql = "Select * from persona where ID=" + identificador
+                + " and Discriminator<>" + EMPLEADO_ALMACEN;
+        try {
+            conn = MySQL.getConnection();
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+            if (rs.next()) {
+                empleadoAlmacen.setPK_ID(rs.getInt("ID"));
+                empleadoAlmacen.setNombre(rs.getString("Nombre"));
+                empleadoAlmacen.setApellidos(rs.getString("Apellidos"));
+                empleadoAlmacen.setTelefono(rs.getString("Telefono"));
+                empleadoAlmacen.setDni(rs.getString("Dni"));
+                empleadoAlmacen.setUsuario(rs.getString("Usuario"));
+                empleadoAlmacen.setContra(rs.getString("Contra"));
+                empleadoAlmacen.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+            throw ex;
+        } finally {
+            close();
+        }
+
+        return empleadoAlmacen;
+    }
+    
     public static Empleado getEmpleado(String usuario, String contrasena) throws SQLException {
         Empleado empleado = new Empleado();
 
@@ -175,7 +208,7 @@ public class PersonaDba {
 
     public static ArrayList<JefeDeObra> getJefesDeObra() throws SQLException {
         conn = MySQL.getConnection();
-        String sql = "select * from JefeDeObra";
+        String sql = "select * from persona where discriminator =" +JEFE_DE_OBRA;
 
         ArrayList<JefeDeObra> jefesDeObra = new ArrayList<JefeDeObra>();
 
@@ -196,6 +229,40 @@ public class PersonaDba {
             }
 
             return jefesDeObra;
+
+        } catch (SQLException ex) {
+            //Logger.getLogger(FrmPersona.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        } finally {
+            close();
+        }
+
+        //return null;
+    }
+    
+    public static ArrayList<EmpleadoAlmacen> getEmpleadosAlmacen() throws SQLException {
+        conn = MySQL.getConnection();
+        String sql = "select * from persona where Discriminator="+ EMPLEADO_ALMACEN;
+
+        ArrayList<EmpleadoAlmacen> empleadosAlmacen = new ArrayList<EmpleadoAlmacen>();
+
+        try {
+            sentencia = conn.createStatement();
+            rs = sentencia.executeQuery(sql);
+
+            while (rs.next()) {
+                EmpleadoAlmacen empleadoAlmacen = new EmpleadoAlmacen();
+                empleadoAlmacen.setPK_ID(rs.getInt("ID"));
+                empleadoAlmacen.setNombre(rs.getString("Nombre"));
+                empleadoAlmacen.setApellidos(rs.getString("Apellidos"));
+                empleadoAlmacen.setTelefono(rs.getString("Telefono"));
+                empleadoAlmacen.setDni(rs.getString("Dni"));
+                empleadoAlmacen.setCategoria(CategoriaDba.getCategoria(rs.getInt("CategoriaID")));
+
+                empleadosAlmacen.add(empleadoAlmacen);
+            }
+
+            return empleadosAlmacen;
 
         } catch (SQLException ex) {
             //Logger.getLogger(FrmPersona.class.getName()).log(Level.SEVERE, null, ex);
@@ -273,6 +340,8 @@ public class PersonaDba {
 
         //return null;
     }
+    
+    
 
     public static boolean insertJefeDeObra(JefeDeObra jefeDeObra) throws SQLException {
         conn = MySQL.getConnection();

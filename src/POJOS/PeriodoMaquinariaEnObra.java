@@ -3,14 +3,16 @@ package POJOS;
 import java.util.*;
 public class PeriodoMaquinariaEnObra {
 
-	Obra obra;
-	Maquinaria maquinaria;
+        private int PK_ID;
+	private Obra obra;
+	private Maquinaria maquinaria;
 	private Date fechaInicio;
 	private Date fechaFin;
-	JefeDeObra jefeDeObra;
-	EmpleadoAlmacen empleadoAlmacen;
+	private JefeDeObra jefeDeObra;
+	private EmpleadoAlmacen empleadoAlmacen;
 	private Date fechaSolicitud;
 	private Date fechaRecepcion;
+        
 
 	public Date getFechaInicio() {
 		return this.fechaInicio;
@@ -25,13 +27,11 @@ public class PeriodoMaquinariaEnObra {
 	}
 
 	public PeriodoMaquinariaEnObra() {
-		// TODO - implement PeriodoMaquinariaEnObra.PeriodoMaquinariaEnObra
-		throw new UnsupportedOperationException();
+		
 	}
 
 	public Date getFechaFin() {
-		// TODO - implement PeriodoMaquinariaEnObra.getFechaFin
-		throw new UnsupportedOperationException();
+            return this.fechaFin;
 	}
 
 	/**
@@ -39,8 +39,7 @@ public class PeriodoMaquinariaEnObra {
 	 * @param fechaFin
 	 */
 	public void setFechaFin(Date fechaFin) {
-		// TODO - implement PeriodoMaquinariaEnObra.setFechaFin
-		throw new UnsupportedOperationException();
+		this.fechaFin = fechaFin;
 	}
 
 	public Date getFechaSolicitud() {
@@ -73,7 +72,47 @@ public class PeriodoMaquinariaEnObra {
 	 */
 	public PeriodoMaquinariaEnObra(int parameter) {
 		// TODO - implement PeriodoMaquinariaEnObra.PeriodoMaquinariaEnObra
-		throw new UnsupportedOperationException();
+		
 	}
+
+    public Obra getObra() {
+        return obra;
+    }
+
+    public void setObra(Obra obra) {
+        this.obra = obra;
+    }
+
+    public Maquinaria getMaquinaria() {
+        return maquinaria;
+    }
+
+    public void setMaquinaria(Maquinaria maquinaria) {
+        this.maquinaria = maquinaria;
+    }
+
+    public JefeDeObra getJefeDeObra() {
+        return jefeDeObra;
+    }
+
+    public void setJefeDeObra(JefeDeObra jefeDeObra) {
+        this.jefeDeObra = jefeDeObra;
+    }
+
+    public EmpleadoAlmacen getEmpleadoAlmacen() {
+        return empleadoAlmacen;
+    }
+
+    public void setEmpleadoAlmacen(EmpleadoAlmacen empleadoAlmacen) {
+        this.empleadoAlmacen = empleadoAlmacen;
+    }
+
+    public int getPK_ID() {
+        return PK_ID;
+    }
+
+    public void setPK_ID(int PK_ID) {
+        this.PK_ID = PK_ID;
+    }
 
 }

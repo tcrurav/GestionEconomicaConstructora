@@ -293,6 +293,12 @@ public class FrmObra extends javax.swing.JFrame {
 
         jLabel13.setText("cantidadFacturada:");
 
+        jXDatePickerFechaInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXDatePickerFechaInicioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -516,6 +522,10 @@ public class FrmObra extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         FrmMain frmMain = new FrmMain();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jXDatePickerFechaInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePickerFechaInicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jXDatePickerFechaInicioActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@
 package login;
 
 import POJOS.Empleado;
+import RecepcionMaquinaria.DialogoPeriodoMaquinariaEnObra;
 import dba.PersonaDba;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
@@ -46,6 +47,8 @@ public class FrmMain extends javax.swing.JFrame {
                 case EMPLEADO_ALMACEN:
                     break;
                 case ADMINISTRATIVO_OBRA:
+                    mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(true);
+                    mnuItemComprobarRecepcionMateriales.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
                     
@@ -187,6 +190,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemComprobarRecepcionMateriales.setText("Comprobar Recepción de Materiales");
         mnuItemComprobarRecepcionMateriales.setEnabled(false);
+        mnuItemComprobarRecepcionMateriales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemComprobarRecepcionMaterialesActionPerformed(evt);
+            }
+        });
         mnuMaterial.add(mnuItemComprobarRecepcionMateriales);
 
         jMenuBar1.add(mnuMaterial);
@@ -249,6 +257,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemComprobarRecepcionMaquinariaEnObra.setText("Comprobar Recepción Maquinaria en Obra");
         mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(false);
+        mnuItemComprobarRecepcionMaquinariaEnObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuItemComprobarRecepcionMaquinariaEnObra);
 
         jMenuBar1.add(jMenu2);
@@ -310,6 +323,18 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(panel);
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
+
+    private void mnuItemComprobarRecepcionMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemComprobarRecepcionMaterialesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuItemComprobarRecepcionMaterialesActionPerformed
+
+    private void mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
+        DialogoPeriodoMaquinariaEnObra dialogoPeriodoMaquinariaEnObra = new DialogoPeriodoMaquinariaEnObra(this, true);
+        dialogoPeriodoMaquinariaEnObra.setVisible(true);
+        //JPanel panel = new DialogoRecepcionDeMaquinariaEnObra(MNU_COMPROBAR_RECEPCION_MAQUINARIA_EN_OBRA);
+        //setContentPane(panel);
+        pack();
+    }//GEN-LAST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
 
     
     /**

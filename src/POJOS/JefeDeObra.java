@@ -9,4 +9,5 @@ public class JefeDeObra extends Empleado {
 	Collection<PeriodoMaquinariaEnObra> periodoMaquinariaEnObra;
 	Collection<PeriodoEmpleadoEnObra> periodoEmpleadoEnObra;
 
+    
 }

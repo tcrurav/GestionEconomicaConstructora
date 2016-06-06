@@ -70,4 +70,8 @@ public class Persona {
         this.PK_ID = PK_ID;
     }
 
+    @Override
+	public String toString() {
+		return getNombre() +" "+ getApellidos();
+	}
 }
