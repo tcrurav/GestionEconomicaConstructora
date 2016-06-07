@@ -25,6 +25,7 @@ import empleado.DialogoEmpleado;
 import periodoMaquinariaEnObra.DialogoPeriodoMaquinariaEnObra;
 import empleadoAlmacen.DarDeAltaMaterial;
 import javax.swing.JDialog;
+import mostrarBalanceDeObra.DialogoMostrarBalanceDeObra;
 
 /**
  *
@@ -34,6 +35,7 @@ public class FrmMain extends javax.swing.JFrame {
     /**
      * Creates new form FrmMain
      */
+    Empleado empleado;
     public FrmMain(Empleado empleado) {
         initComponents();
         this.setTitle("Constructura");
@@ -41,6 +43,7 @@ public class FrmMain extends javax.swing.JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.empleado=empleado;
     }
 
     public FrmMain() {
@@ -55,11 +58,11 @@ public class FrmMain extends javax.swing.JFrame {
             int tipoDeEmpleado = PersonaDba.getDiscriminator(empleado);
             switch(tipoDeEmpleado){
                 case EMPLEADO_ALMACEN:
-				    mnuItemAsignarMaquinariaAObra.setEnabled(true);
+                    mnuItemAsignarMaquinariaAObra.setEnabled(true);
                     mnuItemDarAltaAMaterial.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_OBRA:
-				    mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(true);
+		    mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(true);
                     mnuItemComprobarRecepcionMateriales.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
@@ -68,6 +71,7 @@ public class FrmMain extends javax.swing.JFrame {
                 case EMPLEADO_OBRA:
                     break;
                 case JEFE_DE_OBRA:
+                    mnuItemMonstrarBalanceDeObra.setEnabled(true);
                     mnuItemSolicitarMaterialParaUnaObra.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_PRESUPUESTOS:
@@ -178,6 +182,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemMonstrarBalanceDeObra.setText("Mostrar Balance de Obra");
         mnuItemMonstrarBalanceDeObra.setEnabled(false);
+        mnuItemMonstrarBalanceDeObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemMonstrarBalanceDeObraActionPerformed(evt);
+            }
+        });
         mnuObra.add(mnuItemMonstrarBalanceDeObra);
 
         jMenuItem3.setText("Introducir Porcentaje de Obra Ejecutada");
@@ -190,11 +199,6 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemSolicitarMaterialParaUnaObra.setText("Solicitar Material para una Obra");
         mnuItemSolicitarMaterialParaUnaObra.setEnabled(false);
-        mnuItemSolicitarMaterialParaUnaObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemSolicitarMaterialParaUnaObraActionPerformed(evt);
-            }
-        });
         mnuMaterial.add(mnuItemSolicitarMaterialParaUnaObra);
 
         mnuItemAsignarMaterialAObra.setText("Asignar Material a Obra");
@@ -203,11 +207,6 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarAltaAMaterial.setText("Dar de Alta a Material");
         mnuItemDarAltaAMaterial.setEnabled(false);
-        mnuItemDarAltaAMaterial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemDarAltaAMaterialActionPerformed(evt);
-            }
-        });
         mnuMaterial.add(mnuItemDarAltaAMaterial);
 
         mnuItemComprobarRecepcionMateriales.setText("Comprobar Recepción de Materiales");
@@ -237,11 +236,6 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarDeAltaAEmpleado.setText("Dar de Alta a Empleado");
         mnuItemDarDeAltaAEmpleado.setEnabled(false);
-        mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
-            }
-        });
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
 
         mnuItemDarAltaCategoriaEmpleado.setText("Dar de Alta a Categoria de Empleado");
@@ -284,11 +278,6 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemComprobarRecepcionMaquinariaEnObra.setText("Comprobar Recepción Maquinaria en Obra");
         mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(false);
-        mnuItemComprobarRecepcionMaquinariaEnObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(evt);
-            }
-        });
         jMenu2.add(mnuItemComprobarRecepcionMaquinariaEnObra);
 
         jMenuBar1.add(jMenu2);
@@ -361,9 +350,6 @@ public class FrmMain extends javax.swing.JFrame {
     private void mnuItemDarDeAltaAEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
         DialogoEmpleado dialogoEmpleado = new DialogoEmpleado(this, true);
         dialogoEmpleado.setVisible(true);
-
-
-
     }//GEN-LAST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
 
     private void mnuItemAsignarMaquinariaAObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemAsignarMaquinariaAObraActionPerformed
@@ -395,6 +381,12 @@ public class FrmMain extends javax.swing.JFrame {
        DialogoMaquinariaObra dialogoMaquinariaObra = new DialogoMaquinariaObra(this, true);
         dialogoMaquinariaObra.setVisible(true);
     }//GEN-LAST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
+
+    private void mnuItemMonstrarBalanceDeObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemMonstrarBalanceDeObraActionPerformed
+        // TODO add your handling code here:
+        DialogoMostrarBalanceDeObra dialogoMostrarBalanceDeObra = new DialogoMostrarBalanceDeObra(this, true, empleado);
+        dialogoMostrarBalanceDeObra.setVisible(true);
+    }//GEN-LAST:event_mnuItemMonstrarBalanceDeObraActionPerformed
 
     
    /**
