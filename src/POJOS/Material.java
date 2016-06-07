@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Material {
 
+
         private int PK_ID;
 	Collection<LineaAlbaran> lineaAlbaran;
 	Collection<MaterialParaObra> materialParaObra;
@@ -98,11 +99,11 @@ public class Material {
 	}
 
 
-
 	public Material() {
 		// TODO - implement Material.Material
 		throw new UnsupportedOperationException();
 	}
+
 
 	/*public Material() {
 		// TODO - implement Material.Material
@@ -122,6 +123,7 @@ public class Material {
     public void setPK_ID(int PK_ID) {
         this.PK_ID = PK_ID;
     }
+
 
 
 }

@@ -1,23 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
--- Tiempo de generación: 27-05-2016 a las 03:52:52
-=======
--- Tiempo de generación: 03-05-2016 a las 19:17:09
->>>>>>> origin/DarDeAltaMaterial
-=======
--- Tiempo de generación: 03-05-2016 a las 19:17:09
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
--- Tiempo de generación: 03-05-2016 a las 19:17:09
->>>>>>> origin/darDeAltaAEmpleado
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 7.0.5
+-- Servidor: localhost
+-- Tiempo de generación: 15-05-2016 a las 21:43:59
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,23 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `constructora`
+-- Base de datos: `constructoraActualizada_joseAleman`
 --
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-CREATE DATABASE IF NOT EXISTS `constructora` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `constructora`;
->>>>>>> origin/DarDeAltaMaterial
-=======
-CREATE DATABASE IF NOT EXISTS `constructora` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `constructora`;
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
-CREATE DATABASE IF NOT EXISTS `constructora` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `constructora`;
->>>>>>> origin/darDeAltaAEmpleado
+CREATE DATABASE IF NOT EXISTS `constructoraActualizada_joseAleman` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `constructoraActualizada_joseAleman`;
 
 -- --------------------------------------------------------
 
@@ -109,22 +84,6 @@ CREATE TABLE `maquinaria` (
   `CodInventario` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
---
--- Volcado de datos para la tabla `maquinaria`
---
-
-INSERT INTO `maquinaria` (`ID`, `Nombre`, `PrecioDeCompra`, `FechaFinVidaUtil`, `FechaCompra`, `CodInventario`) VALUES
-(5, 'Tractor', 1500, '2016-11-10', '2016-05-20', '200');
-
-=======
->>>>>>> origin/DarDeAltaMaterial
-=======
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
->>>>>>> origin/darDeAltaAEmpleado
 -- --------------------------------------------------------
 
 --
@@ -237,36 +196,9 @@ CREATE TABLE `periodomaquinariaenobra` (
   `FechaSolicitud` date DEFAULT NULL,
   `FechaRecepcion` date DEFAULT NULL,
   `MaquinariaID` int(11) NOT NULL,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  `ObraID` int(11) NOT NULL,
-  `AdministrativoObraQueVerificaID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `periodomaquinariaenobra`
---
-
-INSERT INTO `periodomaquinariaenobra` (`ID`, `EmpleadoAlmacenQueAsignaID`, `JefeDeObraQueSolicitaID`, `FechaInicio`, `FechaFin`, `FechaSolicitud`, `FechaRecepcion`, `MaquinariaID`, `ObraID`, `AdministrativoObraQueVerificaID`) VALUES
-(9, 20, 30, '2016-05-26', '2016-05-26', '2016-05-26', '2016-05-26', 5, 5, 10),
-(14, 20, 30, '2016-05-27', '2016-05-27', '2016-05-27', '2016-05-27', 5, 5, 1);
-
-=======
   `ObraID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
->>>>>>> origin/DarDeAltaMaterial
-=======
-  `ObraID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
-  `ObraID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
->>>>>>> origin/darDeAltaAEmpleado
 -- --------------------------------------------------------
 
 --
@@ -282,7 +214,7 @@ CREATE TABLE `persona` (
   `Dni` varchar(255) DEFAULT NULL,
   `Usuario` varchar(255) DEFAULT NULL,
   `Contra` varchar(255) DEFAULT NULL,
-  `Discriminator` varchar(255) NOT NULL
+  `Discriminator` varchar(255) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -290,23 +222,8 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`ID`, `CategoriaID`, `Nombre`, `Apellidos`, `Telefono`, `Dni`, `Usuario`, `Contra`, `Discriminator`) VALUES
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-(1, 1, 'Alberto', 'Viera Gil', '649235700', '43293575F', 'alberto', 'alberto', '2'),
 (2, 2, 'Tiburcio', 'Cruz Ravelo', '655538544', '52845821d', 'tiburcio', 'tiburcio', '6'),
-(10, 1, 'Juan', 'Hernandez perez', '647892547', '44557788F', 'juan', 'juan', '2'),
-(20, 2, 'Pepe', 'Viera Hernandez', '653214788', '47223366A', 'pepe', 'pepe', '1'),
-(30, 1, 'Maria', 'Cabrera Gil', '928445566', '41789632V', 'maria', 'maria', '5');
-=======
-(2, 2, 'Tiburcio', 'Cruz Ravelo', '655538544', '52845821d', 'tiburcio', 'tiburcio', '6');
->>>>>>> origin/DarDeAltaMaterial
-=======
-(2, 2, 'Tiburcio', 'Cruz Ravelo', '655538544', '52845821d', 'tiburcio', 'tiburcio', '6');
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
-(2, 2, 'Tiburcio', 'Cruz Ravelo', '655538544', '52845821d', 'tiburcio', 'tiburcio', '6');
->>>>>>> origin/darDeAltaAEmpleado
+(7, 2, 'jose', 'aleman naranjo', '928123456', '42001002', 'jose', 'jose', '3');
 
 -- --------------------------------------------------------
 
@@ -408,16 +325,6 @@ ALTER TABLE `periodojefeobraenobra`
 --
 ALTER TABLE `periodomaquinariaenobra`
   ADD PRIMARY KEY (`ID`),
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  ADD UNIQUE KEY `verifica` (`AdministrativoObraQueVerificaID`),
-=======
->>>>>>> origin/DarDeAltaMaterial
-=======
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
->>>>>>> origin/darDeAltaAEmpleado
   ADD KEY `PeriodoMaquinariaEnObra` (`MaquinariaID`),
   ADD KEY `PeriodoMaquinariaEnObra2` (`ObraID`),
   ADD KEY `solicita2` (`JefeDeObraQueSolicitaID`),
@@ -465,19 +372,7 @@ ALTER TABLE `lineaalbaran`
 -- AUTO_INCREMENT de la tabla `maquinaria`
 --
 ALTER TABLE `maquinaria`
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> origin/DarDeAltaMaterial
-=======
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> origin/darDeAltaAEmpleado
 --
 -- AUTO_INCREMENT de la tabla `material`
 --
@@ -507,36 +402,12 @@ ALTER TABLE `periodojefeobraenobra`
 -- AUTO_INCREMENT de la tabla `periodomaquinariaenobra`
 --
 ALTER TABLE `periodomaquinariaenobra`
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-=======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> origin/DarDeAltaMaterial
-=======
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> origin/darDeAltaAEmpleado
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-=======
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> origin/DarDeAltaMaterial
-=======
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> origin/darDeAltaAEmpleado
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
@@ -592,16 +463,6 @@ ALTER TABLE `periodomaquinariaenobra`
   ADD CONSTRAINT `PeriodoMaquinariaEnObra` FOREIGN KEY (`MaquinariaID`) REFERENCES `maquinaria` (`ID`),
   ADD CONSTRAINT `PeriodoMaquinariaEnObra2` FOREIGN KEY (`ObraID`) REFERENCES `obra` (`ID`),
   ADD CONSTRAINT `asigna` FOREIGN KEY (`EmpleadoAlmacenQueAsignaID`) REFERENCES `persona` (`ID`),
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  ADD CONSTRAINT `periodomaquinariaenobra_ibfk_1` FOREIGN KEY (`AdministrativoObraQueVerificaID`) REFERENCES `persona` (`ID`),
-=======
->>>>>>> origin/DarDeAltaMaterial
-=======
->>>>>>> origin/SolicitarMaterialesParaObra
-=======
->>>>>>> origin/darDeAltaAEmpleado
   ADD CONSTRAINT `solicita2` FOREIGN KEY (`JefeDeObraQueSolicitaID`) REFERENCES `persona` (`ID`);
 
 --

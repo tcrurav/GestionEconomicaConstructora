@@ -197,10 +197,10 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
         String fila [] = new String [10];
         
         ArrayList<PeriodoMaquinariaEnObra> maquinarias = new ArrayList<>();
+        try{
         
-         try {
-            maquinarias = dba.PeriodoMaquinariaEnObraDba.getPeriodoMaquinariasEnObra();
-        } catch (SQLException ex) {
+        maquinarias = dba.PeriodoMaquinariaEnObraDba.getPeriodoMaquinariasEnObra();
+        }catch (SQLException ex){
             Logger.getLogger(DialogoMaquinariaObra.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -385,12 +385,9 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
         campoFechaFin = new javax.swing.JPanel();
         jFechaInicio = new javax.swing.JLabel();
         jFechaFin = new javax.swing.JLabel();
-        jxDateFechaInicio = new org.jdesktop.swingx.JXDatePicker();
-        jxDateFechaFin = new org.jdesktop.swingx.JXDatePicker();
         jObraID = new javax.swing.JLabel();
         jFechaRecepcion = new javax.swing.JLabel();
         jMaquinaria = new javax.swing.JLabel();
-        jxDateFechaRecepcion = new org.jdesktop.swingx.JXDatePicker();
         jScrollPane4 = new javax.swing.JScrollPane();
         TablaMaquinariaObra = new javax.swing.JTable();
         btnNuevo = new javax.swing.JButton();
@@ -399,7 +396,6 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
         CboObra = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jxDateFechaSolicitud = new org.jdesktop.swingx.JXDatePicker();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         CboJefeObra = new javax.swing.JComboBox<>();
@@ -409,6 +405,10 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
         btnGuardar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         CboMaquinaria = new javax.swing.JComboBox<>();
+        jxDateFechaInicio = new org.jdesktop.swingx.JXDatePicker();
+        jxDateFechaFin = new org.jdesktop.swingx.JXDatePicker();
+        jxDateFechaRecepcion = new org.jdesktop.swingx.JXDatePicker();
+        jxDateFechaSolicitud = new org.jdesktop.swingx.JXDatePicker();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -456,12 +456,6 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
         jFechaInicio.setText("Fecha de Inicio:");
 
         jFechaFin.setText("Fecha de Fin:");
-
-        jxDateFechaInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jxDateFechaInicioActionPerformed(evt);
-            }
-        });
 
         jFechaRecepcion.setText("Fecha Recepcion:");
 
@@ -553,12 +547,18 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
                         .addGap(39, 39, 39)
                         .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(campoFechaFinLayout.createSequentialGroup()
-                                .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jxDateFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                                    .addComponent(jxDateFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jxDateFechaRecepcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CboObra, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jxDateFechaSolicitud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btnModificar)
+                                .addGap(78, 78, 78)
+                                .addComponent(btnBorrar)
+                                .addGap(156, 156, 156)
+                                .addComponent(btnGuardar))
+                            .addGroup(campoFechaFinLayout.createSequentialGroup()
+                                .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jxDateFechaSolicitud, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                                    .addComponent(CboObra, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jxDateFechaInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jxDateFechaFin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jxDateFechaRecepcion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(52, 52, 52)
                                 .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -570,13 +570,7 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
                                     .addComponent(CboJefeObra, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(CboEmpleadoAlmacen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(CboAdministrativoObra, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CboMaquinaria, 0, 130, Short.MAX_VALUE)))
-                            .addGroup(campoFechaFinLayout.createSequentialGroup()
-                                .addComponent(btnModificar)
-                                .addGap(78, 78, 78)
-                                .addComponent(btnBorrar)
-                                .addGap(156, 156, 156)
-                                .addComponent(btnGuardar)))))
+                                    .addComponent(CboMaquinaria, 0, 130, Short.MAX_VALUE))))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         campoFechaFinLayout.setVerticalGroup(
@@ -586,16 +580,16 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
                     .addGroup(campoFechaFinLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jxDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFechaInicio)
                             .addComponent(jLabel3)
-                            .addComponent(CboJefeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CboJefeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jxDateFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jFechaFin)
-                            .addComponent(jxDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(CboEmpleadoAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CboEmpleadoAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jxDateFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jMaquinaria)
@@ -605,10 +599,10 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
                         .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(CboAdministrativoObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(campoFechaFinLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jFechaRecepcion)
                             .addComponent(jxDateFechaRecepcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,9 +616,8 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
                                 .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1)
                                     .addComponent(jObraID))))
-                        .addGap(26, 26, 26))
+                        .addGap(24, 24, 24))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, campoFechaFinLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(campoFechaFinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(CboMaquinaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -634,7 +627,7 @@ public class DialogoMaquinariaObra extends javax.swing.JDialog {
                     .addComponent(btnNuevo)
                     .addComponent(btnBorrar)
                     .addComponent(btnGuardar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(118, 118, 118))
         );

@@ -2,6 +2,7 @@ package POJOS;
 
 
 
+
 import java.util.Date;
 
 public class PeriodoMaquinariaEnObra {
@@ -126,6 +127,7 @@ public class PeriodoMaquinariaEnObra {
 
 
 
+
 	/**
 	 * 
 	 * @param parameter
@@ -135,5 +137,8 @@ public class PeriodoMaquinariaEnObra {
 		throw new UnsupportedOperationException();
 	}
 
+
 }
+
+
 

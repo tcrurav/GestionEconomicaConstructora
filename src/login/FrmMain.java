@@ -7,13 +7,11 @@ package login;
 
 
 
+
 import MaquinariaObra.DialogoMaquinariaObra;
 import POJOS.Empleado;
-
-
 import dba.PersonaDba;
 import jefeDeObra.PanelSolicitarMaterialObra;
-
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
 import java.sql.SQLException;
@@ -21,10 +19,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import obra.DialogoObra;
 import obra.PanelObra;
-
 import empleadoAlmacen.DarDeAltaMaterial;
 import javax.swing.JDialog;
-
+import empleado.DialogoEmpleado;
 
 
 /**
@@ -59,19 +56,23 @@ public class FrmMain extends javax.swing.JFrame {
                     break;
                 case ADMINISTRATIVO_OBRA:
 
+
                     mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(true);
                     mnuItemComprobarRecepcionMateriales.setEnabled(true);
                     mnuItemDarAltaAMaterial.setEnabled(true);
 
+               
                     break;
                 case ADMINISTRATIVO_MANO_DE_OBRA:
-                    
+                    mnuItemDarDeAltaAEmpleado.setEnabled(true);
                     break;
                 case EMPLEADO_OBRA:
                     break;
                 case JEFE_DE_OBRA:
 
+
                     mnuItemSolicitarMaterialParaUnaObra.setEnabled(true);
+
 
                     break;
                 case ADMINISTRATIVO_PRESUPUESTOS:
@@ -196,6 +197,7 @@ public class FrmMain extends javax.swing.JFrame {
         mnuItemSolicitarMaterialParaUnaObra.setText("Solicitar Material para una Obra");
         mnuItemSolicitarMaterialParaUnaObra.setEnabled(false);
 
+
         mnuItemSolicitarMaterialParaUnaObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemSolicitarMaterialParaUnaObraActionPerformed(evt);
@@ -210,6 +212,7 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarAltaAMaterial.setText("Dar de Alta a Material");
         mnuItemDarAltaAMaterial.setEnabled(false);
+
 
 		
         mnuItemDarAltaAMaterial.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +250,13 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarDeAltaAEmpleado.setText("Dar de Alta a Empleado");
         mnuItemDarDeAltaAEmpleado.setEnabled(false);
+
+        mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
+            }
+        });
+
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
 
         mnuItemDarAltaCategoriaEmpleado.setText("Dar de Alta a Categoria de Empleado");
@@ -286,11 +296,13 @@ public class FrmMain extends javax.swing.JFrame {
         mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(false);
 
 
+
         mnuItemComprobarRecepcionMaquinariaEnObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(evt);
             }
         });
+
 
 
         jMenu2.add(mnuItemComprobarRecepcionMaquinariaEnObra);
@@ -359,6 +371,7 @@ public class FrmMain extends javax.swing.JFrame {
 
 
 
+
     private void mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed
        DialogoMaquinariaObra dialogoMaquinariaObra = new DialogoMaquinariaObra(this, true);
         dialogoMaquinariaObra.setVisible(true);
@@ -378,6 +391,15 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(PanelSolicitarMaterial);
         pack();
     }//GEN-LAST:event_mnuItemSolicitarMaterialParaUnaObraActionPerformed
+
+
+    private void mnuItemDarDeAltaAEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
+        DialogoEmpleado dialogoEmpleado = new DialogoEmpleado(this, true);
+        dialogoEmpleado.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
 
 
     

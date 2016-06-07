@@ -110,9 +110,11 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
 
+
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemSolicitarMaterialParaUnaObraActionPerformed"/>
               </Events>
+
 
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemAsignarMaterialAObra">
@@ -128,9 +130,11 @@
               </Properties>
 
 
+
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemDarAltaAMaterialActionPerformed"/>
               </Events>
+
 
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemComprobarRecepcionMateriales">
@@ -172,6 +176,11 @@
                 <Property name="text" type="java.lang.String" value="Dar de Alta a Empleado"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemDarDeAltaAEmpleadoActionPerformed"/>
+              </Events>
+
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemDarAltaCategoriaEmpleado">
               <Properties>
@@ -227,10 +236,10 @@
               </Properties>
 
 
+
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed"/>
               </Events>
-
 
             </MenuItem>
           </SubComponents>

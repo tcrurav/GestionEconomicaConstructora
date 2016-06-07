@@ -135,12 +135,19 @@
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jxDateFechaInicio" alignment="0" pref="284" max="32767" attributes="0"/>
+                                  <Component id="btnModificar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="btnBorrar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                                  <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jxDateFechaSolicitud" alignment="0" pref="284" max="32767" attributes="0"/>
+                                      <Component id="CboObra" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jxDateFechaInicio" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jxDateFechaFin" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jxDateFechaRecepcion" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="CboObra" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jxDateFechaSolicitud" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -157,13 +164,6 @@
                                       <Component id="CboMaquinaria" pref="130" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnModificar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Component id="btnBorrar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
-                                  <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -178,17 +178,17 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jxDateFechaInicio" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jFechaInicio" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CboJefeObra" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jxDateFechaInicio" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jFechaFin" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jxDateFechaFin" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CboEmpleadoAlmacen" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jxDateFechaFin" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -204,12 +204,12 @@
                           </Group>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jFechaRecepcion" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jxDateFechaRecepcion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jFechaRecepcion" min="-2" max="-2" attributes="0"/>
+                              <Component id="jxDateFechaRecepcion" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -227,10 +227,9 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CboMaquinaria" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -244,7 +243,7 @@
                       <Component id="btnBorrar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
                   <Component id="jScrollPane4" min="-2" pref="93" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
               </Group>
@@ -262,13 +261,6 @@
             <Property name="text" type="java.lang.String" value="Fecha de Fin:"/>
           </Properties>
         </Component>
-        <Component class="org.jdesktop.swingx.JXDatePicker" name="jxDateFechaInicio">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jxDateFechaInicioActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="org.jdesktop.swingx.JXDatePicker" name="jxDateFechaFin">
-        </Component>
         <Component class="javax.swing.JLabel" name="jObraID">
         </Component>
         <Component class="javax.swing.JLabel" name="jFechaRecepcion">
@@ -280,8 +272,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Obra:"/>
           </Properties>
-        </Component>
-        <Component class="org.jdesktop.swingx.JXDatePicker" name="jxDateFechaRecepcion">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane4">
           <AuxValues>
@@ -390,8 +380,6 @@
             <Property name="text" type="java.lang.String" value="Fecha de Solicitud:"/>
           </Properties>
         </Component>
-        <Component class="org.jdesktop.swingx.JXDatePicker" name="jxDateFechaSolicitud">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Jefe de Obra:"/>
@@ -459,6 +447,14 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="org.jdesktop.swingx.JXDatePicker" name="jxDateFechaInicio">
+        </Component>
+        <Component class="org.jdesktop.swingx.JXDatePicker" name="jxDateFechaFin">
+        </Component>
+        <Component class="org.jdesktop.swingx.JXDatePicker" name="jxDateFechaRecepcion">
+        </Component>
+        <Component class="org.jdesktop.swingx.JXDatePicker" name="jxDateFechaSolicitud">
         </Component>
       </SubComponents>
     </Container>
