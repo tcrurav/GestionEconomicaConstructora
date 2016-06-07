@@ -6,7 +6,9 @@ public class Maquinaria {
 
 	Collection<PeriodoMaquinariaEnObra> periodoMaquinariaEnObra;
 
+
         private int PK_ID;
+
 
 	private String nombre;
 	private float precioDeCompra;
@@ -29,7 +31,9 @@ public class Maquinaria {
 	public Maquinaria() {
 		// TODO - implement Maquinaria.Maquinaria
 
+
 		throw new UnsupportedOperationException();
+
 
 	}
 
@@ -81,7 +85,7 @@ public class Maquinaria {
 		this.codInventario = codInventario;
 	}
 
-        
+       
         public int getPK_ID() {
         return PK_ID;
     }
@@ -89,6 +93,7 @@ public class Maquinaria {
     public void setPK_ID(int PK_ID) {
         this.PK_ID = PK_ID;
     }
+
 
 
 }

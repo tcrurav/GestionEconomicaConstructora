@@ -6,6 +6,7 @@
 package dba;
 
 
+
 import POJOS.AdministrativoObra;
 import POJOS.Empleado;
 import POJOS.EmpleadoAlmacen;
@@ -178,6 +179,7 @@ public class PersonaDba {
 
     public static ArrayList<JefeDeObra> getJefesDeObra() throws SQLException {
         conn = MySQL.getConnection();
+
 
         String sql = "select * from persona where discriminator =" +JEFE_DE_OBRA;
 
@@ -456,6 +458,7 @@ public class PersonaDba {
         return false;
     }
      */
+
   
 
     
@@ -485,10 +488,12 @@ public class PersonaDba {
 
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialog(null, "No se ha podido leer la información en la BD");
+
             throw ex;
         } finally {
             close();
         }
+
 
         return empleadoAlmacen;
     }
@@ -528,6 +533,7 @@ public class PersonaDba {
     }
       
       public static AdministrativoObra getAdministrativoObra(int identificador) throws SQLException {
+
         AdministrativoObra administrativoObra = new AdministrativoObra();
 
         String sql = "Select * from persona where ID=" + identificador
@@ -558,6 +564,7 @@ public class PersonaDba {
 
         return administrativoObra;
     }
+
       
       
       
@@ -594,6 +601,7 @@ public class PersonaDba {
 
         //return null;
     }
+
      
        public static boolean deletePersona(int identificador) throws SQLException {
 
@@ -634,5 +642,5 @@ public class PersonaDba {
         }
     }
 
-    
+
 }

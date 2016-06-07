@@ -4,10 +4,14 @@
 --
 -- Servidor: 127.0.0.1
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Tiempo de generación: 27-05-2016 a las 03:52:52
 =======
 -- Tiempo de generación: 03-05-2016 a las 19:17:09
 >>>>>>> origin/DarDeAltaMaterial
+=======
+-- Tiempo de generación: 03-05-2016 a las 19:17:09
+>>>>>>> origin/SolicitarMaterialesParaObra
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.5
 
@@ -24,10 +28,15 @@ SET time_zone = "+00:00";
 -- Base de datos: `constructora`
 --
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 CREATE DATABASE IF NOT EXISTS `constructora` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `constructora`;
 >>>>>>> origin/DarDeAltaMaterial
+=======
+CREATE DATABASE IF NOT EXISTS `constructora` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `constructora`;
+>>>>>>> origin/SolicitarMaterialesParaObra
 
 -- --------------------------------------------------------
 
@@ -92,6 +101,7 @@ CREATE TABLE `maquinaria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 --
 -- Volcado de datos para la tabla `maquinaria`
 --
@@ -101,6 +111,8 @@ INSERT INTO `maquinaria` (`ID`, `Nombre`, `PrecioDeCompra`, `FechaFinVidaUtil`, 
 
 =======
 >>>>>>> origin/DarDeAltaMaterial
+=======
+>>>>>>> origin/SolicitarMaterialesParaObra
 -- --------------------------------------------------------
 
 --
@@ -214,6 +226,7 @@ CREATE TABLE `periodomaquinariaenobra` (
   `FechaRecepcion` date DEFAULT NULL,
   `MaquinariaID` int(11) NOT NULL,
 <<<<<<< HEAD
+<<<<<<< HEAD
   `ObraID` int(11) NOT NULL,
   `AdministrativoObraQueVerificaID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -231,6 +244,11 @@ INSERT INTO `periodomaquinariaenobra` (`ID`, `EmpleadoAlmacenQueAsignaID`, `Jefe
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 >>>>>>> origin/DarDeAltaMaterial
+=======
+  `ObraID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+>>>>>>> origin/SolicitarMaterialesParaObra
 -- --------------------------------------------------------
 
 --
@@ -255,6 +273,7 @@ CREATE TABLE `persona` (
 
 INSERT INTO `persona` (`ID`, `CategoriaID`, `Nombre`, `Apellidos`, `Telefono`, `Dni`, `Usuario`, `Contra`, `Discriminator`) VALUES
 <<<<<<< HEAD
+<<<<<<< HEAD
 (1, 1, 'Alberto', 'Viera Gil', '649235700', '43293575F', 'alberto', 'alberto', '2'),
 (2, 2, 'Tiburcio', 'Cruz Ravelo', '655538544', '52845821d', 'tiburcio', 'tiburcio', '6'),
 (10, 1, 'Juan', 'Hernandez perez', '647892547', '44557788F', 'juan', 'juan', '2'),
@@ -263,6 +282,9 @@ INSERT INTO `persona` (`ID`, `CategoriaID`, `Nombre`, `Apellidos`, `Telefono`, `
 =======
 (2, 2, 'Tiburcio', 'Cruz Ravelo', '655538544', '52845821d', 'tiburcio', 'tiburcio', '6');
 >>>>>>> origin/DarDeAltaMaterial
+=======
+(2, 2, 'Tiburcio', 'Cruz Ravelo', '655538544', '52845821d', 'tiburcio', 'tiburcio', '6');
+>>>>>>> origin/SolicitarMaterialesParaObra
 
 -- --------------------------------------------------------
 
@@ -365,9 +387,12 @@ ALTER TABLE `periodojefeobraenobra`
 ALTER TABLE `periodomaquinariaenobra`
   ADD PRIMARY KEY (`ID`),
 <<<<<<< HEAD
+<<<<<<< HEAD
   ADD UNIQUE KEY `verifica` (`AdministrativoObraQueVerificaID`),
 =======
 >>>>>>> origin/DarDeAltaMaterial
+=======
+>>>>>>> origin/SolicitarMaterialesParaObra
   ADD KEY `PeriodoMaquinariaEnObra` (`MaquinariaID`),
   ADD KEY `PeriodoMaquinariaEnObra2` (`ObraID`),
   ADD KEY `solicita2` (`JefeDeObraQueSolicitaID`),
@@ -416,10 +441,14 @@ ALTER TABLE `lineaalbaran`
 --
 ALTER TABLE `maquinaria`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 =======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 >>>>>>> origin/DarDeAltaMaterial
+=======
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+>>>>>>> origin/SolicitarMaterialesParaObra
 --
 -- AUTO_INCREMENT de la tabla `material`
 --
@@ -450,19 +479,27 @@ ALTER TABLE `periodojefeobraenobra`
 --
 ALTER TABLE `periodomaquinariaenobra`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 =======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 >>>>>>> origin/DarDeAltaMaterial
+=======
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+>>>>>>> origin/SolicitarMaterialesParaObra
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 =======
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 >>>>>>> origin/DarDeAltaMaterial
+=======
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+>>>>>>> origin/SolicitarMaterialesParaObra
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
@@ -519,9 +556,12 @@ ALTER TABLE `periodomaquinariaenobra`
   ADD CONSTRAINT `PeriodoMaquinariaEnObra2` FOREIGN KEY (`ObraID`) REFERENCES `obra` (`ID`),
   ADD CONSTRAINT `asigna` FOREIGN KEY (`EmpleadoAlmacenQueAsignaID`) REFERENCES `persona` (`ID`),
 <<<<<<< HEAD
+<<<<<<< HEAD
   ADD CONSTRAINT `periodomaquinariaenobra_ibfk_1` FOREIGN KEY (`AdministrativoObraQueVerificaID`) REFERENCES `persona` (`ID`),
 =======
 >>>>>>> origin/DarDeAltaMaterial
+=======
+>>>>>>> origin/SolicitarMaterialesParaObra
   ADD CONSTRAINT `solicita2` FOREIGN KEY (`JefeDeObraQueSolicitaID`) REFERENCES `persona` (`ID`);
 
 --

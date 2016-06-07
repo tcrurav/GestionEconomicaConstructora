@@ -4,11 +4,9 @@ import java.util.*;
 
 public class Material {
 
+        private int PK_ID;
 	Collection<LineaAlbaran> lineaAlbaran;
 	Collection<MaterialParaObra> materialParaObra;
-
-        
-        int PK_ID;
 
 	private String codigo;
 	private String descripcion;
@@ -25,17 +23,6 @@ public class Material {
 	private float precio;
 	private int stock;
 
-
-
-        public void setPK_ID(int PK_ID) {
-            this.PK_ID = PK_ID;
-        } 
-        
-        
-        public int getPK_ID() {
-            return PK_ID;
-        }
-        
 
 	public String getCodigo() {
 		return this.codigo;
@@ -111,6 +98,7 @@ public class Material {
 	}
 
 
+
 	public Material() {
 		// TODO - implement Material.Material
 		throw new UnsupportedOperationException();
@@ -124,6 +112,16 @@ public class Material {
     /*public void set(int aInt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
+
+
+
+    public int getPK_ID() {
+        return PK_ID;
+    }
+
+    public void setPK_ID(int PK_ID) {
+        this.PK_ID = PK_ID;
+    }
 
 
 }
