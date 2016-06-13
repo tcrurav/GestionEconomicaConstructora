@@ -5,7 +5,7 @@
  */
 package obra;
 
-import POJOS.Obra;
+import POJOS.Maquiaria;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,23 +42,18 @@ public class PanelObra extends javax.swing.JPanel {
         final Calendar instance = Calendar.getInstance();
         jXDatePickerFechaInicio.setDate(instance.getTime());
         jXDatePickerFechaFin.setDate(instance.getTime());
-        txtDireccion.setText("");
-        txtPresupuestoTotalEjecucion.setText("");
-        txtEstimacionCosteMateriales.setText("");
-        txtEstimacionCosteManoDeObra.setText("");
-        txtEstimacionGastosGenerales.setText("");
-        txtEstimacionBeneficioIndustrial.setText("");
-        txtPorcentajeDeObraEjecutado.setText("");
-        txtCantidadCobrada.setText("");
+        txtNombre.setText("");
+        txtCod_Inventario.setText("");
+        txtPrecioCompra.setText("");
         txtCantidadFacturada.setText("");
     }
 
     public void habilitar() {
         jXDatePickerFechaInicio.setEnabled(true);
         jXDatePickerFechaFin.setEnabled(true);
-        txtDireccion.setEnabled(true);
+        txtNombre.setEnabled(true);
         if(menuActual == MNU_INTRODUCIR_PRESUPUESTO){
-            txtPresupuestoTotalEjecucion.setEnabled(true);
+            txtCod_Inventario.setEnabled(true);
             txtEstimacionCosteMateriales.setEnabled(true);
             txtEstimacionCosteManoDeObra.setEnabled(true);
             txtEstimacionGastosGenerales.setEnabled(true);
@@ -66,7 +61,7 @@ public class PanelObra extends javax.swing.JPanel {
             txtPorcentajeDeObraEjecutado.setEnabled(true);
         }
         if(menuActual == MNU_INTRODUCIR_CANTIDAD_COBRADA){
-            txtCantidadCobrada.setEnabled(true);
+            txtPrecioCompra.setEnabled(true);
         }
         if(menuActual == MNU_INTRODUCIR_CANTIDAD_FACTURADA){
             txtCantidadFacturada.setEnabled(true);
@@ -78,14 +73,9 @@ public class PanelObra extends javax.swing.JPanel {
     public void deshabilitar() {
         jXDatePickerFechaInicio.setEnabled(false);
         jXDatePickerFechaFin.setEnabled(false);
-        txtDireccion.setEnabled(false);
-        txtPresupuestoTotalEjecucion.setEnabled(false);
-        txtEstimacionCosteMateriales.setEnabled(false);
-        txtEstimacionCosteManoDeObra.setEnabled(false);
-        txtEstimacionGastosGenerales.setEnabled(false);
-        txtEstimacionBeneficioIndustrial.setEnabled(false);
-        txtPorcentajeDeObraEjecutado.setEnabled(false);
-        txtCantidadCobrada.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtCod_Inventario.setEnabled(false);
+        txtPrecioCompra.setEnabled(false);
         txtCantidadFacturada.setEnabled(false);
 
     }
@@ -97,26 +87,21 @@ public class PanelObra extends javax.swing.JPanel {
         modelo = new DefaultTableModel(null, titulos);
 
         String fila[] = new String[12];
-        ArrayList<Obra> obras = new ArrayList<>();
+        ArrayList<Maquiaria> obras = new ArrayList<>();
         try {
             obras = dba.ObraDba.getObras();
         } catch (SQLException ex) {
             Logger.getLogger(FrmObra.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        for (Obra obra : obras) {
+        for (Maquiaria obra : obras) {
             fila[0] = String.valueOf(obra.getPK_ID());
             fila[1] = obra.getFechaInicio().toString();
             fila[2] = obra.getFechaFin().toString();
-            fila[3] = obra.getDireccion();
-            fila[4] = String.valueOf(obra.getPresupuestoTotalEjecucion());
-            fila[5] = String.valueOf(obra.getEstimacionCosteMateriales());
-            fila[6] = String.valueOf(obra.getEstimacionCosteManoDeObra());
-            fila[7] = String.valueOf(obra.getEstimacionGastosGenerales());
-            fila[8] = String.valueOf(obra.getEstimacionBeneficioIndustrial());
-            fila[9] = String.valueOf(obra.getPorcentajeDeObraEjecutado());
-            fila[10] = String.valueOf(obra.getCantidadCobrada());
-            fila[11] = String.valueOf(obra.getCantidadFacturada());
+            fila[3] = obra.getNombre();
+            fila[4] = String.valueOf(obra.getCodInventario());
+            fila[5] = String.valueOf(obra.getPrecioDeCompra());
+            fila[6] = String.valueOf(obra.getCantidadFacturada());
 
             modelo.addRow(fila);
         }
@@ -125,19 +110,14 @@ public class PanelObra extends javax.swing.JPanel {
     }
 
     public void nuevo() {
-        Obra obra = new Obra();
+        Maquiaria obra = new Maquiaria();
 
         try {
             obra.setFechaInicio(jXDatePickerFechaInicio.getDate());
             obra.setFechaFin(jXDatePickerFechaFin.getDate());
-            obra.setDireccion(txtDireccion.getText());
-            obra.setPresupuestoTotalEjecucion(Float.parseFloat(txtPresupuestoTotalEjecucion.getText()));
-            obra.setEstimacionCosteMateriales(Float.parseFloat(txtEstimacionCosteMateriales.getText()));
-            obra.setEstimacionCosteManoDeObra(Float.parseFloat(txtEstimacionCosteManoDeObra.getText()));
-            obra.setEstimacionGastosGenerales(Float.parseFloat(txtEstimacionGastosGenerales.getText()));
-            obra.setEstimacionBeneficioIndustrial(Float.parseFloat(txtEstimacionBeneficioIndustrial.getText()));
-            obra.setPorcentajeDeObraEjecutado(Float.parseFloat(txtPorcentajeDeObraEjecutado.getText()));
-            obra.setCantidadCobrada(Float.parseFloat(txtCantidadCobrada.getText()));
+            obra.setNombre(txtNombre.getText());
+            obra.setCod_Inventario(Float.parseFloat(txtCod_Inventario.getText()));
+            obra.setPrecioDeCompra(Float.parseFloat(txtPrecioCompra.getText()));
             obra.setCantidadFacturada(Float.parseFloat(txtCantidadFacturada.getText()));
 
             if (dba.ObraDba.insertObra(obra)) {
@@ -154,20 +134,15 @@ public class PanelObra extends javax.swing.JPanel {
         int fila = tblObras.getSelectedRow();
         String identificador = (String) tblObras.getValueAt(fila, 0);
 
-        Obra obra = new Obra();
+        Maquiaria obra = new Maquiaria();
 
         try {
             obra.setPK_ID(Integer.parseInt(identificador));
             obra.setFechaInicio(jXDatePickerFechaInicio.getDate());
             obra.setFechaFin(jXDatePickerFechaFin.getDate());
-            obra.setDireccion(txtDireccion.getText());
-            obra.setPresupuestoTotalEjecucion(Float.parseFloat(txtPresupuestoTotalEjecucion.getText()));
-            obra.setEstimacionCosteMateriales(Float.parseFloat(txtEstimacionCosteMateriales.getText()));
-            obra.setEstimacionCosteManoDeObra(Float.parseFloat(txtEstimacionCosteManoDeObra.getText()));
-            obra.setEstimacionGastosGenerales(Float.parseFloat(txtEstimacionGastosGenerales.getText()));
-            obra.setEstimacionBeneficioIndustrial(Float.parseFloat(txtEstimacionBeneficioIndustrial.getText()));
-            obra.setPorcentajeDeObraEjecutado(Float.parseFloat(txtPorcentajeDeObraEjecutado.getText()));
-            obra.setCantidadCobrada(Float.parseFloat(txtCantidadCobrada.getText()));
+            obra.setNombre(txtNombre.getText());
+            obra.setCod_Inventario(Float.parseFloat(txtCod_Inventario.getText()));
+            obra.setPrecioDeCompra(Float.parseFloat(txtPrecioCompra.getText()));
             obra.setCantidadFacturada(Float.parseFloat(txtCantidadFacturada.getText()));
 
             if (dba.ObraDba.updateObra(obra)) {
@@ -210,13 +185,13 @@ public class PanelObra extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtDireccion = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         btnNuevo = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txtPresupuestoTotalEjecucion = new javax.swing.JTextField();
+        txtCod_Inventario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtEstimacionCosteMateriales = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -228,7 +203,7 @@ public class PanelObra extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         txtPorcentajeDeObraEjecutado = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtCantidadCobrada = new javax.swing.JTextField();
+        txtPrecioCompra = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtCantidadFacturada = new javax.swing.JTextField();
         jXDatePickerFechaInicio = new org.jdesktop.swingx.JXDatePicker();
@@ -319,16 +294,16 @@ public class PanelObra extends javax.swing.JPanel {
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCantidadFacturada)
-                            .addComponent(txtCantidadCobrada)
+                            .addComponent(txtPrecioCompra)
                             .addComponent(txtPorcentajeDeObraEjecutado)
                             .addComponent(txtEstimacionBeneficioIndustrial)
                             .addComponent(txtEstimacionGastosGenerales)
                             .addComponent(txtEstimacionCosteManoDeObra)
                             .addComponent(txtEstimacionCosteMateriales)
-                            .addComponent(txtPresupuestoTotalEjecucion)
+                            .addComponent(txtCod_Inventario)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                                     .addComponent(jXDatePickerFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jXDatePickerFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
@@ -348,11 +323,11 @@ public class PanelObra extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtPresupuestoTotalEjecucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCod_Inventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -376,7 +351,7 @@ public class PanelObra extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(txtCantidadCobrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrecioCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -474,7 +449,7 @@ public class PanelObra extends javax.swing.JPanel {
     private void tblObrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObrasMouseClicked
         if (evt.getButton() == 1) {
             int fila = tblObras.getSelectedRow();
-            Obra obra = new Obra();
+            Maquiaria obra = new Maquiaria();
             try {
                 obra = dba.ObraDba.getObra(Integer.parseInt(String.valueOf(tblObras.getValueAt(fila, 0))));
             } catch (SQLException ex) {
@@ -484,14 +459,9 @@ public class PanelObra extends javax.swing.JPanel {
             try {
                 jXDatePickerFechaInicio.setDate(obra.getFechaInicio());
                 jXDatePickerFechaFin.setDate(obra.getFechaFin());
-                txtDireccion.setText(obra.getDireccion());
-                txtPresupuestoTotalEjecucion.setText(String.valueOf(obra.getPresupuestoTotalEjecucion()));
-                txtEstimacionCosteMateriales.setText(String.valueOf(obra.getEstimacionCosteMateriales()));
-                txtEstimacionCosteManoDeObra.setText(String.valueOf(obra.getEstimacionCosteManoDeObra()));
-                txtEstimacionGastosGenerales.setText(String.valueOf(obra.getEstimacionGastosGenerales()));
-                txtEstimacionBeneficioIndustrial.setText(String.valueOf(obra.getEstimacionBeneficioIndustrial()));
-                txtPorcentajeDeObraEjecutado.setText(String.valueOf(obra.getPorcentajeDeObraEjecutado()));
-                txtCantidadCobrada.setText(String.valueOf(obra.getCantidadCobrada()));
+                txtNombre.setText(obra.getNombre());
+                txtCod_Inventario.setText(String.valueOf(obra.getCodInventario()));
+                txtPrecioCompra.setText(String.valueOf(obra.getPrecioDeCompra()));
                 txtCantidadFacturada.setText(String.valueOf(obra.getCantidadFacturada()));
 
                 habilitar();
@@ -525,15 +495,15 @@ public class PanelObra extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXDatePicker jXDatePickerFechaFin;
     private org.jdesktop.swingx.JXDatePicker jXDatePickerFechaInicio;
     private javax.swing.JTable tblObras;
-    private javax.swing.JTextField txtCantidadCobrada;
     private javax.swing.JTextField txtCantidadFacturada;
-    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtCod_Inventario;
     private javax.swing.JTextField txtEstimacionBeneficioIndustrial;
     private javax.swing.JTextField txtEstimacionCosteManoDeObra;
     private javax.swing.JTextField txtEstimacionCosteMateriales;
     private javax.swing.JTextField txtEstimacionGastosGenerales;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPorcentajeDeObraEjecutado;
-    private javax.swing.JTextField txtPresupuestoTotalEjecucion;
+    private javax.swing.JTextField txtPrecioCompra;
     // End of variables declaration//GEN-END:variables
 
                       

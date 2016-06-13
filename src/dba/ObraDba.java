@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package dba;
-import POJOS.Obra;
+import POJOS.Maquiaria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Tiburcio
+ * idaira isabel artiles tellado
  */
 public class ObraDba {
-    public static Obra getObra(int identificador) throws SQLException{
-        Obra obra = new Obra();
+    public static Maquiaria getObra(int identificador) throws SQLException{
+        Maquiaria obra = new Maquiaria();
         
         String sql = "Select * from obra where ID=" + identificador;
             try {
@@ -30,14 +30,9 @@ public class ObraDba {
                     obra.setPK_ID(rs.getInt("ID"));
                     obra.setFechaInicio(rs.getDate("FechaInicio"));
                     obra.setFechaFin(rs.getDate("FechaFin"));
-                    obra.setDireccion(rs.getString("Direccion"));
-                    obra.setPresupuestoTotalEjecucion(rs.getFloat("PresupuestoTotalEjecucion"));
-                    obra.setEstimacionCosteMateriales(rs.getFloat("EstimacionCosteMateriales"));
-                    obra.setEstimacionCosteManoDeObra(rs.getFloat("EstimacionCosteManoDeObra"));
-                    obra.setEstimacionGastosGenerales(rs.getFloat("EstimacionGastosGenerales"));
-                    obra.setEstimacionBeneficioIndustrial(rs.getFloat("EstimacionBeneficioIndustrial"));
-                    obra.setPorcentajeDeObraEjecutado(rs.getFloat("PorcentajeDeObraEjecutado"));
-                    obra.setCantidadCobrada(rs.getFloat("CantidadCobrada"));
+                    obra.setNombre(rs.getString("Nombre"));
+                    obra.setCod_Inventario(rs.getFloat("Codigo Inventario de la Maquinaria"));
+                    obra.setPrecioDeCompra(rs.getFloat("PrecioDeCompra"));
                     obra.setCantidadFacturada(rs.getFloat("CantidadFacturada"));
                 } else {
                     return null;
@@ -50,29 +45,24 @@ public class ObraDba {
         return obra;
     }
     
-    public static ArrayList<Obra> getObras() throws SQLException{
+    public static ArrayList<Maquiaria> getObras() throws SQLException{
         Connection conn = MySQL.getConnection();
         String sql = "select * from obra";
         
-        ArrayList<Obra> obras = new ArrayList<Obra>();
+        ArrayList<Maquiaria> obras = new ArrayList<Maquiaria>();
         
         try {
             Statement sentencia = conn.createStatement();
             ResultSet rs = sentencia.executeQuery(sql);
             
             while(rs.next()){
-                Obra obra = new Obra();
+                Maquiaria obra = new Maquiaria();
                 obra.setPK_ID(rs.getInt("ID"));
                 obra.setFechaInicio(rs.getDate("FechaInicio"));
                 obra.setFechaFin(rs.getDate("FechaFin"));
-                obra.setDireccion(rs.getString("Direccion"));
-                obra.setPresupuestoTotalEjecucion(rs.getFloat("PresupuestoTotalEjecucion"));
-                obra.setEstimacionCosteMateriales(rs.getFloat("EstimacionCosteMateriales"));
-                obra.setEstimacionCosteManoDeObra(rs.getFloat("EstimacionCosteManoDeObra"));
-                obra.setEstimacionGastosGenerales(rs.getFloat("EstimacionGastosGenerales"));
-                obra.setEstimacionBeneficioIndustrial(rs.getFloat("EstimacionBeneficioIndustrial"));
-                obra.setPorcentajeDeObraEjecutado(rs.getFloat("PorcentajeDeObraEjecutado"));
-                obra.setCantidadCobrada(rs.getFloat("CantidadCobrada"));
+                obra.setNombre(rs.getString("nombre"));
+                obra.setCod_Inventario(rs.getFloat("Codigo Inventario de la Maquinaria"));
+                obra.setPrecioDeCompra(rs.getFloat("PrecioDeCompra"));
                 obra.setCantidadFacturada(rs.getFloat("CantidadFacturada"));                
                 
                 obras.add(obra);
@@ -86,27 +76,20 @@ public class ObraDba {
         
     }
     
-    public static boolean insertObra(Obra obra) throws SQLException{
+    public static boolean insertObra(Maquiaria obra) throws SQLException{
         Connection conn = MySQL.getConnection();
-        String sql = "insert into obra (FechaInicio, FechaFin, Direccion, " 
-                + "PresupuestoTotalEjecucion, EstimacionCosteMateriales, EstimacionCosteManoDeObra, " 
-                + "EstimacionGastosGenerales, EstimacionBeneficioIndustrial, "
-                + "PorcentajeDeObraEjecutado, CantidadCobrada, CantidadFacturada) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into obra (FechaInicio, FechaFin, Nombre, " 
+                + "Cod_Inventario, PrecioDeCompra, CantidadFacturada) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
            
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
             PreparedStatement ps = conn.prepareCall(sql);
             ps.setString(1, sdf.format(obra.getFechaInicio()));
             ps.setString(2, sdf.format(obra.getFechaFin()));
-            ps.setString(3, obra.getDireccion());
-            ps.setFloat(4, obra.getPresupuestoTotalEjecucion());
-            ps.setFloat(5, obra.getEstimacionCosteMateriales());
-            ps.setFloat(6, obra.getEstimacionCosteManoDeObra());
-            ps.setFloat(7, obra.getEstimacionGastosGenerales());
-            ps.setFloat(8, obra.getEstimacionBeneficioIndustrial());
-            ps.setFloat(9, obra.getPorcentajeDeObraEjecutado());
-            ps.setFloat(10, obra.getCantidadCobrada());
-            ps.setFloat(11, obra.getCantidadFacturada());
+            ps.setString(3, obra.getNombre());
+            ps.setFloat(4, obra.getCodInventario());
+            ps.setFloat(5, obra.getPrecioDeCompra());
+            ps.setFloat(6, obra.getCantidadFacturada());
             int n = ps.executeUpdate();
             
             if(n>0){
@@ -121,13 +104,11 @@ public class ObraDba {
         return false;
     }
     
-    public static boolean updateObra(Obra obra) throws SQLException{
+    public static boolean updateObra(Maquiaria obra) throws SQLException{
         Connection conn = MySQL.getConnection();
         
-        String sql = "update obra set FechaInicio=?, FechaFin=?, Direccion=?, " 
-                + "PresupuestoTotalEjecucion=?, EstimacionCosteMateriales=?, EstimacionCosteManoDeObra=?, " 
-                + "EstimacionGastosGenerales=?, EstimacionBeneficioIndustrial=?, "
-                + "PorcentajeDeObraEjecutado=?, CantidadCobrada=?, CantidadFacturada=?"
+        String sql = "update obra set FechaInicio=?, FechaFin=?, Nombre=?, " 
+                + "Cod_Inventario=?,PrecioDeCompra=?, CantidadFacturada=?"
                 +" where ID=?";
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         PreparedStatement ps;
@@ -135,16 +116,11 @@ public class ObraDba {
             ps = conn.prepareCall(sql);
             ps.setString(1, sdf.format(obra.getFechaInicio()));
             ps.setString(2, sdf.format(obra.getFechaFin()));
-            ps.setString(3, obra.getDireccion());
-            ps.setFloat(4, obra.getPresupuestoTotalEjecucion());
-            ps.setFloat(5, obra.getEstimacionCosteMateriales());
-            ps.setFloat(6, obra.getEstimacionCosteManoDeObra());
-            ps.setFloat(7, obra.getEstimacionGastosGenerales());
-            ps.setFloat(8, obra.getEstimacionBeneficioIndustrial());
-            ps.setFloat(9, obra.getPorcentajeDeObraEjecutado());
-            ps.setFloat(10, obra.getCantidadCobrada());
-            ps.setFloat(11, obra.getCantidadFacturada());
-            ps.setInt(12, obra.getPK_ID());
+            ps.setString(3, obra.getNombre());
+            ps.setFloat(4, obra.getCodInventario());
+            ps.setFloat(5, obra.getPrecioDeCompra());
+            ps.setFloat(6, obra.getCantidadFacturada());
+            ps.setInt(7, obra.getPK_ID());
             
             int n = ps.executeUpdate();
             

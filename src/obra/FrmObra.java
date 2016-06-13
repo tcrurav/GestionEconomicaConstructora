@@ -5,7 +5,7 @@
  */
 package obra;
 
-import POJOS.Obra;
+import POJOS.Maquiaria;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -80,32 +80,26 @@ public class FrmObra extends javax.swing.JFrame {
     }
 
     public void llenar() {
-        String titulos[] = {"ID", "FechaInicio", "FechaFin", "Direccion", "PresupuestoTotalEjecucion",
-            "EstimacionCosteMateriales", "EstimacionCosteManoDeObra", "EstimacionGastosGenerales", "EstimacionBeneficioIndustrial",
-            "PorcentajeDeObraEjecutado", "CantidadCobrada", "CantidadFacturada"};
+        String titulos[] = {"ID", "FechaInicio", "FechaFin", "Nombre", "Cod_Inventario",
+            "PrecioDeCompra", "EstimacionCosteManoDeObra","CantidadFacturada"};
         modelo = new DefaultTableModel(null, titulos);
 
         String fila[] = new String[12];
-        ArrayList<Obra> obras = new ArrayList<>();
+        ArrayList<Maquiaria> obras = new ArrayList<>();
         try {
             obras = dba.ObraDba.getObras();
         } catch (SQLException ex) {
             Logger.getLogger(FrmObra.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        for (Obra obra : obras) {
+        for (Maquiaria obra : obras) {
             fila[0] = String.valueOf(obra.getPK_ID());
             fila[1] = obra.getFechaInicio().toString();
             fila[2] = obra.getFechaFin().toString();
-            fila[3] = obra.getDireccion();
-            fila[4] = String.valueOf(obra.getPresupuestoTotalEjecucion());
-            fila[5] = String.valueOf(obra.getEstimacionCosteMateriales());
-            fila[6] = String.valueOf(obra.getEstimacionCosteManoDeObra());
-            fila[7] = String.valueOf(obra.getEstimacionGastosGenerales());
-            fila[8] = String.valueOf(obra.getEstimacionBeneficioIndustrial());
-            fila[9] = String.valueOf(obra.getPorcentajeDeObraEjecutado());
-            fila[10] = String.valueOf(obra.getCantidadCobrada());
-            fila[11] = String.valueOf(obra.getCantidadFacturada());
+            fila[3] = obra.getNombre();
+            fila[4] = String.valueOf(obra.getCodInventario());
+            fila[5] = String.valueOf(obra.getPrecioDeCompra());
+            fila[6] = String.valueOf(obra.getCantidadFacturada());
 
             modelo.addRow(fila);
         }
@@ -114,19 +108,14 @@ public class FrmObra extends javax.swing.JFrame {
     }
 
     public void nuevo() {
-        Obra obra = new Obra();
+        Maquiaria obra = new Maquiaria();
 
         try {
             obra.setFechaInicio(jXDatePickerFechaInicio.getDate());
             obra.setFechaFin(jXDatePickerFechaFin.getDate());
-            obra.setDireccion(txtDireccion.getText());
-            obra.setPresupuestoTotalEjecucion(Float.parseFloat(txtPresupuestoTotalEjecucion.getText()));
-            obra.setEstimacionCosteMateriales(Float.parseFloat(txtEstimacionCosteMateriales.getText()));
-            obra.setEstimacionCosteManoDeObra(Float.parseFloat(txtEstimacionCosteManoDeObra.getText()));
-            obra.setEstimacionGastosGenerales(Float.parseFloat(txtEstimacionGastosGenerales.getText()));
-            obra.setEstimacionBeneficioIndustrial(Float.parseFloat(txtEstimacionBeneficioIndustrial.getText()));
-            obra.setPorcentajeDeObraEjecutado(Float.parseFloat(txtPorcentajeDeObraEjecutado.getText()));
-            obra.setCantidadCobrada(Float.parseFloat(txtCantidadCobrada.getText()));
+            obra.setNombre(txtDireccion.getText());
+            obra.setCod_Inventario(Float.parseFloat(txtPresupuestoTotalEjecucion.getText()));
+            obra.setPrecioDeCompra(Float.parseFloat(txtCantidadCobrada.getText()));
             obra.setCantidadFacturada(Float.parseFloat(txtCantidadFacturada.getText()));
 
             if (dba.ObraDba.insertObra(obra)) {
@@ -143,20 +132,15 @@ public class FrmObra extends javax.swing.JFrame {
         int fila = tblObras.getSelectedRow();
         String identificador = (String) tblObras.getValueAt(fila, 0);
 
-        Obra obra = new Obra();
+        Maquiaria obra = new Maquiaria();
 
         try {
             obra.setPK_ID(Integer.parseInt(identificador));
             obra.setFechaInicio(jXDatePickerFechaInicio.getDate());
             obra.setFechaFin(jXDatePickerFechaFin.getDate());
-            obra.setDireccion(txtDireccion.getText());
-            obra.setPresupuestoTotalEjecucion(Float.parseFloat(txtPresupuestoTotalEjecucion.getText()));
-            obra.setEstimacionCosteMateriales(Float.parseFloat(txtEstimacionCosteMateriales.getText()));
-            obra.setEstimacionCosteManoDeObra(Float.parseFloat(txtEstimacionCosteManoDeObra.getText()));
-            obra.setEstimacionGastosGenerales(Float.parseFloat(txtEstimacionGastosGenerales.getText()));
-            obra.setEstimacionBeneficioIndustrial(Float.parseFloat(txtEstimacionBeneficioIndustrial.getText()));
-            obra.setPorcentajeDeObraEjecutado(Float.parseFloat(txtPorcentajeDeObraEjecutado.getText()));
-            obra.setCantidadCobrada(Float.parseFloat(txtCantidadCobrada.getText()));
+            obra.setNombre(txtDireccion.getText());
+            obra.setCod_Inventario(Float.parseFloat(txtPresupuestoTotalEjecucion.getText()));
+            obra.setPrecioDeCompra(Float.parseFloat(txtCantidadCobrada.getText()));
             obra.setCantidadFacturada(Float.parseFloat(txtCantidadFacturada.getText()));
 
             if (dba.ObraDba.updateObra(obra)) {
@@ -467,7 +451,7 @@ public class FrmObra extends javax.swing.JFrame {
     private void tblObrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObrasMouseClicked
         if (evt.getButton() == 1) {
             int fila = tblObras.getSelectedRow();
-            Obra obra = new Obra();
+            Maquiaria obra = new Maquiaria();
             try {
                 obra = dba.ObraDba.getObra(Integer.parseInt(String.valueOf(tblObras.getValueAt(fila, 0))));
             } catch (SQLException ex) {
@@ -477,14 +461,9 @@ public class FrmObra extends javax.swing.JFrame {
             try {
                 jXDatePickerFechaInicio.setDate(obra.getFechaInicio());
                 jXDatePickerFechaFin.setDate(obra.getFechaFin());
-                txtDireccion.setText(obra.getDireccion());
-                txtPresupuestoTotalEjecucion.setText(String.valueOf(obra.getPresupuestoTotalEjecucion()));
-                txtEstimacionCosteMateriales.setText(String.valueOf(obra.getEstimacionCosteMateriales()));
-                txtEstimacionCosteManoDeObra.setText(String.valueOf(obra.getEstimacionCosteManoDeObra()));
-                txtEstimacionGastosGenerales.setText(String.valueOf(obra.getEstimacionGastosGenerales()));
-                txtEstimacionBeneficioIndustrial.setText(String.valueOf(obra.getEstimacionBeneficioIndustrial()));
-                txtPorcentajeDeObraEjecutado.setText(String.valueOf(obra.getPorcentajeDeObraEjecutado()));
-                txtCantidadCobrada.setText(String.valueOf(obra.getCantidadCobrada()));
+                txtDireccion.setText(obra.getNombre());
+                txtPresupuestoTotalEjecucion.setText(String.valueOf(obra.getCodInventario()));
+                txtCantidadCobrada.setText(String.valueOf(obra.getPrecioDeCompra()));
                 txtCantidadFacturada.setText(String.valueOf(obra.getCantidadFacturada()));
 
                 habilitar();

@@ -3,7 +3,7 @@ package POJOS;
 import java.util.*;
 public class PeriodoMaquinariaEnObra {
 
-	Obra obra;
+	Maquiaria obra;
 	Maquinaria maquinaria;
 	private Date fechaInicio;
 	private Date fechaFin;

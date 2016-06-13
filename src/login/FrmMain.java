@@ -7,6 +7,8 @@ package login;
 
 import POJOS.Empleado;
 import dba.PersonaDba;
+import empleadoDeAlmacen.dialogDarDeAltaAMaquinaria;
+import empleadoDeAlmacen.dialogDarDeAltaAMaquinaria;
 import static gestioneconomicaconstructora.OpcionesDeMenu.*;
 import static gestioneconomicaconstructora.TiposDePersona.*;
 import java.sql.SQLException;
@@ -44,6 +46,11 @@ public class FrmMain extends javax.swing.JFrame {
             int tipoDeEmpleado = PersonaDba.getDiscriminator(empleado);
             switch(tipoDeEmpleado){
                 case EMPLEADO_ALMACEN:
+                    mnuDarAltaMaquinaria.setEnabled(true);
+                    mnuItemDarAltaProveedores.setEnabled(true);
+                    mnuItemDarAltaAMaterial.setEnabled(true);
+                    mnuItemAsignarMaterialAObra.setEnabled(true);
+                    mnuItemAsignarMaquinariaAObra.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_OBRA:
                     break;
@@ -245,6 +252,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuDarAltaMaquinaria.setText("Dar de Alta a Maquinaria");
         mnuDarAltaMaquinaria.setEnabled(false);
+        mnuDarAltaMaquinaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuDarAltaMaquinariaActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuDarAltaMaquinaria);
 
         mnuItemComprobarRecepcionMaquinariaEnObra.setText("Comprobar Recepción Maquinaria en Obra");
@@ -310,6 +322,16 @@ public class FrmMain extends javax.swing.JFrame {
         setContentPane(panel);
         pack();
     }//GEN-LAST:event_mnuItemIntroducirPresupuestoActionPerformed
+
+    private void mnuDarAltaMaquinariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuDarAltaMaquinariaActionPerformed
+       
+        
+        dialogDarDeAltaAMaquinaria ventanaMaquinaria=new dialogDarDeAltaAMaquinaria(this, true);
+        ventanaMaquinaria.setVisible(true);
+        
+        /*DialogoObra dialogoObra = new DialogoObra(this, true);
+        dialogoObra.setVisible(true);*/
+    }//GEN-LAST:event_mnuDarAltaMaquinariaActionPerformed
 
     
     /**

@@ -1,21 +1,26 @@
 
-package obra;
+package empleadoDeAlmacen;
 
 import POJOS.Maquiaria;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import obra.FrmObra;
+
+/**
+ *
+ * idaira isabel
+ */
+
+public class dialogDarDeAltaAMaquinaria extends javax.swing.JDialog {
 
 
-public class DialogoObra extends javax.swing.JDialog {
-    /**
-     * Creates new form DialogoObra
-     */
-    public DialogoObra(java.awt.Frame parent, boolean modal) {
+    public dialogDarDeAltaAMaquinaria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.setTitle("Constructora - Obras");
         initComponents();
@@ -24,131 +29,7 @@ public class DialogoObra extends javax.swing.JDialog {
         this.pack();      
         this.setLocationRelativeTo(null);
     }
-
     DefaultTableModel modelo;
-
-    /**
-     * Creates new form Formulario
-     */
-
-    public void limpiar() {
-        final Calendar instance = Calendar.getInstance();
-        jXDatePickerFechaInicio.setDate(instance.getTime());
-        jXDatePickerFechaFin.setDate(instance.getTime());
-        txtNombre.setText("");
-        txtCodInventario.setText("");
-        txtPrecioCompra.setText("");
-      
-    }
-
-    public void habilitar() {
-        jXDatePickerFechaInicio.setEnabled(true);
-        jXDatePickerFechaFin.setEnabled(true);
-        txtNombre.setEnabled(true);
-        txtCodInventario.setEnabled(true);
-        txtPrecioCompra.setEnabled(true);
-        
-    }
-
-    public void deshabilitar() {
-        jXDatePickerFechaInicio.setEnabled(false);
-        jXDatePickerFechaFin.setEnabled(false);
-        txtNombre.setEnabled(false);
-        txtCodInventario.setEnabled(false);
-        txtPrecioCompra.setEnabled(false);
-      
-    }
-
-    public void llenar() {
-        String titulos[] = {"ID", "FechaInicio", "FechaFin", "Nombre", "CodInventario",
-            "PrecioDeCompra"};
-        modelo = new DefaultTableModel(null, titulos);
-
-        String fila[] = new String[12];
-        ArrayList<Maquiaria> obras = new ArrayList<>();
-        try {
-            obras = dba.ObraDba.getObras();
-        } catch (SQLException ex) {
-            Logger.getLogger(FrmObra.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        for (Maquiaria obra : obras) {
-            fila[0] = String.valueOf(obra.getPK_ID());
-            fila[1] = obra.getFechaInicio().toString();
-            fila[2] = obra.getFechaFin().toString();
-            fila[3] = obra.getNombre();
-            fila[4] = String.valueOf(obra.getCodInventario());
-            fila[5] = String.valueOf(obra.getPrecioDeCompra());
-
-
-            modelo.addRow(fila);
-        }
-
-        tblObras.setModel(modelo);
-    }
-
-    public void nuevo() {
-        Maquiaria obra = new Maquiaria();
-
-        try {
-            obra.setFechaInicio(jXDatePickerFechaInicio.getDate());
-            obra.setFechaFin(jXDatePickerFechaFin.getDate());
-            obra.setNombre(txtNombre.getText());
-            obra.setCod_Inventario(Float.parseFloat(txtCodInventario.getText()));
-            obra.setPrecioDeCompra(Float.parseFloat(txtPrecioCompra.getText()));
-
-
-            if (dba.ObraDba.insertObra(obra)) {
-                JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente.");
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Se ha producido un Error. Error:" + ex.getMessage());
-        }
-
-    }
-
-    public void modificar() {
-        int fila = tblObras.getSelectedRow();
-        String identificador = (String) tblObras.getValueAt(fila, 0);
-
-        Maquiaria obra = new Maquiaria();
-
-        try {
-            obra.setPK_ID(Integer.parseInt(identificador));
-            obra.setFechaInicio(jXDatePickerFechaInicio.getDate());
-            obra.setFechaFin(jXDatePickerFechaFin.getDate());
-            obra.setNombre(txtNombre.getText());
-            obra.setCod_Inventario(Float.parseFloat(txtCodInventario.getText()));
-            obra.setPrecioDeCompra(Float.parseFloat(txtPrecioCompra.getText()));
-        
-
-            if (dba.ObraDba.updateObra(obra)) {
-                JOptionPane.showMessageDialog(null, "Datos Modificados");
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-        }
-
-    }
-
-    public void borrar() {
-        int fila = tblObras.getSelectedRow();
-        String identificador = (String) tblObras.getValueAt(fila, 0);
-
-        try {
-
-            if (dba.ObraDba.deleteObra(Integer.valueOf(identificador))) {
-                JOptionPane.showMessageDialog(null, "Datos Borrados");
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-        }
-
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,18 +52,18 @@ public class DialogoObra extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtCodInventario = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtPrecioCompra = new javax.swing.JTextField();
+        txtPrecioDeCompra = new javax.swing.JTextField();
         jXDatePickerFechaInicio = new org.jdesktop.swingx.JXDatePicker();
         jXDatePickerFechaFin = new org.jdesktop.swingx.JXDatePicker();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtCantidadFacturada = new javax.swing.JTextPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblObras = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestión de Obras"));
@@ -221,13 +102,13 @@ public class DialogoObra extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setText("CódigoInventario:");
+        jLabel6.setText("CodInventario:");
 
         jLabel12.setText("PrecioDeCompra:");
 
         jLabel1.setText("CantidadFacturada:");
 
-        jScrollPane2.setViewportView(jTextPane1);
+        jScrollPane2.setViewportView(txtCantidadFacturada);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -242,28 +123,30 @@ public class DialogoObra extends javax.swing.JDialog {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
+                            .addComponent(jLabel12))
+                        .addGap(81, 81, 81)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPrecioCompra)
+                            .addComponent(txtPrecioDeCompra)
                             .addComponent(txtCodInventario)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                                     .addComponent(jXDatePickerFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jXDatePickerFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2)))
+                                .addGap(0, 305, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBorrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGuardar)
-                        .addGap(0, 324, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(68, 68, 68)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -285,21 +168,21 @@ public class DialogoObra extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtCodInventario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrecioCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecioDeCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(btnModificar)
                     .addComponent(btnBorrar)
                     .addComponent(btnGuardar))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         tblObras.setBackground(new java.awt.Color(204, 204, 204));
@@ -314,6 +197,7 @@ public class DialogoObra extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblObras.setGridColor(new java.awt.Color(153, 153, 153));
         tblObras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblObrasMouseClicked(evt);
@@ -344,8 +228,6 @@ public class DialogoObra extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("DAR DE ALTA A MAQUINARIA");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -360,12 +242,137 @@ public class DialogoObra extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+        public void limpiar() {
+        final Calendar instance = Calendar.getInstance();
+        jXDatePickerFechaInicio.setDate(instance.getTime());
+        jXDatePickerFechaFin.setDate(instance.getTime());
+        txtNombre.setText("");
+        txtCodInventario.setText("");
+        txtPrecioDeCompra.setText("");
+        txtCantidadFacturada.setText("");
+    }
+
+    public void habilitar() {
+        jXDatePickerFechaInicio.setEnabled(true);
+        jXDatePickerFechaFin.setEnabled(true);
+        txtNombre.setEnabled(true);
+        txtCodInventario.setEnabled(true);
+        txtPrecioDeCompra.setEnabled(true);
+        txtCantidadFacturada.setEnabled(true);
+        
+      
+    }
+
+    public void deshabilitar() {
+        jXDatePickerFechaInicio.setEnabled(false);
+        jXDatePickerFechaFin.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtCodInventario.setEnabled(false);
+        txtPrecioDeCompra.setEnabled(false);
+        txtCantidadFacturada.setEnabled(false);
+
+    }
+
+    public void llenar() {
+        String titulos[] = {"ID", "FechaInicio", "FechaFin", "Nombre", "CodInventario",
+            "PrecioDeCompra", "CantidadFacturada"};
+        modelo = new DefaultTableModel(null, titulos);
+
+        String fila[] = new String[12];
+        ArrayList<Maquiaria> maquiarias = new ArrayList<>();
+        try {
+            maquiarias = dba.ObraDba.getObras();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmObra.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        for (Maquiaria obra : maquiarias) {
+            fila[0] = String.valueOf(obra.getPK_ID());
+            fila[1] = obra.getFechaInicio().toString();
+            fila[2] = obra.getFechaFin().toString();
+            fila[3] = obra.getNombre();
+            fila[4] = String.valueOf(obra.getCodInventario());
+            fila[5] = String.valueOf(obra.getPrecioDeCompra());
+            fila[6] = String.valueOf(obra.getCantidadFacturada());
+
+
+            modelo.addRow(fila);
+        }
+
+        tblObras.setModel(modelo);
+    }
+
+    public void nuevo() {
+        Maquiaria obra = new Maquiaria();
+
+        try {
+            obra.setFechaInicio(jXDatePickerFechaInicio.getDate());
+            obra.setFechaFin(jXDatePickerFechaFin.getDate());
+            obra.setNombre(txtNombre.getText());
+            obra.setCod_Inventario(Float.parseFloat(txtCodInventario.getText()));
+            obra.setPrecioDeCompra(Float.parseFloat(txtPrecioDeCompra.getText()));
+            obra.setCantidadFacturada(Float.parseFloat(txtCantidadFacturada.getText()));
+
+            if (dba.ObraDba.insertObra(obra)) {
+                JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente.");
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Se ha producido un Error. Error:" + ex.getMessage());
+        }
+
+    }
+
+    public void modificar() {
+        int fila = tblObras.getSelectedRow();
+        String identificador = (String) tblObras.getValueAt(fila, 0);
+
+        Maquiaria obra = new Maquiaria();
+
+        try {
+            obra.setPK_ID(Integer.parseInt(identificador));
+            obra.setFechaInicio(jXDatePickerFechaInicio.getDate());
+            obra.setFechaFin(jXDatePickerFechaFin.getDate());
+            obra.setNombre(txtNombre.getText());
+            obra.setCod_Inventario(Float.parseFloat(txtCodInventario.getText()));
+            obra.setPrecioDeCompra(Float.parseFloat(txtPrecioDeCompra.getText()));
+            obra.setCantidadFacturada(Float.parseFloat(txtCantidadFacturada.getText()));
+
+            if (dba.ObraDba.updateObra(obra)) {
+                JOptionPane.showMessageDialog(null, "Datos Modificados");
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+        }
+
+    }
+
+    public void borrar() {
+        int fila = tblObras.getSelectedRow();
+        String identificador = (String) tblObras.getValueAt(fila, 0);
+
+        try {
+
+            if (dba.ObraDba.deleteObra(Integer.valueOf(identificador))) {
+                JOptionPane.showMessageDialog(null, "Datos Borrados");
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+        }
+
+    }
+    
+    
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
         habilitar();
@@ -406,8 +413,8 @@ public class DialogoObra extends javax.swing.JDialog {
                 jXDatePickerFechaFin.setDate(obra.getFechaFin());
                 txtNombre.setText(obra.getNombre());
                 txtCodInventario.setText(String.valueOf(obra.getCodInventario()));
-                txtPrecioCompra.setText(String.valueOf(obra.getPrecioDeCompra()));
-                
+                txtPrecioDeCompra.setText(String.valueOf(obra.getPrecioDeCompra()));
+                txtCantidadFacturada.setText(String.valueOf(obra.getCantidadFacturada()));
 
                 habilitar();
 
@@ -434,20 +441,20 @@ public class DialogoObra extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogoObra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogDarDeAltaAMaquinaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogoObra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogDarDeAltaAMaquinaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogoObra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogDarDeAltaAMaquinaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogoObra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dialogDarDeAltaAMaquinaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DialogoObra dialog = new DialogoObra(new javax.swing.JFrame(), true);
+                dialogDarDeAltaAMaquinaria dialog = new dialogDarDeAltaAMaquinaria(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -474,12 +481,14 @@ public class DialogoObra extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
     private org.jdesktop.swingx.JXDatePicker jXDatePickerFechaFin;
     private org.jdesktop.swingx.JXDatePicker jXDatePickerFechaInicio;
     private javax.swing.JTable tblObras;
+    private javax.swing.JTextPane txtCantidadFacturada;
     private javax.swing.JTextField txtCodInventario;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPrecioCompra;
+    private javax.swing.JTextField txtPrecioDeCompra;
     // End of variables declaration//GEN-END:variables
+
+
 }

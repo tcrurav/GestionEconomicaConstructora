@@ -4,7 +4,7 @@ import java.util.*;
 public class MaterialParaObra {
 
 	Material material;
-	Obra obra;
+	Maquiaria obra;
 	private float CantidadMaterial;
 	AdministrativoObra administrativoObra;
 	JefeDeObra jefeDeObra;
