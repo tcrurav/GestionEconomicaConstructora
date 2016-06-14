@@ -22,6 +22,8 @@ import obra.PanelObra;
 import empleadoAlmacen.DarDeAltaMaterial;
 import javax.swing.JDialog;
 import empleado.DialogoEmpleado;
+import jefeDeObra.DialogoIntroducir;
+
 
 
 /**
@@ -69,11 +71,8 @@ public class FrmMain extends javax.swing.JFrame {
                 case EMPLEADO_OBRA:
                     break;
                 case JEFE_DE_OBRA:
-
-
-                    mnuItemSolicitarMaterialParaUnaObra.setEnabled(true);
-
-
+                     mnuItemSolicitarMaterialParaUnaObra.setEnabled(true);
+                    jMenuItemIntroducirPorcentajeDeObra.setEnabled(true);
                     break;
                 case ADMINISTRATIVO_PRESUPUESTOS:
                     mnuItemCrearObra.setEnabled(true);
@@ -113,7 +112,7 @@ public class FrmMain extends javax.swing.JFrame {
         mnuItemIntroducirCantidadFacturada = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         mnuItemMonstrarBalanceDeObra = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItemIntroducirPorcentajeDeObra = new javax.swing.JMenuItem();
         mnuMaterial = new javax.swing.JMenu();
         mnuItemSolicitarMaterialParaUnaObra = new javax.swing.JMenuItem();
         mnuItemAsignarMaterialAObra = new javax.swing.JMenuItem();
@@ -176,19 +175,39 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemIntroducirCantidadFacturada.setText("Introducir Cantidad Facturada");
         mnuItemIntroducirCantidadFacturada.setEnabled(false);
+        mnuItemIntroducirCantidadFacturada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemIntroducirCantidadFacturadaActionPerformed(evt);
+            }
+        });
         mnuObra.add(mnuItemIntroducirCantidadFacturada);
 
         jMenuItem2.setText("Introducir Cantidad Cobrada");
         jMenuItem2.setEnabled(false);
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         mnuObra.add(jMenuItem2);
 
         mnuItemMonstrarBalanceDeObra.setText("Mostrar Balance de Obra");
         mnuItemMonstrarBalanceDeObra.setEnabled(false);
+        mnuItemMonstrarBalanceDeObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemMonstrarBalanceDeObraActionPerformed(evt);
+            }
+        });
         mnuObra.add(mnuItemMonstrarBalanceDeObra);
 
-        jMenuItem3.setText("Introducir Porcentaje de Obra Ejecutada");
-        jMenuItem3.setEnabled(false);
-        mnuObra.add(jMenuItem3);
+        jMenuItemIntroducirPorcentajeDeObra.setText("Introducir Porcentaje de Obra Ejecutada");
+        jMenuItemIntroducirPorcentajeDeObra.setEnabled(false);
+        jMenuItemIntroducirPorcentajeDeObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemIntroducirPorcentajeDeObraActionPerformed(evt);
+            }
+        });
+        mnuObra.add(jMenuItemIntroducirPorcentajeDeObra);
 
         jMenuBar1.add(mnuObra);
 
@@ -196,14 +215,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemSolicitarMaterialParaUnaObra.setText("Solicitar Material para una Obra");
         mnuItemSolicitarMaterialParaUnaObra.setEnabled(false);
-
-
         mnuItemSolicitarMaterialParaUnaObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemSolicitarMaterialParaUnaObraActionPerformed(evt);
             }
         });
-
         mnuMaterial.add(mnuItemSolicitarMaterialParaUnaObra);
 
         mnuItemAsignarMaterialAObra.setText("Asignar Material a Obra");
@@ -212,19 +228,20 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarAltaAMaterial.setText("Dar de Alta a Material");
         mnuItemDarAltaAMaterial.setEnabled(false);
-
-
-		
         mnuItemDarAltaAMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemDarAltaAMaterialActionPerformed(evt);
             }
         });
-
         mnuMaterial.add(mnuItemDarAltaAMaterial);
 
         mnuItemComprobarRecepcionMateriales.setText("Comprobar Recepción de Materiales");
         mnuItemComprobarRecepcionMateriales.setEnabled(false);
+        mnuItemComprobarRecepcionMateriales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemComprobarRecepcionMaterialesActionPerformed(evt);
+            }
+        });
         mnuMaterial.add(mnuItemComprobarRecepcionMateriales);
 
         jMenuBar1.add(mnuMaterial);
@@ -250,13 +267,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemDarDeAltaAEmpleado.setText("Dar de Alta a Empleado");
         mnuItemDarDeAltaAEmpleado.setEnabled(false);
-
         mnuItemDarDeAltaAEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemDarDeAltaAEmpleadoActionPerformed(evt);
             }
         });
-
         mnuEmpleado.add(mnuItemDarDeAltaAEmpleado);
 
         mnuItemDarAltaCategoriaEmpleado.setText("Dar de Alta a Categoria de Empleado");
@@ -294,17 +309,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         mnuItemComprobarRecepcionMaquinariaEnObra.setText("Comprobar Recepción Maquinaria en Obra");
         mnuItemComprobarRecepcionMaquinariaEnObra.setEnabled(false);
-
-
-
         mnuItemComprobarRecepcionMaquinariaEnObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed(evt);
             }
         });
-
-
-
         jMenu2.add(mnuItemComprobarRecepcionMaquinariaEnObra);
 
         jMenuBar1.add(jMenu2);
@@ -396,10 +405,35 @@ public class FrmMain extends javax.swing.JFrame {
     private void mnuItemDarDeAltaAEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
         DialogoEmpleado dialogoEmpleado = new DialogoEmpleado(this, true);
         dialogoEmpleado.setVisible(true);
-        
+        pack();
         
         
     }//GEN-LAST:event_mnuItemDarDeAltaAEmpleadoActionPerformed
+
+    private void jMenuItemIntroducirPorcentajeDeObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIntroducirPorcentajeDeObraActionPerformed
+        //DialogoIntroducirPorcentaje dialogointroducirporcentaje = new DialogoIntroducirPorcentaje(this,true);
+       // dialogointroducirporcentaje.setVisible(true);
+       DialogoIntroducir dialogointroducir = new DialogoIntroducir(this,true);
+       dialogointroducir.setVisible(true);
+        pack();
+      
+    }//GEN-LAST:event_jMenuItemIntroducirPorcentajeDeObraActionPerformed
+
+    private void mnuItemComprobarRecepcionMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemComprobarRecepcionMaterialesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuItemComprobarRecepcionMaterialesActionPerformed
+
+    private void mnuItemIntroducirCantidadFacturadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemIntroducirCantidadFacturadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuItemIntroducirCantidadFacturadaActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void mnuItemMonstrarBalanceDeObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemMonstrarBalanceDeObraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuItemMonstrarBalanceDeObraActionPerformed
 
 
     
@@ -447,9 +481,9 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItemIntroducirPorcentajeDeObra;
     private javax.swing.JMenu mnuAlbaran;
     private javax.swing.JMenuItem mnuDarAltaMaquinaria;
     private javax.swing.JMenu mnuEmpleado;

@@ -78,24 +78,36 @@
                 <Property name="text" type="java.lang.String" value="Introducir Cantidad Facturada"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemIntroducirCantidadFacturadaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Introducir Cantidad Cobrada"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemMonstrarBalanceDeObra">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mostrar Balance de Obra"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemMonstrarBalanceDeObraActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemIntroducirPorcentajeDeObra">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Introducir Porcentaje de Obra Ejecutada"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemIntroducirPorcentajeDeObraActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -109,13 +121,9 @@
                 <Property name="text" type="java.lang.String" value="Solicitar Material para una Obra"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-
-
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemSolicitarMaterialParaUnaObraActionPerformed"/>
               </Events>
-
-
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemAsignarMaterialAObra">
               <Properties>
@@ -128,20 +136,18 @@
                 <Property name="text" type="java.lang.String" value="Dar de Alta a Material"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-
-
-
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemDarAltaAMaterialActionPerformed"/>
               </Events>
-
-
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemComprobarRecepcionMateriales">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Comprobar Recepci&#xf3;n de Materiales"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemComprobarRecepcionMaterialesActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -176,11 +182,9 @@
                 <Property name="text" type="java.lang.String" value="Dar de Alta a Empleado"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemDarDeAltaAEmpleadoActionPerformed"/>
               </Events>
-
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuItemDarAltaCategoriaEmpleado">
               <Properties>
@@ -234,13 +238,9 @@
                 <Property name="text" type="java.lang.String" value="Comprobar Recepci&#xf3;n Maquinaria en Obra"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-
-
-
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemComprobarRecepcionMaquinariaEnObraActionPerformed"/>
               </Events>
-
             </MenuItem>
           </SubComponents>
         </Menu>
